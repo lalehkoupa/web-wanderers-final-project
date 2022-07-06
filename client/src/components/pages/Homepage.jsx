@@ -19,7 +19,7 @@ const Homepage = () =>
 
 	return (
 		<div>
-			<h1>This is the Homepage</h1>
+			<h1 className="text-danger text-center">This is the Homepage</h1>
 			{data.msg}
 		</div>
 	);
