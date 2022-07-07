@@ -1,17 +1,23 @@
-import "./App.css";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./components/pages/Homepage";
-import HeaderAndNav from "./components/pages/HeaderAndNav";
-import Footer from "./components/pages/Footer";
+import About from "./components/pages/About";
+import Contact from "./components/pages/Contact";
+import SignUp from "./components/pages/SignUp";
+import Rota from "./components/pages/Rota";
 
 const App = () => {
   return (
-    <>
-      <HeaderAndNav />
-      <Homepage />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/rota" element={<Rota />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
-
 
 export default App;
