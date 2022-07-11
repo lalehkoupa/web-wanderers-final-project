@@ -1,11 +1,11 @@
 const ClassRow = ({ available, filled, date }) => {
   return (
     <>
-      <div>
+      <div className="">
         <p>
           {filled} of {available} Slots Filled
         </p>
-        <div>
+        <div className="">
           <a href="{}">{date}</a>
         </div>
       </div>
