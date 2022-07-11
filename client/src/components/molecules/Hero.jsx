@@ -1,6 +1,7 @@
 const Hero = () => {
   return (
     <div
+      class="container"
       background-image="../../image/homepagehero.jpg"
       display="flex"
       align-items="center"

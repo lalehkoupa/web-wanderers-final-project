@@ -17,6 +17,13 @@ app.get("/jobs", (req, res) => {
 app.get("/rota", (req, res) => {
   res.status(200).json(rota);
 });
+app.get("/dates", (req, res) => {
+  let ne = jobs.filter(
+    (item, index) => item[index].date !== item[index + 1].date
+  );
+  console.log(ne);
+  res.status(200).json(jobs);
+});
 
 app.post("/rota", (req, res) => {
   const { title, startDate, endDate, openSpots } = req.body;
