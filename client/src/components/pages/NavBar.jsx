@@ -4,8 +4,13 @@ const NavBar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">
-          LOGO
+        <a className="navbar-brand" href="Homepage">
+          <img
+            src="./image/headerlogo.png"
+            alt="Logo"
+            width="100"
+            height="auto"
+          />
         </a>
         <button
           className="navbar-toggler"
@@ -22,7 +27,7 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="Homepage">
                 Home <span className="sr-only">(current)</span>
               </a>
             </li>
@@ -78,12 +83,12 @@ const NavBar = () => {
               </div>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#">
+              <a className="nav-link" href="About">
                 About
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="Contact">
                 Contact Us
               </a>
             </li>
