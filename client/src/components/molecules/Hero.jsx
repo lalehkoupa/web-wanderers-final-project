@@ -1,12 +1,6 @@
 const Hero = () => {
   return (
-    <div
-      class="container"
-      background-image="../../image/homepagehero.jpg"
-      display="flex"
-      align-items="center"
-      justify-content="center"
-    >
+    <div style={{ height: "100px" }} class="text-center bg-primary">
       <p>Can You Help?</p>
     </div>
   );

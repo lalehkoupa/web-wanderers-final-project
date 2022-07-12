@@ -1,5 +1,4 @@
 import React from "react";
-import Hero from "../molecules/Hero";
 
 const Homepage = () => {
   //const [data, setData] = useState([]);
@@ -20,7 +19,6 @@ const Homepage = () => {
   return (
     <div>
       <h1>This is the Homepage</h1>
-      <Hero />
     </div>
   );
 };
