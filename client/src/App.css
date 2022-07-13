@@ -3,7 +3,13 @@ body {
   padding: 0;
   height: 100vh;
 }
-
+.hero {
+  position: relative;
+  background-image: url(./image/heroimage.jpg);
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
 /* Header logo and navbar  */
 .logoAndNav {
   display: grid;
