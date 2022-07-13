@@ -3,12 +3,10 @@ import React from "react";
 const NavBar = () => {
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          LOGO
-        </a>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        {/* Note for Alireza , I have pre designed the logo for responsive in HeaderAndNav component so, I have deleted your nav header logo from here, but I did not touch your other nav funcitonilty.*/}
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -16,20 +14,20 @@ const NavBar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">
-                Home <span class="sr-only">(current)</span>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
+              <a className="nav-link" href="Homepage">
+                Home <span className="sr-only">(current)</span>
               </a>
             </li>
 
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 id="navbarDropdown"
                 role="button"
@@ -39,22 +37,22 @@ const NavBar = () => {
               >
                 What We do
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a className="dropdown-item" href="#">
                   Action
                 </a>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   Another action
                 </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="#">
                   Something else here
                 </a>
               </div>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 id="navbarDropdown"
                 role="button"
@@ -64,26 +62,26 @@ const NavBar = () => {
               >
                 What You Can Do
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a className="dropdown-item" href="#">
                   Action
                 </a>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   Another action
                 </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="#">
                   Something else here
                 </a>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">
+            <li className="nav-item">
+              <a className="nav-link" href="About">
                 About
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
+            <li className="nav-item">
+              <a className="nav-link text-danger" href="Contact">
                 Contact Us
               </a>
             </li>

@@ -6,9 +6,15 @@ body {
   padding: 0;
   height: 100vh;
 }
-
 .bg-yellow_green {
   background-color: var(--yellow-green);
+}
+.hero {
+  position: relative;
+  background-image: url("../public/image/akwaaba-hero-image.png");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
 }
 /* Header logo and navbar  */
 .logoAndNav {
@@ -20,11 +26,11 @@ body {
 }
 
 .header-logo {
-  background-image: url("./image/headerlogo.png");
+  background-image: url("../public/image/headerlogo.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 230px;
+  width: 190px;
   height: 140px;
 }
 
@@ -57,13 +63,89 @@ body {
   border: 0.5px solid white;
   border-radius: 100%;
   transition: 0.5s ease-in;
+  margin: 0.4em;
+  padding: 0.2em;
 }
-/* Responsive style */
+.footer-fontawe:hover {
+  opacity: 0.7;
+  border: 1px solid white;
+  border-radius: 100%;
+  transition: 0.5s ease-in;
+}
+/* Sign-Up*/
+.flex {
+  display: flex;
+}
+.sign-up {
+  width: 50%;
+  background-color: rgb(243, 243, 172);
+  margin: auto;
+}
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.sign-up-form > input:nth-child(2) {
+  width: 30%;
+}
+.sign-up-form > input:nth-child(4) {
+  width: 40%;
+}
+.sign-up-form input {
+  width: 55%;
+  margin-bottom: 1em;
+  border: none;
+  border-radius: 0.2em;
+}
+.sign-up-date-time > p:nth-child(1) {
+  margin-right: 3em;
+}
+.sign_up_info_banner > * {
+  padding-left: 0.7em;
+  padding-bottom: 1em;
+}
+.sign_up_info_banner span {
+  font-weight: 600;
+}
+.sign-up > * h4 {
+  background-color: rgb(175, 175, 95);
+  padding: 0.6em;
+  font-size: medium;
+}
+
+.sign-up-fields > * {
+  padding-left: 0.7em;
+}
+
+.form-login-btn {
+  background: none !important;
+  border: none;
+  color: rgb(229, 56, 56);
+  text-decoration: underline;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.form-sign-up-btn {
+  width: 90%;
+  color: white;
+  background-color: rgb(33, 33, 240);
+  margin: 1em;
+  border-radius: 0.2em;
+}
 @media only screen and (max-width: 980px) {
   /* header logo  */
+
+  /* header logo  */
+  .logoAndNav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+  }
   .header-logo {
-    width: 190px;
-    height: 120px;
+    width: 140px;
+    height: 100px;
   }
 
   /* Footer  */
@@ -77,4 +159,21 @@ body {
     gap: 1.5rem;
     text-align: center;
   }
+  .sign-up {
+    width: 100%;
+  }
+  .sign-up-form > input:nth-child(2) {
+    width: 30%;
+  }
+  .sign-up-form > input:nth-child(4) {
+    width: 40%;
+  }
+  .sign-up-form input {
+    width: 65%;
+  }
+}
+
+/* Rota */
+.rota {
+  background-color: brown;
 }
