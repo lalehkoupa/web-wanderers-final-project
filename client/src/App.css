@@ -5,7 +5,7 @@ body {
 }
 .hero {
   position: relative;
-  background-image: url(./image/heroimage.jpg);
+  background-image: url("../public/image/akwaaba-hero-image.png");
   background-position: center;
   background-size: cover;
   overflow: hidden;
@@ -20,11 +20,11 @@ body {
 }
 
 .header-logo {
-  background-image: url("./image/headerlogo.png");
+  background-image: url('../public/image/headerlogo.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 230px;
+  width: 190px;
   height: 140px;
 }
 
@@ -51,10 +51,12 @@ body {
 
 .footer-fontawe {
   font-size: 1.55em;
-  padding: 0.8em;
+  margin: .4em;
+  padding: .2em ;
 }
-.footer-fontawe:hover {
-  border: 0.5px solid white;
+.footer-fontawe:hover{
+  opacity: .7;
+  border: 1px solid white;
   border-radius: 100%;
   transition: 0.5s ease-in;
 }
@@ -120,12 +122,17 @@ body {
   margin: 1em;
   border-radius: 0.2em;
 }
-/* Responsive style */
 @media only screen and (max-width: 980px) {
-  /* header logo  */
+
+  /* header logo  */ 
+  .logoAndNav {
+      display: flex;
+      justify-content: space-between;
+      padding: .5em;
+    }
   .header-logo {
-    width: 190px;
-    height: 120px;
+    width: 140px;
+    height: 100px;
   }
 
   /* Footer  */
@@ -153,6 +160,7 @@ body {
   }
 }
 
+ /* Rota */
   .rota {
     background-color: brown;
   }
