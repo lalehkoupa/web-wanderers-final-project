@@ -1,20 +1,26 @@
+* {
+  --yellow-green: #edf286;
+}
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
 }
 
+.bg-yellow_green {
+  background-color: var(--yellow-green);
+}
 /* Header logo and navbar  */
 .logoAndNav {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   align-items: center;
-  padding: .5rem 3rem;
+  padding: 0.5rem 3rem;
 }
 
 .header-logo {
-  background-image: url('./image/headerlogo.png');
+  background-image: url("./image/headerlogo.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -45,16 +51,15 @@ body {
 
 .footer-fontawe {
   font-size: 1.55em;
-  padding: .8em;
+  padding: 0.8em;
 }
-.footer-fontawe:hover{
-  border: .5px solid white;
+.footer-fontawe:hover {
+  border: 0.5px solid white;
   border-radius: 100%;
-  transition: .5s ease-in;
+  transition: 0.5s ease-in;
 }
 /* Responsive style */
 @media only screen and (max-width: 980px) {
-
   /* header logo  */
   .header-logo {
     width: 190px;
