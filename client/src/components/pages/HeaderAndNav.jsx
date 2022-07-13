@@ -1,11 +1,12 @@
 import React from "react";
+import NavBar from "./NavBar";
 
 const HeaderAndNav = () => {
 	return (
 
 		<div className="logoAndNav">
 			<div class='header-logo'></div>
-			{/* <Navbar /> */}
+			<div> <NavBar /></div>
 		</div>
 	);
 }
