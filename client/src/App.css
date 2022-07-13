@@ -60,7 +60,68 @@ body {
   border-radius: 100%;
   transition: 0.5s ease-in;
 }
-/* Responsive style Done by Mohammad*/
+/* Sign-Up*/
+.flex {
+  display: flex;
+}
+.sign-up {
+  width: 50%;
+  background-color: rgb(243, 243, 172);
+  margin: auto;
+}
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.sign-up-form > input:nth-child(2) {
+  width: 30%;
+}
+.sign-up-form > input:nth-child(4) {
+  width: 40%;
+}
+.sign-up-form input {
+  width: 55%;
+  margin-bottom: 1em;
+  border: none;
+  border-radius: 0.2em;
+}
+.sign-up-date-time > p:nth-child(1) {
+  margin-right: 3em;
+}
+.sign_up_info_banner > * {
+  padding-left: 0.7em;
+  padding-bottom: 1em;
+}
+.sign_up_info_banner span {
+  font-weight: 600;
+}
+.sign-up > * h4 {
+  background-color: rgb(175, 175, 95);
+  padding: 0.6em;
+  font-size: medium;
+}
+
+.sign-up-fields > * {
+  padding-left: 0.7em;
+}
+
+.form-login-btn {
+  background: none !important;
+  border: none;
+  color: rgb(229, 56, 56);
+  text-decoration: underline;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.form-sign-up-btn {
+  width: 90%;
+  color: white;
+  background-color: rgb(33, 33, 240);
+  margin: 1em;
+  border-radius: 0.2em;
+}
 @media only screen and (max-width: 980px) {
 
   /* header logo  */ 
@@ -85,8 +146,20 @@ body {
     gap: 1.5rem;
     text-align: center;
   }
+  .sign-up {
+    width: 100%;
+  }
+  .sign-up-form > input:nth-child(2) {
+    width: 30%;
+  }
+  .sign-up-form > input:nth-child(4) {
+    width: 40%;
+  }
+  .sign-up-form input {
+    width: 65%;
+  }
 }
- 
+
  /* Rota */
   .rota {
     background-color: brown;
