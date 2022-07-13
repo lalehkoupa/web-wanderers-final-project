@@ -14,11 +14,11 @@ body {
 }
 
 .header-logo {
-  background-image: url('./image/headerlogo.png');
+  background-image: url('../public/image/headerlogo.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 230px;
+  width: 190px;
   height: 140px;
 }
 
@@ -45,20 +45,27 @@ body {
 
 .footer-fontawe {
   font-size: 1.55em;
-  padding: .8em;
+  margin: .4em;
+  padding: .2em ;
 }
 .footer-fontawe:hover{
-  border: .5px solid white;
+  opacity: .7;
+  border: 1px solid white;
   border-radius: 100%;
   transition: .5s ease-in;
 }
-/* Responsive style */
+/* Responsive style Done by Mohammad*/
 @media only screen and (max-width: 980px) {
 
-  /* header logo  */
+  /* header logo  */ 
+  .logoAndNav {
+      display: flex;
+      justify-content: space-between;
+      padding: .5em;
+    }
   .header-logo {
-    width: 190px;
-    height: 120px;
+    width: 140px;
+    height: 100px;
   }
 
   /* Footer  */
