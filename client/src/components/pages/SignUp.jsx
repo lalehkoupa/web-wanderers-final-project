@@ -11,6 +11,7 @@ const SignUp = ({ date, time, job }) => {
     password: "",
     phone: "",
   });
+
   date = " 10/07/22";
   time = " 12:00-15:00";
   job = " Kitchen Supervisor";
@@ -33,8 +34,6 @@ const SignUp = ({ date, time, job }) => {
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
-
-  const handleLogin = async (event) => {};
 
   return (
     <div>
@@ -61,14 +60,14 @@ const SignUp = ({ date, time, job }) => {
           <h4>My Contact Info</h4>
           <p>All Fields are Mandatory*</p>
           <Form onSubmit={handleSubmit} onChange={handleChange} />
-          <div className="flex">
+          {/* <div className="flex">
             <p>Already have an account?</p>
-            <Button
+           <Button
               handleClick={handleLogin}
               text="Login"
               className="form-login-btn"
             />
-          </div>
+          </div>*/}
           <Button
             handleClick={handleSubmit}
             text="Sign Up Now!"
