@@ -20,7 +20,7 @@ body {
 }
 
 .header-logo {
-  background-image: url('../public/image/headerlogo.png');
+  background-image: url("../public/image/headerlogo.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -51,11 +51,11 @@ body {
 
 .footer-fontawe {
   font-size: 1.55em;
-  margin: .4em;
-  padding: .2em ;
+  margin: 0.4em;
+  padding: 0.2em;
 }
-.footer-fontawe:hover{
-  opacity: .7;
+.footer-fontawe:hover {
+  opacity: 0.7;
   border: 1px solid white;
   border-radius: 100%;
   transition: 0.5s ease-in;
@@ -122,14 +122,34 @@ body {
   margin: 1em;
   border-radius: 0.2em;
 }
-@media only screen and (max-width: 980px) {
 
-  /* header logo  */ 
+.google-login {
+  float: right;
+}
+
+.sign-out-btn {
+  background-color: rgb(33, 33, 240);
+  color: white;
+  border-radius: 0.2em;
+  width: 100px;
+}
+.user-details {
+  margin-right: 3em;
+}
+.user-details img {
+  width: 45px;
+  height: 45px;
+}
+.user-details h4 {
+  margin-right: 0.5em;
+}
+@media only screen and (max-width: 980px) {
+  /* header logo  */
   .logoAndNav {
-      display: flex;
-      justify-content: space-between;
-      padding: .5em;
-    }
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+  }
   .header-logo {
     width: 140px;
     height: 100px;
@@ -160,7 +180,7 @@ body {
   }
 }
 
- /* Rota */
-  .rota {
-    background-color: brown;
-  }
+/* Rota */
+.rota {
+  background-color: brown;
+}

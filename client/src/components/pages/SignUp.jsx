@@ -8,7 +8,7 @@ const SignUp = ({ date, time, job }) => {
     firstName: "",
     lastName: "",
     email: "",
-    password: "",
+    //password: "",
     phone: "",
   });
 
