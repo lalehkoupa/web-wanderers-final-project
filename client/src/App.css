@@ -1,5 +1,6 @@
 * {
   --yellow-green: #edf286;
+  --dark-yellow: #d1cd67;
 }
 body {
   margin: 0;
@@ -9,9 +10,12 @@ body {
 .bg-yellow_green {
   background-color: var(--yellow-green);
 }
+.bg-dark_yellow {
+  background-color: #d1cd67;
+}
 .hero {
   position: relative;
-  background-image: url("../public/image/akwaaba-hero-image.png");
+  background-image: url("../public/image/new-hero-image.png");
   background-position: center;
   background-size: cover;
   overflow: hidden;

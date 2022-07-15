@@ -3,7 +3,9 @@ body {
   padding: 0;
   height: 100vh;
 }
-
+.bg-yellow_green {
+  background-color: #edf286;
+}
 /* Header logo and navbar  */
 .logoAndNav {
   display: grid;
@@ -72,4 +74,3 @@ body {
     text-align: center;
   }
 }
-

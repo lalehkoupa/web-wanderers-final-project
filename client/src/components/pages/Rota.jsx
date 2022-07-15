@@ -6,8 +6,11 @@ import exampleJobs from "../../exampleJobs.json";
 import axios from "axios";
 import Posts from "../molecules/Posts";
 import Pagination from "../molecules/Pagination";
+import { useParams } from "react-router";
 
 const Rota = () => {
+  let { date } = useParams();
+  console.log(date);
   const [isChecked, setIsChecked] = useState(false);
   const [posts, setPost] = useState();
   const [loading, setLoading] = useState(false);
@@ -27,18 +30,18 @@ const Rota = () => {
   const currentPost = exampleJobs.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
-		<>
-    	<Hero />
-    	<div className="container mt-5">
-      	<h1 className=" text-primary mb-3">This is the Rota</h1>
-      	<Posts loading={loading} posts={currentPost} />
-      	<Pagination
-  	      postsPerPage={postsPerPage}
-    	    totalPost={exampleJobs.length}
-      	  paginate={paginate}
-      />
-    </div>
-		</>
+    <>
+      <Hero />
+      <div className="container mt-5">
+        <h1 className=" text-primary mb-3">This is the Rota</h1>
+        <Posts loading={loading} posts={currentPost} />
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPost={exampleJobs.length}
+          paginate={paginate}
+        />
+      </div>
+    </>
   );
 };
 
