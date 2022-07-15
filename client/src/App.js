@@ -7,6 +7,7 @@ import SignUp from "./components/pages/SignUp";
 import Rota from "./components/pages/Rota";
 import DefaultLayout from "./components/layouts/DefaultLayout";
 import Homepage from "./components/pages/Homepage";
+import Dashboard from "./components/pages/Dashboard";
 
 const App = () => {
   return (

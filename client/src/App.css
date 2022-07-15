@@ -35,32 +35,32 @@ body {
 }
 /* nav */
 
-.nav{
+.nav {
   display: flex;
-  gap:1em;
+  gap: 1em;
   font-weight: bold;
   font-size: 1.1rem;
 }
-.navlink{
+.navlink {
   border-radius: 12px;
 }
-.navlink:hover{
-  transition: .39s ease-out;
-  opacity: .8;
+.navlink:hover {
+  transition: 0.39s ease-out;
+  opacity: 0.8;
   background-color: rgb(41, 2, 74);
-  padding-left: .25rem;
+  padding-left: 0.25rem;
 }
 /* about page */
-.about-div{
+.about-div {
   padding: 5%;
   display: flex;
   flex-direction: column;
-  gap:2em;
+  gap: 2em;
 }
-.about-h2{
-  background-color: rgb(41, 41, 247,.6);
-  color:rgb(255, 255, 255);
-  padding:2rem 6rem;
+.about-h2 {
+  background-color: rgb(41, 41, 247, 0.6);
+  color: rgb(255, 255, 255);
+  padding: 2rem 6rem;
   font-size: 4rem;
 }
 /* Footer  */
@@ -83,7 +83,6 @@ body {
   margin: 1em;
   padding: 1.25em;
 }
-
 
 /* This has been worked on by multiple people. Unsure of correct changes if everyone can review and decide. */
 .footer-fontawe {
@@ -111,7 +110,7 @@ body {
 }
 
 /* Sign-Up*/
-.flex {  
+.flex {
   display: flex;
 }
 .sign-up {
@@ -173,6 +172,11 @@ body {
   border-radius: 0.2em;
 }
 
+.sign-up-err {
+  color: red;
+  font-size: large;
+}
+/* dashboard-google-authentication*/
 .google-login {
   float: right;
 }
@@ -193,6 +197,10 @@ body {
 .user-details h4 {
   margin-right: 0.5em;
 }
+
+.login-container {
+  height: 300px;
+}
 @media only screen and (max-width: 980px) {
   /* header logo  */
 
@@ -207,24 +215,24 @@ body {
     height: 100px;
   }
   /* nav */
-    .nav {
-      gap: .2em;
-      font-weight:600;
-    }
-    .navlink {
-      margin-top: .4em;
-    }
-    .navlink:hover {
-      transition: .35s ease-out;
-      opacity: .8;
-      background-color: transparent;
-      padding-left:.1rem;
-    }
-    /* about page */
-    .about-h2 {
-      padding: 1.5rem 3rem;
-      font-size: 2.5em;
-    }
+  .nav {
+    gap: 0.2em;
+    font-weight: 600;
+  }
+  .navlink {
+    margin-top: 0.4em;
+  }
+  .navlink:hover {
+    transition: 0.35s ease-out;
+    opacity: 0.8;
+    background-color: transparent;
+    padding-left: 0.1rem;
+  }
+  /* about page */
+  .about-h2 {
+    padding: 1.5rem 3rem;
+    font-size: 2.5em;
+  }
   /* Footer  */
   .footer-container {
     font-size: 95%;
@@ -250,14 +258,13 @@ body {
   }
 }
 
- /* Rota */
-  .rota {
-    background-color: brown;
-  }
-  .rota_container{
-    background-color: rgb(175, 175, 95);
-  }
-  .rota_container2{
-      background-color: rgb(243, 243, 172);
-  }
-
+/* Rota */
+.rota {
+  background-color: brown;
+}
+.rota_container {
+  background-color: rgb(175, 175, 95);
+}
+.rota_container2 {
+  background-color: rgb(243, 243, 172);
+}
