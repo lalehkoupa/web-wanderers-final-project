@@ -1,4 +1,5 @@
 import React from "react";
+import Hero from "../molecules/Hero";
 import { useEffect } from "react";
 import { useState } from "react";
 import exampleJobs from "../../exampleJobs.json";
@@ -26,15 +27,18 @@ const Rota = () => {
   const currentPost = exampleJobs.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
-    <div className="container mt-5">
-      <h1 className=" text-primary mb-3">This is the Rota</h1>
-      <Posts loading={loading} posts={currentPost} />
-      <Pagination
-        postsPerPage={postsPerPage}
-        totalPost={exampleJobs.length}
-        paginate={paginate}
+		<>
+    	<Hero />
+    	<div className="container mt-5">
+      	<h1 className=" text-primary mb-3">This is the Rota</h1>
+      	<Posts loading={loading} posts={currentPost} />
+      	<Pagination
+  	      postsPerPage={postsPerPage}
+    	    totalPost={exampleJobs.length}
+      	  paginate={paginate}
       />
     </div>
+		</>
   );
 };
 

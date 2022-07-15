@@ -4,14 +4,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="Homepage">
-          <img
-            src="./image/headerlogo.png"
-            alt="Logo"
-            width="100"
-            height="auto"
-          />
-        </a>
+        {/* Note for Alireza , I have pre designed the logo for responsive in HeaderAndNav component so, I have deleted your nav header logo from here, but I did not touch your other nav funcitonilty.*/}
         <button
           className="navbar-toggler"
           type="button"
@@ -88,7 +81,7 @@ const NavBar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="Contact">
+              <a className="nav-link text-danger" href="Contact">
                 Contact Us
               </a>
             </li>
