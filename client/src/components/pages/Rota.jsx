@@ -8,17 +8,15 @@ import Posts from "../molecules/Posts";
 import Pagination from "../molecules/Pagination";
 
 const Rota = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState([]);
   const [posts, setPost] = useState();
-  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
+
   useEffect(() => {
     const fetchPost = async () => {
-      setLoading(true);
       const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
       setPost(res.data);
-      setLoading(false);
     };
     fetchPost();
   }, []);
@@ -27,18 +25,29 @@ const Rota = () => {
   const currentPost = exampleJobs.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
-		<>
-    	<Hero />
-    	<div className="container mt-5">
-      	<h1 className=" text-primary mb-3">This is the Rota</h1>
-      	<Posts loading={loading} posts={currentPost} />
-      	<Pagination
-  	      postsPerPage={postsPerPage}
-    	    totalPost={exampleJobs.length}
-      	  paginate={paginate}
-      />
-    </div>
-		</>
+    <>
+      <Hero />
+      <div className="container mt-5">
+        <h1 className=" text-primary mb-3">This is the Rota</h1>
+        <Posts
+          posts={currentPost}
+          setIsChecked={setIsChecked}
+          isChecked={isChecked}
+        />
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPost={exampleJobs.length}
+          paginate={paginate}
+        />
+      </div>
+      <div class="text-center">
+        <a href="/signup">
+          <button className="btn bg-primary ms-auto">
+            Book Volunteer Slot
+          </button>
+        </a>
+      </div>
+    </>
   );
 };
 

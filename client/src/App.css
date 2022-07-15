@@ -250,7 +250,14 @@ body {
   }
 }
 
-/* Rota */
-.rota {
-  background-color: brown;
-}
+ /* Rota */
+  .rota {
+    background-color: brown;
+  }
+  .rota_container{
+    background-color: rgb(175, 175, 95);
+  }
+  .rota_container2{
+      background-color: rgb(243, 243, 172);
+  }
+
