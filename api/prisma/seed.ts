@@ -1,23 +1,24 @@
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
-import { classData } from './jobsData'
+import { classDateData } from './classDate'
 
 // handles the database connections for us
 const prisma = new PrismaClient()
 
 const run = async () => {
   await Promise.all(
-    classData.map(async (class) => {
-      return prisma.class.upsert({
-        where: { date: class.date },
+    classDateData.map(async (classDate) => {
+      return prisma.classDate.upsert({
+        where: { date: classDate.date },
         update: {},
         create: {
-          date: class.date,
+          date: classDate.date,
           jobs: {
-            create: class.jobs.map((job) => ({
+            create: classDate.jobs.map((job) => ({
               title: job.title,
+              timeString: job.timeString,
               slots: job.slots,
-              filled: job.filled,
+              filled: job.filled
             })),
           },
         },
@@ -32,4 +33,4 @@ run()
   })
   .finally(async () => {
     await prisma.$disconnect()
-  })
+  })}

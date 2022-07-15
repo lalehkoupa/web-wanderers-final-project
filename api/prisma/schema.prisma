@@ -18,7 +18,7 @@ model User {
 	email String @unique
 	firstName String
 	lastName String
-	classes Class[]
+	classDates ClassDate[]
 }
 
 model Job {
@@ -29,15 +29,15 @@ model Job {
 	timeString String
 	slots Int
 	filled Int
-	class Class @relation(fields: [classId], references: [id])
-	classId Int
+	classDate ClassDate @relation(fields: [classDateId], references: [id])
+	classDateId Int
 }
 
-model Class {
+model ClassDate {
 	id Int	@id @default(autoincrement())
 	createdAt DateTime @default(now())
 	updatedAt DateTime @updatedAt
-	date String
+	date String @unique
 	slots Int
 	filled Int
 	jobs Job[]
