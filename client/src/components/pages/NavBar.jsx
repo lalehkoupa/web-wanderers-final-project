@@ -1,101 +1,29 @@
 import React from "react";
 
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+
+
 const NavBar = () => {
   return (
-    <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="Homepage">
-          <img
-            src="./image/headerlogo.png"
-            alt="Logo"
-            width="100"
-            height="auto"
-          />
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="Homepage">
-                Home <span className="sr-only">(current)</span>
-              </a>
-            </li>
-
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                What We do
-              </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                What You Can Do
-              </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="About">
-                About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="Contact">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </>
+  
+      <div className="navbar-div">
+      <Navbar collapseOnSelect expand="lg" variant="light" style={{ width: '100%' }}>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="nav" >
+            <Nav.Link href="/" className='navlink text-danger'>Home</Nav.Link>
+            <Nav.Link href="/about" className='navlink text-danger'>About Us</Nav.Link>
+            <Nav.Link href="/rota" className='navlink text-danger'>What we do</Nav.Link>
+            <Nav.Link href="/signup" className='navlink text-danger'>What you can do</Nav.Link>
+            <Nav.Link href="/contact" className='navlink text-danger'>Contact Us</Nav.Link>
+          </Nav>
+           
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+    
+  
   );
 };
 

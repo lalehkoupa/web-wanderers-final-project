@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+/* Header logo and navbar  */
+.logoAndNav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  align-items: center;
+  padding: 0.5rem 3rem;
+}
+
+.header-logo {
+  background-image: url("./image/headerlogo.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 230px;
+  height: 140px;
+}
+
+/* Footer  */
+.footer-container h3 {
+  font-weight: bolder;
+  color: rgb(205, 63, 16);
+}
+
+.footer-container {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.contact-info-social-media {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+  padding: 1.25em;
+}
+
+.footer-fontawe {
+  font-size: 1.55em;
+  padding: 0.8em;
+}
+.footer-fontawe:hover {
+  border: 0.5px solid white;
+  border-radius: 100%;
+  transition: 0.5s ease-in;
+}
+/* Responsive style */
+@media only screen and (max-width: 980px) {
+  /* header logo  */
+  .header-logo {
+    width: 190px;
+    height: 120px;
+  }
+
+  /* Footer  */
+  .footer-container {
+    font-size: 95%;
+  }
+
+  .contact-info-social-media {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+}
+

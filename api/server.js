@@ -17,6 +17,30 @@ app.get("/jobs", (req, res) => {
 app.get("/rota", (req, res) => {
   res.status(200).json(rota);
 });
+/* for rota page to send different dates and the sum of availabe spaces*/
+app.get("/dates", (req, res) => {
+  const filteredArray = [];
+  jobs.map((item) => {
+    filteredArray.push(
+      (({ date, availableSpots }) => ({ date, availableSpots }))(item)
+    );
+  });
+  const sumObject = {};
+  filteredArray.map((item) => {
+    if (sumObject.hasOwnProperty(item.date)) {
+      sumObject[item.date] =
+        parseInt(sumObject[item.date]) + parseInt(item.availableSpots);
+    } else {
+      sumObject[item.date] = item.availableSpots;
+    }
+  });
+  const sumArray = [];
+  for (key in sumObject) {
+    sumArray.push({ date: key, availableSpots: sumObject[key] });
+  }
+
+  res.json(sumArray);
+});
 
 app.post("/rota", (req, res) => {
   const { title, startDate, endDate, openSpots } = req.body;

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "link": "^1.5.0",
+    "passport-google-oauth2": "^0.2.0"
+  }
+}
