@@ -10,7 +10,6 @@ import { useParams } from "react-router";
 
 const Rota = () => {
   let { date } = useParams();
-  console.log(date);
   const [isChecked, setIsChecked] = useState(false);
   const [posts, setPost] = useState();
   const [loading, setLoading] = useState(false);
@@ -33,7 +32,7 @@ const Rota = () => {
     <>
       <Hero />
       <div className="container mt-5">
-        <h1 className=" text-primary mb-3">This is the Rota</h1>
+        {/* <h1 className=" text-primary mb-3">This is the Rota</h1> */}
         <Posts loading={loading} posts={currentPost} />
         <Pagination
           postsPerPage={postsPerPage}
