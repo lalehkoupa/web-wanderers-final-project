@@ -26,12 +26,12 @@ const Form = ({ onSubmit, onChange }) => {
           onChange={(e) => onChange("email", e.target.value)}
         />
 
-        <label>Choose a Password </label>
+        {/*<label>Choose a Password </label>
         <input
           name="password"
           type="password"
           onChange={(e) => onChange("password", e.target.value)}
-        />
+        />*/}
 
         <label>Phone Number </label>
         <input

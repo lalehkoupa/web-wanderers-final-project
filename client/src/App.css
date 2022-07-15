@@ -37,7 +37,35 @@ body {
   width: 190px;
   height: 140px;
 }
+/* nav */
 
+.nav {
+  display: flex;
+  gap: 1em;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.navlink {
+  border-radius: 12px;
+}
+.navlink:hover {
+  transition: 0.39s ease-out;
+  opacity: 0.8;
+  background-color: rgb(41, 2, 74);
+  padding-left: 0.25rem;
+}
+/* about page */
+.about-div {
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.about-h2 {
+  background-color: rgb(41, 41, 247, 0.6);
+  color: rgb(255, 255, 255);
+  padding: 2rem 6rem;
+}
 .nav {
   display: flex;
   gap: 1em;
@@ -90,8 +118,13 @@ body {
 /* This has been worked on by multiple people. Unsure of correct changes if everyone can review and decide. */
 .footer-fontawe {
   font-size: 1.55em;
+  margin: 0.4em;
+  padding: 0.2em;
+}
+.footer-fontawe:hover {
   padding: 0.8em;
 }
+
 .footer-fontawe:hover {
   border: 0.5px solid white;
   border-radius: 100%;
@@ -99,12 +132,14 @@ body {
   margin: 0.4em;
   padding: 0.2em;
 }
+
 .footer-fontawe:hover {
   opacity: 0.7;
   border: 1px solid white;
   border-radius: 100%;
   transition: 0.5s ease-in;
 }
+
 /* Sign-Up*/
 .flex {
   display: flex;
@@ -167,6 +202,27 @@ body {
   margin: 1em;
   border-radius: 0.2em;
 }
+
+.google-login {
+  float: right;
+}
+
+.sign-out-btn {
+  background-color: rgb(33, 33, 240);
+  color: white;
+  border-radius: 0.2em;
+  width: 100px;
+}
+.user-details {
+  margin-right: 3em;
+}
+.user-details img {
+  width: 45px;
+  height: 45px;
+}
+.user-details h4 {
+  margin-right: 0.5em;
+}
 @media only screen and (max-width: 980px) {
   /* header logo  */
 
@@ -180,7 +236,6 @@ body {
     width: 140px;
     height: 100px;
   }
-
   /* nav */
   .nav {
     gap: 0.2em;
@@ -230,8 +285,8 @@ body {
   background-color: brown;
 }
 .rota_container {
-  background-color: rgb(175, 175, 95);
+  background-color: var(--dark-yellow);
 }
 .rota_container2 {
-  background-color: rgb(243, 243, 172);
+  background-color: var(--yellow-green);
 }

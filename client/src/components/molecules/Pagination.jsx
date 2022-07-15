@@ -5,19 +5,13 @@ const Pagination = ({ postsPerPage, totalPost, paginate }) => {
   for (let i = 1; i <= Math.ceil(totalPost / postsPerPage); i++) {
     pageNumbers.push(i);
   }
-  console.log(
-    "pageNumbers",
-    pageNumbers,
-    totalPost,
-    "postPerPage",
-    postsPerPage
-  );
+
   return (
     <nav>
       <ul className="pagination d-flex justify-content-center">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
-            <a onClick={() => paginate(number)} className="page-link">
+            <a onClick={() => paginate(number)} href="#" className="page-link">
               {number}
             </a>{" "}
           </li>

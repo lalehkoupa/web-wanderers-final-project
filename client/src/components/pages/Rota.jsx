@@ -10,6 +10,7 @@ import { useParams } from "react-router";
 
 const Rota = () => {
   let { date } = useParams();
+
   const [isChecked, setIsChecked] = useState(false);
   const [posts, setPost] = useState();
   const [loading, setLoading] = useState(false);
