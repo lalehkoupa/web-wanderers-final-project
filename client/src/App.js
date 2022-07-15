@@ -6,7 +6,6 @@ import Contact from "./components/pages/Contact";
 import SignUp from "./components/pages/SignUp";
 import Rota from "./components/pages/Rota";
 import DefaultLayout from "./components/layouts/DefaultLayout"
-
 const App = () => {
   return (
 		<DefaultLayout>
