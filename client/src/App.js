@@ -15,10 +15,12 @@ const App = () => {
         <Routes>
           {/* I have replace Homepage with HeaderAndNav because there was nothing in Homepage. Also the bootstrap cdn is working as I have tested (check the last about componect for red text class) and removed the unneccessary extra codes from index.html. ByMohammad*/}
           <Route path="/" element={<Homepage />} />
+
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/rota" element={<Rota />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </DefaultLayout>

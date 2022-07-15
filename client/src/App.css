@@ -1,7 +1,13 @@
+* {
+  --yellow-green: #edf286;
+}
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
+}
+.bg-yellow_green {
+  background-color: var(--yellow-green);
 }
 .hero {
   position: relative;
@@ -20,14 +26,43 @@ body {
 }
 
 .header-logo {
-  background-image: url('../public/image/headerlogo.png');
+  background-image: url("../public/image/headerlogo.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   width: 190px;
   height: 140px;
 }
+/* nav */
 
+.nav{
+  display: flex;
+  gap:1em;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.navlink{
+  border-radius: 12px;
+}
+.navlink:hover{
+  transition: .39s ease-out;
+  opacity: .8;
+  background-color: rgb(41, 2, 74);
+  padding-left: .25rem;
+}
+/* about page */
+.about-div{
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  gap:2em;
+}
+.about-h2{
+  background-color: rgb(41, 41, 247,.6);
+  color:rgb(255, 255, 255);
+  padding:2rem 6rem;
+  font-size: 4rem;
+}
 /* Footer  */
 .footer-container h3 {
   font-weight: bolder;
@@ -49,19 +84,34 @@ body {
   padding: 1.25em;
 }
 
+
+/* This has been worked on by multiple people. Unsure of correct changes if everyone can review and decide. */
 .footer-fontawe {
   font-size: 1.55em;
-  margin: .4em;
-  padding: .2em ;
+  margin: 0.4em;
+  padding: 0.2em;
 }
-.footer-fontawe:hover{
-  opacity: .7;
+.footer-fontawe:hover {
+  padding: 0.8em;
+}
+
+.footer-fontawe:hover {
+  border: 0.5px solid white;
+  border-radius: 100%;
+  transition: 0.5s ease-in;
+  margin: 0.4em;
+  padding: 0.2em;
+}
+
+.footer-fontawe:hover {
+  opacity: 0.7;
   border: 1px solid white;
   border-radius: 100%;
   transition: 0.5s ease-in;
 }
+
 /* Sign-Up*/
-.flex {
+.flex {  
   display: flex;
 }
 .sign-up {
@@ -122,19 +172,59 @@ body {
   margin: 1em;
   border-radius: 0.2em;
 }
-@media only screen and (max-width: 980px) {
 
-  /* header logo  */ 
+.google-login {
+  float: right;
+}
+
+.sign-out-btn {
+  background-color: rgb(33, 33, 240);
+  color: white;
+  border-radius: 0.2em;
+  width: 100px;
+}
+.user-details {
+  margin-right: 3em;
+}
+.user-details img {
+  width: 45px;
+  height: 45px;
+}
+.user-details h4 {
+  margin-right: 0.5em;
+}
+@media only screen and (max-width: 980px) {
+  /* header logo  */
+
+  /* header logo  */
   .logoAndNav {
-      display: flex;
-      justify-content: space-between;
-      padding: .5em;
-    }
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+  }
   .header-logo {
     width: 140px;
     height: 100px;
   }
-
+  /* nav */
+    .nav {
+      gap: .2em;
+      font-weight:600;
+    }
+    .navlink {
+      margin-top: .4em;
+    }
+    .navlink:hover {
+      transition: .35s ease-out;
+      opacity: .8;
+      background-color: transparent;
+      padding-left:.1rem;
+    }
+    /* about page */
+    .about-h2 {
+      padding: 1.5rem 3rem;
+      font-size: 2.5em;
+    }
   /* Footer  */
   .footer-container {
     font-size: 95%;
@@ -160,7 +250,7 @@ body {
   }
 }
 
- /* Rota */
-  .rota {
-    background-color: brown;
-  }
+/* Rota */
+.rota {
+  background-color: brown;
+}
