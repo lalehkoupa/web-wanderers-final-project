@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "../molecules/Hero.jsx";
+import Classes from "../atoms/Classes.jsx";
 
 const Homepage = () => {
   //const [data, setData] = useState([]);
@@ -32,7 +33,7 @@ const Homepage = () => {
           roles and time from available times and slots below.
         </p>
       </div>
-      {/* import class component here */}
+      <Classes />
     </div>
   );
 };
