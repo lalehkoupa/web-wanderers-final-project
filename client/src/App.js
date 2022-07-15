@@ -5,8 +5,8 @@ import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import SignUp from "./components/pages/SignUp";
 import Rota from "./components/pages/Rota";
-import DefaultLayout from "./components/layouts/DefaultLayout"
-import Dashboard from "./components/pages/Dashboard";
+import DefaultLayout from "./components/layouts/DefaultLayout";
+import Homepage from "./components/pages/Homepage";
 
 const App = () => {
   return (
@@ -14,7 +14,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           {/* I have replace Homepage with HeaderAndNav because there was nothing in Homepage. Also the bootstrap cdn is working as I have tested (check the last about componect for red text class) and removed the unneccessary extra codes from index.html. ByMohammad*/}
-          <Route path="/" element={<Rota />} />
+          <Route path="/" element={<Homepage />} />
+
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/rota" element={<Rota />} />
