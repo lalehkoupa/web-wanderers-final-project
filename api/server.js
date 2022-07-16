@@ -1,17 +1,16 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 4000;
-const prisma = require("./lib/prisma");
+const router = require("./config/router");
 
 app.use(express.json());
 
 const jobs = require("./exampleJobs.json");
 const rota = require("./exampleRota.json");
 
-app.get("/api", (req, res) =>
-{
-	res.status(200).json({ success: true, msg: "I'm alive!!!" });
-});
+app.get("/", (req, res) => res.send("I'm alive!"));
+
+app.use("/api", router);
 
 app.get("/jobs", (req, res) =>
 {
@@ -21,6 +20,7 @@ app.get("/rota", (req, res) =>
 {
 	res.status(200).json(rota);
 });
+
 /* for rota page to send different dates and the sum of availabe spaces*/
 app.get("/dates", (req, res) =>
 {
