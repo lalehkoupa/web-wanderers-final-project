@@ -40,33 +40,7 @@ body {
 /* nav */
 
 .nav {
-  display: flex;
-  gap: 1em;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-.navlink {
-  border-radius: 12px;
-}
-.navlink:hover {
-  transition: 0.39s ease-out;
-  opacity: 0.8;
-  background-color: rgb(41, 2, 74);
-  padding-left: 0.25rem;
-}
-/* about page */
-.about-div {
-  padding: 5%;
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-}
-.about-h2 {
-  background-color: rgb(41, 41, 247, 0.6);
-  color: rgb(255, 255, 255);
-  padding: 2rem 6rem;
-}
-.nav {
+
   display: flex;
   gap: 1em;
   font-weight: bold;
@@ -203,6 +177,11 @@ body {
   border-radius: 0.2em;
 }
 
+.sign-up-err {
+  color: red;
+  font-size: large;
+}
+/* dashboard-google-authentication*/
 .google-login {
   float: right;
 }
@@ -222,6 +201,10 @@ body {
 }
 .user-details h4 {
   margin-right: 0.5em;
+}
+
+.login-container {
+  height: 300px;
 }
 @media only screen and (max-width: 980px) {
   /* header logo  */
@@ -289,4 +272,5 @@ body {
 }
 .rota_container2 {
   background-color: var(--yellow-green);
+
 }
