@@ -1,15 +1,17 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 4000;
+const router = require("./config/router");
 
 app.use(express.json());
 
 const jobs = require("./exampleJobs.json");
 const rota = require("./exampleRota.json");
 
-app.get("/api", (req, res) => {
-  res.status(200).json({ success: true, msg: "I'm alive!!!" });
-});
+app.get("/", (req, res) => res.send("I'm alive!"));
+
+// Route to all of our api routes.
+app.use("/api", router);
 
 app.get("/jobs", (req, res) => {
   res.status(200).json(jobs);
@@ -17,15 +19,19 @@ app.get("/jobs", (req, res) => {
 app.get("/rota", (req, res) => {
   res.status(200).json(rota);
 });
+
 /* for rota page to send different dates and the sum of availabe spaces*/
 app.get("/dates", (req, res) => {
   const filteredArray = [];
+
   jobs.map((item) => {
     filteredArray.push(
       (({ date, availableSpots }) => ({ date, availableSpots }))(item)
     );
   });
+
   const sumObject = {};
+
   filteredArray.map((item) => {
     if (sumObject.hasOwnProperty(item.date)) {
       sumObject[item.date] =
@@ -35,9 +41,9 @@ app.get("/dates", (req, res) => {
     }
   });
   const sumArray = [];
-  for (key in sumObject) {
+
+  for (let key in sumObject)
     sumArray.push({ date: key, availableSpots: sumObject[key] });
-  }
 
   res.json(sumArray);
 });
