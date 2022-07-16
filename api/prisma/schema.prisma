@@ -11,36 +11,69 @@ datasource db {
 	shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
+// The User model representing
 model User {
 	id Int	@id @default(autoincrement())
 	createdAt DateTime @default(now())
 	updatedAt DateTime @updatedAt
+	// The users email address - is unique
 	email String @unique
+	// The users password - hashed
+	password String
+	// The users first name
 	firstName String
+	// The users last name
 	lastName String
-	classDates ClassDate[]
+	// The users phone number
+	phoneNumber String
+	// Indicates the user type, ie 100 = admin, 500 = volunteer
+	userType Int
+	// The users jobs - one to many relationship to the Jobs model
+	jobs Job[]
 }
 
+// The Job model
 model Job {
 	id Int	@id @default(autoincrement())
 	createdAt DateTime @default(now())
 	updatedAt DateTime @updatedAt
-	title String
-	timeString String
+	// The job title
+	jobTitle String
+	// The the date of the job
+	date String
+	// The start time of the job
+	startTime String
+	// The end time of the job
+	endTime String
+	// The total amount of volunteer slots
 	slots Int
-	filled Int
-	classDate ClassDate @relation(fields: [classDateId], references: [id])
-	classDateId Int
+	// The total amount of volunteers signed up
+	filledSlots Int
+	// The rotas this job belongs to - one to one relationship to the Rota model
+	rotas Rota @relation(fields: [rotaId], references: [id])
+	// The rota id
+	rotaId Int
+	// The volunteers this job belongs to - one to many relationship to the User model
+	volunteers User @relation(fields: [volunteersId], references: [id])
+	// The volunteers/users id
+	volunteersId Int
 }
 
-model ClassDate {
+// The Rota model
+model Rota {
 	id Int	@id @default(autoincrement())
 	createdAt DateTime @default(now())
 	updatedAt DateTime @updatedAt
-	date String @unique
-	slots Int
-	filled Int
+	// The rotas name
+	rotaName String @unique
+	// The start date of the rota
+	startDate String
+	// The end date of the rota
+	endDate String
+	// the total amount slots volunteers can sign up for
+	openSlots Int
+	// the total amount of volunteers signed up
+	filledSlots Int
+	// The rotas jobs - one to many relationship to the Jobs model
 	jobs Job[]
-	user User @relation(fields: [userId], references: [id])
-	userId Int
 }
