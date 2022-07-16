@@ -39,7 +39,7 @@ body {
   display: flex;
   gap: 1em;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 .navlink {
   border-radius: 12px;
@@ -115,7 +115,7 @@ body {
 }
 .sign-up {
   width: 50%;
-  background-color: rgb(243, 243, 172);
+  background-color: var(--yellow-green);
   margin: auto;
 }
 .sign-up-form {
@@ -217,7 +217,7 @@ body {
   /* nav */
   .nav {
     gap: 0.2em;
-    font-weight: 600;
+    font-weight: 500;
   }
   .navlink {
     margin-top: 0.4em;
@@ -266,5 +266,5 @@ body {
   background-color: rgb(175, 175, 95);
 }
 .rota_container2 {
-  background-color: rgb(243, 243, 172);
+  background-color: var(--yellow-green);
 }
