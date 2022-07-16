@@ -8,9 +8,11 @@ const ClassRow = ({ available, filled, date }) => {
         <p class="mb-1 font-weigth-bold">
           {filled} of {available} Slots Filled
         </p>
-        <button type="button" class="btn btn-primary mt-0">
-          {date}
-        </button>
+        <a href={`/rota/${date}`}>
+          <button type="button" class="btn btn-primary mt-0">
+            {date}{" "}
+          </button>
+        </a>
         {/* <div type="button" class="btn btn-primary mt-0">
           <a href="{}">{date}</a>
         </div> */}
