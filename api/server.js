@@ -10,6 +10,7 @@ const rota = require("./exampleRota.json");
 
 app.get("/", (req, res) => res.send("I'm alive!"));
 
+// Route to all of our api routes.
 app.use("/api", router);
 
 app.get("/jobs", (req, res) =>

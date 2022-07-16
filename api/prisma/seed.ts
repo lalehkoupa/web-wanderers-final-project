@@ -5,11 +5,15 @@ import { rotaData } from "./rotaData";
 // handles the database connections for us
 const prisma = new PrismaClient();
 
+// Here we create the run() function that will take the seed data, map over it, and create each row in the database for us
 const run = async() =>
 {
+	// We Promise all becuase it runs faster than doing indervidual awaits.
 	await Promise.all(
 		rotaData.map(async(rota) =>
 		{
+			// upsert will either update a row if it exsists, or create a new row if it does not.
+			// with upsert we can write queries in JavaScript that are translated in to SQL for us
 			return prisma.rota.upsert({
 				where: { rotaName: rota.rotaName },
 				update: {},
@@ -34,8 +38,10 @@ const run = async() =>
 		})
 	);
 
+	// Salt will hash the password for us. It is like a secret key we use to unlock passwords.
 	const salt = bcrypt.genSaltSync();
 
+	// upsert all the seed users
 	await prisma.user.upsert({
 		where: { email: "user@test.com" },
 		update: {},
@@ -50,6 +56,7 @@ const run = async() =>
 	});
 };
 
+// Instansiate the run() function, catch an errors, and finally disconnect from the database.
 run()
 .catch((e) =>
 {

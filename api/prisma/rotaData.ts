@@ -1,3 +1,6 @@
+// In this file we are creating the seed data that will then be seeded to the database.
+// (Basically just fake data we will create in the database to get it up and running)
+
 export const rotaData: {
   rotaName: string
 	startDate: string

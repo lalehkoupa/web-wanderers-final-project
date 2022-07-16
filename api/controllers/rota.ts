@@ -2,6 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
+// Get all the rotas from the database
 const getAllRotas = async(req, res) =>
 {
 	try
@@ -20,6 +21,7 @@ const getAllRotas = async(req, res) =>
 	}
 };
 
+// Get one Rota from the database
 const getOneRota = async(req, res) =>
 {
 	const { id } = req.params;
