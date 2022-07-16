@@ -1,14 +1,15 @@
 import React from "react";
 //import Input from "../atoms/Input";
 
-const Form = ({ onSubmit, onChange }) => {
+const Form = ({ onChange, formData }) => {
   return (
     <div>
-      <form onSubmit={onsubmit} className="sign-up-form">
+      <form className="sign-up-form">
         <label htmlFor="firstName">First Name</label>
         <input
           name="firstName"
           type="text"
+          value={formData.firstName}
           onChange={(e) => onChange("firstName", e.target.value)}
         />
 
@@ -16,6 +17,7 @@ const Form = ({ onSubmit, onChange }) => {
         <input
           name="lastName"
           type="text"
+          value={formData.lastName}
           onChange={(e) => onChange("lastName", e.target.value)}
         />
 
@@ -23,6 +25,7 @@ const Form = ({ onSubmit, onChange }) => {
         <input
           name="email"
           type="email"
+          value={formData.email}
           onChange={(e) => onChange("email", e.target.value)}
         />
 
@@ -37,6 +40,7 @@ const Form = ({ onSubmit, onChange }) => {
         <input
           name="phone"
           type="tel"
+          value={formData.phone}
           onChange={(e) => onChange("phone", e.target.value)}
         />
       </form>

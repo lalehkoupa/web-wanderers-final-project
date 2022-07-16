@@ -21,6 +21,7 @@ app.get("/rota", (req, res) => {
 });
 
 /* for rota page to send different dates and the sum of availabe spaces*/
+
 app.get("/dates", (req, res) => {
   const filteredArray = [];
 
@@ -29,7 +30,6 @@ app.get("/dates", (req, res) => {
       (({ date, availableSpots }) => ({ date, availableSpots }))(item)
     );
   });
-
   const sumObject = {};
 
   filteredArray.map((item) => {

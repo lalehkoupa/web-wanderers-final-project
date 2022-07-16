@@ -19,20 +19,48 @@ const SignUp = ({ date, time, job }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError(null);
-    try {
-      await fetch(" ", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-    } catch (error) {
-      console.log("Error", error);
-      setError(error);
+
+    if (validateForm()) {
+      try {
+        // await fetch(" ", {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify(form),
+        // });
+        //console.log(form);
+        //console.log("submit");
+        emptyFields();
+      } catch (error) {
+        console.log("Error", error);
+        setError(error);
+      }
     }
   };
 
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
+  };
+
+  const validateForm = () => {
+    if (!form.firstName || !form.lastName || !form.email || !form.phone) {
+      setError("It's mandatory to fill up all fields");
+      return false;
+    } else if (!form.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+      setError("Please enter the valid email address");
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const emptyFields = () => {
+    setForm({
+      firstName: "",
+      lastName: "",
+      email: "",
+      //password: "",
+      phone: "",
+    });
   };
 
   return (
@@ -59,7 +87,7 @@ const SignUp = ({ date, time, job }) => {
         <div className="sign-up-fields">
           <h4>My Contact Info</h4>
           <p>All Fields are Mandatory*</p>
-          <Form onSubmit={handleSubmit} onChange={handleChange} />
+          <Form onChange={handleChange} formData={form} />
           {/* <div className="flex">
             <p>Already have an account?</p>
            <Button
@@ -68,12 +96,12 @@ const SignUp = ({ date, time, job }) => {
               className="form-login-btn"
             />
           </div>*/}
+          {error ? <p className="sign-up-err">{error}</p> : null}
           <Button
             handleClick={handleSubmit}
             text="Sign Up Now!"
             className="form-sign-up-btn"
           />
-          {error ? <p>{error}</p> : null}
         </div>
       </div>
     </div>

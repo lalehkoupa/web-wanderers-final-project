@@ -36,7 +36,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <div id="signInDiv"></div>
       <div className="google-login">
         {user && (

@@ -30,6 +30,7 @@ const ClassRow = ({ available, filled, date }) => {
             </button>
           </Link>
         </>
+
         {/* <div type="button" class="btn btn-primary mt-0">
           <a href="{}">{date}</a>
         </div> */}
