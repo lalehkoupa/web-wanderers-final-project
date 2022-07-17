@@ -1,5 +1,5 @@
 {
-  "name": "to-do-server",
+  "name": "api",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,6 +7,6 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "cd api && node server.js"
+    "start": "cd api && npm install && node server.js"
   }
 }
