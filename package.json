@@ -2,12 +2,11 @@
   "name": "to-do-server",
   "version": "1.0.0",
   "description": "",
-  "main": "api/server.js",
+  "main": "server.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "node api/server.js",
-    "test": "node test.js"
+    "start": "cd api && node server.js"
   }
 }
