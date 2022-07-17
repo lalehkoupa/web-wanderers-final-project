@@ -9,5 +9,8 @@
   "scripts": {
     "start": "node api/server.js",
     "test": "node test.js"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
