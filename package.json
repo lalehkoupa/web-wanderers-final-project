@@ -2,11 +2,12 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "api/server.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "node api/server.js"
+    "start": "node api/server.js",
+
   }
 }
