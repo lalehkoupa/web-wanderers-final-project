@@ -12,5 +12,10 @@
   },
   "engines": {
     "node": "16.x"
-  }
+  },
+  "dependencies": {
+    "express":"*",
+    "body-parser":"*",
+    "bcrypt": "^0.8.5"
+ }
 }
