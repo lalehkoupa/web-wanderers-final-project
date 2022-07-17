@@ -8,13 +8,5 @@
   "license": "ISC",
   "scripts": {
     "start": "node api/server.js"
-  },
-  "engines": {
-    "node": "16.x"
-  },
-  "dependencies": {
-    "express":"*",
-    "body-parser":"*",
-    "bcrypt": "^0.8.5"
- }
+  }
 }
