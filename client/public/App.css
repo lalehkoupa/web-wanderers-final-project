@@ -1,31 +1,80 @@
+* {
+  --yellow-green: #edf286;
+  --dark-yellow: #d1cd67;
+}
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
 }
-
+.bg-yellow_green {
+  background-color: var(--yellow-green);
+}
+.offcanvas-start {
+  width: 60%;
+  box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.2);
+}
+.offcanvas.show {
+  background-color: var(--yellow-green);
+}
+.hero {
+  position: relative;
+  background-image: url("../public/image/hero-image-hands.png");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
 /* Header logo and navbar  */
-.logoAndNav {
+/* .logoAndNav {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   align-items: center;
   padding: 0.5rem 3rem;
-}
+} */
 
 .header-logo {
-  background-image: url("./image/headerlogo.png");
+  background-image: url("../public/image/headerlogo.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 230px;
+  width: 190px;
   height: 140px;
 }
+/* nav */
 
+/* .nav {
+  display: flex;
+  gap: 1em;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.navlink {
+  border-radius: 12px;
+}
+.navlink:hover {
+  transition: 0.39s ease-out;
+  opacity: 0.8;
+  background-color: rgb(41, 2, 74);
+  padding-left: 0.25rem;
+} */
+/* about page */
+.about-div {
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.about-h2 {
+  background-color: rgb(41, 41, 247, 0.6);
+  color: rgb(255, 255, 255);
+  padding: 2rem 6rem;
+  font-size: 4rem;
+}
 /* Footer  */
 .footer-container h3 {
   font-weight: bolder;
-  color: rgb(205, 63, 16);
+  color: #fff;
 }
 
 .footer-container {
@@ -43,23 +92,161 @@ body {
   padding: 1.25em;
 }
 
+/* This has been worked on by multiple people. Unsure of correct changes if everyone can review and decide. */
 .footer-fontawe {
   font-size: 1.55em;
-  padding: 0.8em;
+  margin: 0.4em;
+  padding: 0.2em;
 }
 .footer-fontawe:hover {
   border: 0.5px solid white;
   border-radius: 100%;
   transition: 0.5s ease-in;
 }
-/* Responsive style */
+
+.footer-fontawe:hover {
+  border: 0.5px solid white;
+  border-radius: 100%;
+  transition: 0.5s ease-in;
+  margin: 0.4em;
+  padding: 0.2em;
+}
+
+.footer-fontawe:hover {
+  opacity: 0.7;
+  border: 1px solid white;
+  border-radius: 100%;
+  transition: 0.5s ease-in;
+}
+
+/* Sign-Up*/
+.flex {
+  display: flex;
+}
+.sign-up {
+  width: 50%;
+  background-color: rgb(243, 243, 172);
+  margin: auto;
+}
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.sign-up-form > input:nth-child(2) {
+  width: 30%;
+}
+.sign-up-form > input:nth-child(4) {
+  width: 40%;
+}
+.sign-up-form input {
+  width: 55%;
+  margin-bottom: 1em;
+  border: none;
+  border-radius: 0.2em;
+}
+.sign-up-date-time > p:nth-child(1) {
+  margin-right: 3em;
+}
+.sign_up_info_banner > * {
+  padding-left: 0.7em;
+  padding-bottom: 1em;
+}
+.sign_up_info_banner span {
+  font-weight: 600;
+}
+.sign-up > * h4 {
+  background-color: rgb(175, 175, 95);
+  padding: 0.6em;
+  font-size: medium;
+}
+
+.sign-up-fields > * {
+  padding-left: 0.7em;
+}
+
+.form-login-btn {
+  background: none !important;
+  border: none;
+  color: rgb(229, 56, 56);
+  text-decoration: underline;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.form-sign-up-btn {
+  width: 90%;
+  color: white;
+  background-color: rgb(33, 33, 240);
+  margin: 1em;
+  border-radius: 0.2em;
+}
+
+.sign-up-err {
+  color: red;
+  font-size: large;
+}
+/* dashboard-google-authentication*/
+.google-login {
+  float: right;
+}
+
+.sign-out-btn {
+  background-color: rgb(33, 33, 240);
+  color: white;
+  border-radius: 0.2em;
+  width: 100px;
+}
+.user-details {
+  margin-right: 3em;
+}
+.user-details img {
+  width: 45px;
+  height: 45px;
+}
+.user-details h4 {
+  margin-right: 0.5em;
+}
+
+.login-container {
+  height: 300px;
+}
 @media only screen and (max-width: 980px) {
   /* header logo  */
+
+  /* header logo  */
+  .logoAndNav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+  }
   .header-logo {
+    width: 140px;
+    height: 100px;
+  }
+  /* .header-logo {
     width: 190px;
     height: 120px;
+  } */
+  /* nav */
+  /* .nav {
+    gap: 0.2em;
+    font-weight: 600;
   }
-
+  .navlink {
+    margin-top: 0.4em;
+  }
+  .navlink:hover {
+    transition: 0.35s ease-out;
+    opacity: 0.8;
+    background-color: transparent;
+    padding-left: 0.1rem;
+  } */
+  /* about page */
+  .about-h2 {
+    padding: 1.5rem 3rem;
+    font-size: 2.5em;
+  }
   /* Footer  */
   .footer-container {
     font-size: 95%;
@@ -71,5 +258,27 @@ body {
     gap: 1.5rem;
     text-align: center;
   }
+  .sign-up {
+    width: 100%;
+  }
+  .sign-up-form > input:nth-child(2) {
+    width: 30%;
+  }
+  .sign-up-form > input:nth-child(4) {
+    width: 40%;
+  }
+  .sign-up-form input {
+    width: 65%;
+  }
 }
 
+/* Rota */
+.rota {
+  background-color: brown;
+}
+.rota_container {
+  background-color: var(--dark);
+}
+.rota_container2 {
+  background-color: rgb(243, 243, 172);
+}

@@ -7,13 +7,15 @@ import axios from "axios";
 import Posts from "../molecules/Posts";
 import Pagination from "../molecules/Pagination";
 import { useParams } from "react-router-dom";
+
 const Rota = () => {
   const [isChecked, setIsChecked] = useState([]);
   const [posts, setPost] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
+
   let { date } = useParams();
-  console.log(date);
+
   exampleJobs = exampleJobs.filter((rol) => rol.date === date);
   useEffect(() => {
     const fetchPost = async () => {

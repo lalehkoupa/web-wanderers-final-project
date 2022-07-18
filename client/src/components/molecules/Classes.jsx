@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ClassRow from "../molecules/ClassRow";
+import ClassRow from "./ClassRow";
 
 const Classes = () => {
   // useEffect(() => {
