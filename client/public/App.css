@@ -14,7 +14,7 @@ body {
 }
 
 .header-logo {
-  background-image: url("./image/headerlogo.png");
+  background-image: url("./image/new-hero.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -72,4 +72,3 @@ body {
     text-align: center;
   }
 }
-
