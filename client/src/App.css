@@ -197,9 +197,39 @@ body {
 .user-details h4 {
   margin-right: 0.5em;
 }
+/* dashboard-login*/
+.login-form-container {
+  margin: auto;
+  width: 30%;
+}
+.login-form-container p {
+  margin-top: 2.5em;
+  margin-bottom: 4em;
+}
 
-.login-container {
-  height: 300px;
+.login-field-container {
+  display: flex;
+  flex-direction: column;
+}
+.login-field-container label {
+  font-weight: 500;
+  font-size: 1.4em;
+}
+
+.login-field-container input {
+  margin-bottom: 2em;
+  height: 50px;
+  border: none;
+  border-radius: 0.3em;
+  background-color: lightgray;
+  color: rgb(47, 46, 46);
+}
+.login-btn {
+  background-color: rgb(33, 33, 240);
+  color: white;
+  font-size: large;
+  border-radius: 0.2em;
+  height: 50px;
 }
 @media only screen and (max-width: 980px) {
   /* header logo  */

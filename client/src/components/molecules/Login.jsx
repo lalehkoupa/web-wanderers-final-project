@@ -1,57 +1,48 @@
-import { useEffect, useState } from "react";
-import jwt_decode from "jwt-decode";
+import React, { useState } from "react";
 import Button from "../atoms/Button";
 
 const Login = () => {
-  const [user, setUser] = useState({});
-  const google = window.google;
-  const handleCallbackResponse = (response) => {
-    console.log("Encoded JWT Id Token:" + response.credential);
-    var userObject = jwt_decode(response.credential);
-    console.log(userObject);
-    setUser(userObject);
-    document.getElementById("signInDiv").hidden = true;
-    document.getElementById("profileImg").hidden = false;
-  };
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  //const [errors, setErrors] = useState(false);
 
-  useEffect(() => {
-    google.accounts.id.initialize({
-      client_id:
-        "581263519361-ov47r2q7v1j476gsdlr8phrbc41ltv2e.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-      theme: "outline",
-      size: "large",
-    });
-
-    document.getElementById("profileImg").hidden = true;
-    google.accounts.id.prompt();
-  }, []);
-
-  const handleSignOut = () => {
-    setUser({});
-    document.getElementById("signInDiv").hidden = false;
-    document.getElementById("profileImg").hidden = true;
+  const handleChange = (event) => {
+    const newFormData = {
+      ...formData,
+      [event.target.name]: event.target.value,
+    };
+    setFormData(newFormData);
+    console.log(formData);
   };
 
   return (
-    <div className="login-container">
-      <div id="signInDiv"></div>
-      <div className="google-login">
-        {user && (
-          <div className="flex user-details">
-            <h4>{user.name}</h4>
-            <img id="profileImg" src={user.picture} alt=""></img>
-          </div>
-        )}
-        {Object.keys(user).length !== 0 && (
-          <Button
-            text="Sign Out"
-            handleClick={handleSignOut}
-            className="sign-out-btn"
+    <div>
+      <div className="login-form-container">
+        <h3>Login</h3>
+        <p>Welcome back, Please log in to your account</p>
+        <form className="login-field-container">
+          <label>Email</label>
+          <input
+            placeholder="Enter your email"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
           />
-        )}
+
+          <label>Password</label>
+          <input
+            placeholder="Choose a password"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+
+          <Button type="submit" className="login-btn" text="Login" />
+        </form>
       </div>
     </div>
   );
