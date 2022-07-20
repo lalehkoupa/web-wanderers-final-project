@@ -2,49 +2,60 @@ import { useEffect, useState } from "react";
 import ClassRow from "./ClassRow";
 
 const Classes = () => {
+  const [data, setData] = useState([]);
   // useEffect(() => {
-  //   fetch("http://localhost:4000/jobs")
+  //   fetch("https://web-wanderers-cyf.herokuapp.com/jobs")
   //     .then((res) => res.json())
-  //     .then((data) => console.log(data));
+  //     .then((data) => setData(data));
   // }, []);
-  const dummyData = [
-    {
-      date: "24-07-2022",
-      availableSpots: 24,
-      filled: 13,
-    },
-    {
-      date: "26-07-2022",
-      availableSpots: 2,
-      filled: 1,
-    },
-    {
-      date: "28-07-2022",
-      availableSpots: 2,
-      filled: 1,
-    },
-    {
-      date: "16-07-2022",
-      availableSpots: 2,
-      filled: 2,
-    },
-  ];
 
-  const [data, setData] = useState(dummyData);
+  // const filteredArray = [];
+
+  // data.map((item) => {
+  //   filteredArray.push(
+  //     (({ date, availableSpots }) => ({ date, availableSpots }))(item)
+  //   );
+  // });
+  // const sumObject = {};
+
+  // filteredArray.map((item) => {
+  //   if (sumObject.hasOwnProperty(item.date)) {
+  //     sumObject[item.date] =
+  //       parseInt(sumObject[item.date]) + parseInt(item.availableSpots);
+  //   } else {
+  //     sumObject[item.date] = item.availableSpots;
+  //   }
+  // });
+  // const sumArray = [];
+
+  // for (let key in sumObject)
+  //   sumArray.push({ date: key, availableSpots: sumObject[key] });
+
+  const getData = async () => {
+    const res = await fetch("https://web-wanderers-cyf.herokuapp.com/jobs");
+    const data = await res.json();
+    setData(data);
+  };
+  console.log(data);
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
       <h2 class="text-center fw-bold">Availabe Dates and Slots</h2>
-      {data.map((oneClass, index) => (
-        <ClassRow
-          key={index}
-          available={oneClass.availableSpots}
-          date={oneClass.date}
-          filled={oneClass.filled}
-          startTime={oneClass.startTime}
-          endTime={oneClass.endTime}
-        />
-      ))}
+      <div class="row d-flex justify-content-center m-3 mb-5">
+        {data.map((oneClass, index) => (
+          <ClassRow
+            key={index}
+            available={oneClass.availableSpots}
+            date={oneClass.date}
+            filled={oneClass.filled}
+            startTime={oneClass.startTime}
+            endTime={oneClass.endTime}
+          />
+        ))}
+      </div>
     </>
   );
 };

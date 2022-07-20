@@ -15,10 +15,10 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Offcanvas id="responsive-navbar-nav text-dark">
           <Nav className="nav p-3">
-            <Nav.Link href="/" className="navlink text-dark ">
+            <Nav.Link href="/" className="navlink text-dark">
               Home
             </Nav.Link>
-            <Nav.Link href="/about" className="navlink text-dark ">
+            <Nav.Link href="/about" className="navlink text-dark">
               About Us
             </Nav.Link>
             <Nav.Link href="/rota" className="navlink text-dark ">

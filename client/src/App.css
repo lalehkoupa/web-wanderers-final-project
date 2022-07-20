@@ -1,6 +1,7 @@
 * {
   --yellow-green: #edf286;
   --dark-yellow: #d1cd67;
+  --dark-blue: #3c54d1;
 }
 body {
   margin: 0;
@@ -10,8 +11,10 @@ body {
 .bg-yellow_green {
   background-color: var(--yellow-green);
 }
+/*navigation */
 .offcanvas-start {
   width: 60%;
+  font-weight: bold;
   box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.2);
 }
 .offcanvas.show {
@@ -32,7 +35,7 @@ body {
   align-items: center;
   padding: 0.5rem 3rem;
 } */
-.navigation-div {
+.desktop-navigation-div {
   display: none;
 }
 .header-logo {
@@ -46,11 +49,9 @@ body {
 /* nav */
 
 /* .nav {
-  display: flex;
-  gap: 1em;
   font-weight: bold;
-  font-size: 1.1rem;
-}
+}  */
+/*
 .navlink {
   border-radius: 12px;
 }
@@ -60,6 +61,7 @@ body {
   background-color: rgb(41, 2, 74);
   padding-left: 0.25rem;
 } */
+
 /* about page */
 .about-div {
   padding: 5%;
@@ -94,17 +96,11 @@ body {
   padding: 1.25em;
 }
 
-/* This has been worked on by multiple people. Unsure of correct changes if everyone can review and decide. */
 .footer-fontawe {
   font-size: 1.55em;
   margin: 0.4em;
   padding: 0.2em;
 }
-.footer-fontawe:hover {
-  border: 0.5px solid white;
-  border-radius: 100%;
-  transition: 0.5s ease-in;
-}
 
 .footer-fontawe:hover {
   border: 0.5px solid white;
@@ -112,13 +108,6 @@ body {
   transition: 0.5s ease-in;
   margin: 0.4em;
   padding: 0.2em;
-}
-
-.footer-fontawe:hover {
-  opacity: 0.7;
-  border: 1px solid white;
-  border-radius: 100%;
-  transition: 0.5s ease-in;
 }
 
 /* Sign-Up*/
@@ -280,17 +269,26 @@ body {
     align-items: center;
     justify-content: space-between;
   }
-  .navigation-div {
+  .desktop-navigation-div {
     display: flex;
     flex-direction: row;
     justify-self: flex-end;
+    margin-right: 1rem;
+  }
+  .desktop-navigation-div a {
+    text-decoration: none;
+    color: var(--dark-blue);
   }
   .nav-items {
+    list-style: none;
     position: relative;
     right: 0;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+  }
+  .nav-items li {
+    padding-left: 1.2rem;
   }
   .navbar-div {
     display: none;

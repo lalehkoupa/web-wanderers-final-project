@@ -1,21 +1,15 @@
 import React from "react";
 import NavBar from "./NavBar";
 
+import DesktopNavbar from "./DesktopNavbar";
+
 const HeaderAndNav = () => {
   return (
     <div className="logoAndNav">
       <a href={"/"}>
         <div class="header-logo"></div>
       </a>
-      <div className="navigation-div">
-        <ul className="nav-items">
-          <li>home</li>
-          <li>cont</li>
-          <li>how to help</li>
-          <li>some</li>
-        </ul>
-      </div>
-
+      <DesktopNavbar />
       <NavBar />
     </div>
   );

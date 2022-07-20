@@ -1,22 +1,39 @@
 import React from "react";
 import Hero from "../molecules/Hero.jsx";
 import Classes from "../molecules/Classes.jsx";
+import { useState } from "react";
 
 const Homepage = () => {
-  //const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-  // const getData = async() =>
-  // {
-  // 	const res = await fetch("/api/")
-  // 	const data = await res.json()
+  const getData = async () => {
+    const res = await fetch("https://web-wanderers-cyf.herokuapp.com/jobs");
+    const data = await res.json();
+    setData(data);
+  };
+  console.log(data);
 
-  // 	setData(data)
-  // }
+  const filteredArray = [];
 
-  // useEffect(() =>
-  // {
-  // 	//getData()
-  // })
+  data.map((item) => {
+    filteredArray.push(
+      (({ date, availableSpots }) => ({ date, availableSpots }))(item)
+    );
+  });
+  const sumObject = {};
+
+  filteredArray.map((item) => {
+    if (sumObject.hasOwnProperty(item.date)) {
+      sumObject[item.date] =
+        parseInt(sumObject[item.date]) + parseInt(item.availableSpots);
+    } else {
+      sumObject[item.date] = item.availableSpots;
+    }
+  });
+  const sumArray = [];
+
+  for (let key in sumObject)
+    sumArray.push({ date: key, availableSpots: sumObject[key] });
 
   return (
     <div>
