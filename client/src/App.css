@@ -201,6 +201,7 @@ body {
 .login-form-container {
   margin: auto;
   width: 30%;
+  height: 90vh;
 }
 .login-form-container p {
   margin-top: 2.5em;
@@ -230,7 +231,12 @@ body {
   font-size: large;
   border-radius: 0.2em;
   height: 50px;
+  margin-top: 2.5em;
 }
+.login-sigUp-container {
+  margin-top: 2.5em;
+}
+
 @media only screen and (max-width: 980px) {
   /* header logo  */
 
