@@ -17,7 +17,9 @@ const Rota = () => {
   exampleJobs = exampleJobs.filter((rol) => rol.date === date);
   useEffect(() => {
     const fetchPost = async () => {
-      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+      const res = await axios.get(
+        "https://web-wanderers-cyf.herokuapp.com/rota"
+      );
       setPost(res.data);
     };
     fetchPost();
