@@ -1,5 +1,8 @@
 * {
   --yellow-green: #edf286;
+  --form-background: #d9d9d9;
+  --button-background-primary: #3852d0;
+  --admin-button: #b9b9b9;
 }
 body {
   margin: 0;
@@ -9,6 +12,12 @@ body {
 .bg-yellow_green {
   background-color: var(--yellow-green);
 }
+.bg-blue-button {
+  background-color: var(--button-background-primary);
+  color: #fff;
+  border: 2px solid var(--button-background-primary);
+}
+
 .hero {
   position: relative;
   background-image: url("../public/image/akwaaba-hero-image.png");
@@ -107,6 +116,40 @@ body {
   border: 1px solid white;
   border-radius: 100%;
   transition: 0.5s ease-in;
+}
+/* Admin form to add new job. */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 2rem;
+}
+.form-group label {
+  margin-top: 1rem;
+}
+.form-group :nth-child(10) {
+  margin-bottom: 4rem;
+}
+.form-group :nth-child(11) {
+  margin-bottom: 0.4rem;
+}
+.form-control {
+  padding: 0.5rem;
+  background-color: var(--form-background);
+}
+.react-datepicker__input-container input {
+  padding: 0.5rem;
+  width: 100%;
+  border: none;
+  background-color: var(--form-background);
+}
+.btn {
+  background-color: var(--button-background-primary);
+  color: #fff;
+}
+.admin-add-button {
+  background-color: var(--admin-button);
 }
 
 /* Sign-Up*/

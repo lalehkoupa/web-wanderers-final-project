@@ -1,7 +1,4 @@
 const ClassRow = ({ available, filled, date }) => {
-  console.log(available);
-  console.log(filled);
-
   return (
     <>
       <div class="container fw-bold d-flex flex-column align-items-center mt-4 bg-yellow_green col-4 pt-2 pb-2">

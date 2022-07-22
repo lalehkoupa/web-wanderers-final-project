@@ -35,7 +35,6 @@ const Form = ({ onChange, formData }) => {
           type="password"
           onChange={(e) => onChange("password", e.target.value)}
         />*/}
-
         <label>Phone Number </label>
         <input
           name="phone"
