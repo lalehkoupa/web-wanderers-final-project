@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Button from "../atoms/Button";
 import Axios from "axios";
-import PropTypes from "prop-types";
 //import { useHistory } from "react-router-dom";
 
 const AdminLogin = ({ setToken }) => {
@@ -68,7 +67,4 @@ const AdminLogin = ({ setToken }) => {
   );
 };
 
-// AdminLogin.propTypes = {
-//   setToken: PropTypes.func.isRequired,
-// };
 export default AdminLogin;

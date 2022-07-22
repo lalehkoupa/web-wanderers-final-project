@@ -185,8 +185,10 @@ body {
 .sign-out-btn {
   background-color: rgb(33, 33, 240);
   color: white;
+  border: none;
   border-radius: 0.2em;
-  width: 100px;
+  width: 85px;
+  margin-left: 2em;
 }
 .user-details {
   margin-right: 3em;
@@ -232,10 +234,18 @@ body {
   border-radius: 0.2em;
   height: 50px;
   margin-top: 1.5em;
+  margin-bottom: 3em;
+  border: none;
 }
 .login-sigUp-container {
   margin-top: 2.5em;
   width: 100%;
+}
+
+.admin-log-out-container {
+  float: right;
+  margin-top: -4rem;
+  margin-right: 2.5em;
 }
 
 @media only screen and (max-width: 980px) {
