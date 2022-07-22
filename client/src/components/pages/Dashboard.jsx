@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GoogleLogin from "../molecules/GoogleLogin";
 import AdminLogin from "../molecules/AdminLogin";
 import AdminSignUp from "../molecules/AdminSignUp";
@@ -7,17 +7,25 @@ import Button from "../atoms/Button";
 
 const Dashboard = () => {
   let { token, setToken } = UseToken();
+  const [success, setSuccess] = useState(false);
 
-  //clearing localStorage if user close the window
-  window.onbeforeunload = () => {
-    localStorage.clear();
-  };
+  //for clearing localStorage if user close the window
+  // window.onbeforeunload = function () {
+  //   localStorage.clear();
+  // };
 
   const handleSignOut = () => {
     setToken("");
     localStorage.clear();
   };
 
+  const handleSignUpSuccess = (isSuccess) => {
+    setSuccess(isSuccess);
+  };
+
+  const handleAddUser = () => {
+    setSuccess(false);
+  };
   const loadPage = () => {
     return (
       <>
@@ -45,7 +53,17 @@ const Dashboard = () => {
               />
             </div>
             <div>
-              <AdminSignUp />
+              {!success ? (
+                <AdminSignUp setSuccess={handleSignUpSuccess} />
+              ) : (
+                <>
+                  <p>
+                    You have added a user Successfully, if you would like to add
+                    another user click the Button
+                  </p>
+                  <Button text="Add Another User" handleClick={handleAddUser} />
+                </>
+              )}
             </div>
           </div>
         )}

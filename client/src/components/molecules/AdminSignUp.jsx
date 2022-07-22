@@ -3,7 +3,7 @@ import Button from "../atoms/Button";
 import Axios from "axios";
 //import { useHistory } from "react-router-dom";
 
-const AdminSignUp = () => {
+const AdminSignUp = ({ setSuccess }) => {
   const [formDataReg, setFormDataReg] = useState({
     emailReg: "",
     passwordReg: "",
@@ -46,8 +46,9 @@ const AdminSignUp = () => {
         //   headers: { "Content-Type": "application/json" },
         //   body: JSON.stringify(formDataReg),
         // });
-        await Axios.post("/api/signUp", formDataReg);
+        //await Axios.post("/api/signUp", formDataReg);
         emptyFieldsReg();
+        setSuccess(true);
       } catch (error) {
         console.log("Error", error);
         setError(error);

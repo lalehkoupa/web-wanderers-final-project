@@ -113,6 +113,9 @@ body {
 .flex {
   display: flex;
 }
+.flex-direction {
+  flex-direction: column;
+}
 .sign-up {
   width: 50%;
   background-color: var(--yellow-green);
@@ -253,6 +256,7 @@ body {
   width: 30px;
   margin-left: 0.5em;
 }
+
 @media only screen and (max-width: 980px) {
   /* header logo  */
 
