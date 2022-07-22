@@ -175,6 +175,7 @@ body {
 .sign-up-err {
   color: red;
   font-size: large;
+  margin-bottom: 0.5em;
 }
 /* dashboard-google-authentication*/
 .google-login {
@@ -198,26 +199,25 @@ body {
   margin-right: 0.5em;
 }
 /* dashboard-login*/
-.login-form-container {
+.admin-form-container {
   margin: auto;
-  width: 30%;
-  height: 90vh;
+  width: 40%;
 }
-.login-form-container p {
+.admin-form-container p {
   margin-top: 2.5em;
-  margin-bottom: 4em;
+  margin-bottom: 3.5em;
 }
 
-.login-field-container {
+.admin-form {
   display: flex;
   flex-direction: column;
 }
-.login-field-container label {
+.admin-form label {
   font-weight: 500;
   font-size: 1.4em;
 }
 
-.login-field-container input {
+.admin-form input {
   margin-bottom: 2em;
   height: 50px;
   border: none;
@@ -231,10 +231,11 @@ body {
   font-size: large;
   border-radius: 0.2em;
   height: 50px;
-  margin-top: 2.5em;
+  margin-top: 1.5em;
 }
 .login-sigUp-container {
   margin-top: 2.5em;
+  width: 100%;
 }
 
 @media only screen and (max-width: 980px) {
