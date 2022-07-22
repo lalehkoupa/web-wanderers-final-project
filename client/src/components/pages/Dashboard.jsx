@@ -24,11 +24,19 @@ const Dashboard = () => {
         ) : (
           <div>
             <div className="admin-log-out-container">
-              <h4>Hello {token}</h4>
+              <div className="flex">
+                <h4>{token}</h4>
+                <img
+                  src={`${process.env.PUBLIC_URL}/image/login_profile-circled.svg`}
+                  alt="loginProfile"
+                  className="profile-image"
+                />
+              </div>
+
               <Button
                 text="Logout"
                 handleClick={handleSignOut}
-                className="sign-out-btn"
+                className="form-login-btn "
               />
             </div>
             <div>

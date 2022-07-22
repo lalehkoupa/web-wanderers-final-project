@@ -22,17 +22,22 @@ const AdminLogin = ({ setToken }) => {
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      // const response = await Axios.post("/api/login", formData);
-      // const token = response.data.token;
-      const token = { token: "test123" };
-      //console.log(token);
-      setToken(token);
+    if (!formData.email || !formData.password) {
+      setError("It's mandatory to fill up all fields");
+      return false;
+    } else {
+      try {
+        // const response = await Axios.post("/api/login", formData);
+        // const token = response.data.token;
+        const token = { token: "test123" };
+        //console.log(token);
+        setToken(token);
 
-      //window.localStorage.setItem("token", token);
-      //useHistory.goBack();
-    } catch (err) {
-      setError(err);
+        //window.localStorage.setItem("token", token);
+        //useHistory.goBack();
+      } catch (err) {
+        setError(err);
+      }
     }
   };
 
