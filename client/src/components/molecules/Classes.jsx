@@ -4,7 +4,7 @@ import ClassRow from "./ClassRow";
 const Classes = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://web-wanderers-cyf.herokuapp.com//dates")
+    fetch("https://web-wanderers-cyf.herokuapp.com/dates")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
