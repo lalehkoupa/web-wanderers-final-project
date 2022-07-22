@@ -3,11 +3,18 @@ import ClassRow from "./ClassRow";
 
 const Classes = () => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("https://web-wanderers-cyf.herokuapp.com/dates")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
+
+	useEffect(() => {
+		getData();
+	}, []);
+
+	const getData = async() =>
+	{
+		const res = await fetch("http://localhost:4000/jobs");
+		const data = await res.json();
+
+		setData(data);
+	};
 
   const filteredArray = [];
 
