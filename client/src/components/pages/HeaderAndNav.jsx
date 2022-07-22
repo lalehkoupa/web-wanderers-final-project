@@ -1,14 +1,18 @@
 import React from "react";
 import NavBar from "./NavBar";
 
-const HeaderAndNav = () => {
-	return (
+import DesktopNavbar from "./DesktopNavbar";
 
-		<div className="logoAndNav">
-			<div class='header-logo'></div>
-			<div> <NavBar /></div>
-		</div>
-	);
-}
+const HeaderAndNav = () => {
+  return (
+    <div className="logoAndNav">
+      <a href={"/"}>
+        <div class="header-logo"></div>
+      </a>
+      <DesktopNavbar />
+      <NavBar />
+    </div>
+  );
+};
 
 export default HeaderAndNav;

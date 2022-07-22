@@ -1,29 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Hero from "../molecules/Hero.jsx";
-import Classes from "../atoms/Classes.jsx";
+import Classes from "../molecules/Classes.jsx";
+import { useState } from "react";
 
 const Homepage = () => {
-  //const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-  // const getData = async() =>
-  // {
-  // 	const res = await fetch("/api/")
-  // 	const data = await res.json()
-
-  // 	setData(data)
-  // }
-
-  // useEffect(() =>
-  // {
-  // 	//getData()
-  // })
+  // const getData = async () => {
+  //   const res = await fetch("https://web-wanderers-cyf.herokuapp.com/jobs");
+  //   const data = await res.json();
+  //   setData(data);
+  // };
 
   return (
     <div>
-      <Hero />
+      <Hero text="Can You Help?" />
       <div class="container-fluid text-center bg-yellow_green">
         <p class="pb-2 pt-2 h3 mb-4">
-          New venue: Stoke Newington School, Cclissold Road N16 9EX
+          New venue: Stoke Newington School, Clissold Road N16 9EX
         </p>
       </div>
       <div class="container col-10">
