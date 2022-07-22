@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 4000;
 const router = require("./config/router");
+const cors = require("cors");
 
+app.use(cors());
 app.use(express.json());
 
 const jobs = require("./exampleJobs.json");
@@ -50,9 +52,7 @@ app.get("/dates", (req, res) =>
 	const sumArray = [];
 
 	for(let key in sumObject)
-
 		sumArray.push({ date: key, availableSpots: sumObject[key] });
-
 
 	res.json(sumArray);
 });
