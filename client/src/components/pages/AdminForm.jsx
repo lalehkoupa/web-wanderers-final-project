@@ -24,7 +24,6 @@ const AdminForm = ({ setAddJobActive }) => {
     //    headers: { "Content-Type": "application/json" },
     //    body: JSON.stringify(form),
     //  });
-    console.log(form);
   };
 
   return (
@@ -38,8 +37,6 @@ const AdminForm = ({ setAddJobActive }) => {
           class="form-control"
           id="jobinput"
           type="text"
-          // name="jobTitle"
-
           onChange={(e) => handleChange("jobTitle", e.target.value)}
         ></input>
 
@@ -50,7 +47,6 @@ const AdminForm = ({ setAddJobActive }) => {
           id="date"
           type="text"
           selected={date}
-          //value={date}
           onChange={(e) => {
             setDate(e);
             handleChange("date", e.toISOString().substring(0, 10));
