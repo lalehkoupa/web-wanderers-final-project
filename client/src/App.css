@@ -3,6 +3,8 @@
   --form-background: #d9d9d9;
   --button-background-primary: #3852d0;
   --admin-button: #b9b9b9;
+  --dark-yellow: #d1cd67;
+  --dark-blue: #3c54d1;
 }
 body {
   margin: 0;
@@ -18,22 +20,33 @@ body {
   border: 2px solid var(--button-background-primary);
 }
 
+/*navigation */
+.offcanvas-start {
+  width: 60%;
+  font-weight: bold;
+  box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.2);
+}
+.offcanvas.show {
+  background-color: var(--yellow-green);
+}
 .hero {
   position: relative;
-  background-image: url("../public/image/akwaaba-hero-image.png");
+  background-image: url("../public/image/hero-image-hands.png");
   background-position: center;
   background-size: cover;
   overflow: hidden;
 }
 /* Header logo and navbar  */
-.logoAndNav {
+/* .logoAndNav {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   align-items: center;
   padding: 0.5rem 3rem;
+} */
+.desktop-navigation-div {
+  display: none;
 }
-
 .header-logo {
   background-image: url("../public/image/headerlogo.png");
   background-position: center;
@@ -44,11 +57,11 @@ body {
 }
 /* nav */
 
-.nav {
-  display: flex;
-  gap: 1em;
+/* .nav {
   font-weight: bold;
-  font-size: 1.1rem;
+}  */
+/*
+  font-size: 1rem;
 }
 .navlink {
   border-radius: 12px;
@@ -58,7 +71,8 @@ body {
   opacity: 0.8;
   background-color: rgb(41, 2, 74);
   padding-left: 0.25rem;
-}
+} */
+
 /* about page */
 .about-div {
   padding: 5%;
@@ -75,7 +89,7 @@ body {
 /* Footer  */
 .footer-container h3 {
   font-weight: bolder;
-  color: rgb(205, 63, 16);
+  color: #fff;
 }
 
 .footer-container {
@@ -93,14 +107,10 @@ body {
   padding: 1.25em;
 }
 
-/* This has been worked on by multiple people. Unsure of correct changes if everyone can review and decide. */
 .footer-fontawe {
   font-size: 1.55em;
   margin: 0.4em;
   padding: 0.2em;
-}
-.footer-fontawe:hover {
-  padding: 0.8em;
 }
 
 .footer-fontawe:hover {
@@ -156,9 +166,12 @@ body {
 .flex {
   display: flex;
 }
+.flex-direction {
+  flex-direction: column;
+}
 .sign-up {
   width: 50%;
-  background-color: rgb(243, 243, 172);
+  background-color: var(--yellow-green);
   margin: auto;
 }
 .sign-up-form {
@@ -202,9 +215,9 @@ body {
   background: none !important;
   border: none;
   color: rgb(229, 56, 56);
-  text-decoration: underline;
   cursor: pointer;
   height: fit-content;
+  float: right;
 }
 
 .form-sign-up-btn {
@@ -218,6 +231,7 @@ body {
 .sign-up-err {
   color: red;
   font-size: large;
+  margin-bottom: 0.5em;
 }
 /* dashboard-google-authentication*/
 .google-login {
@@ -227,8 +241,10 @@ body {
 .sign-out-btn {
   background-color: rgb(33, 33, 240);
   color: white;
+  border: none;
   border-radius: 0.2em;
-  width: 100px;
+  width: 85px;
+  margin-left: 2em;
 }
 .user-details {
   margin-right: 3em;
@@ -240,15 +256,65 @@ body {
 .user-details h4 {
   margin-right: 0.5em;
 }
-
-.login-container {
-  height: 300px;
+/* dashboard-login*/
+.admin-form-container {
+  margin: auto;
+  width: 40%;
 }
+.admin-form-container p {
+  margin-top: 2.5em;
+  margin-bottom: 3.5em;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+}
+.admin-form label {
+  font-weight: 500;
+  font-size: 1.4em;
+}
+
+.admin-form input {
+  margin-bottom: 2em;
+  height: 50px;
+  border: none;
+  border-radius: 0.3em;
+  background-color: lightgray;
+  color: rgb(47, 46, 46);
+}
+.login-btn {
+  background-color: rgb(33, 33, 240);
+  color: white;
+  font-size: large;
+  border-radius: 0.2em;
+  height: 50px;
+  margin-top: 1.5em;
+  margin-bottom: 3em;
+  border: none;
+}
+.login-sigUp-container {
+  margin-top: 2.5em;
+  width: 100%;
+}
+
+.admin-log-out-container {
+  float: right;
+  margin-top: -4rem;
+  margin-right: 2.5em;
+}
+
+.profile-image {
+  height: 30px;
+  width: 30px;
+  margin-left: 0.5em;
+}
+
 @media only screen and (max-width: 980px) {
   /* header logo  */
 
   /* header logo  */
-  .logoAndNav {
+  /* .logoAndNav {
     display: flex;
     justify-content: space-between;
     padding: 0.5em;
@@ -257,10 +323,14 @@ body {
     width: 140px;
     height: 100px;
   }
+  /* .header-logo {
+    width: 190px;
+    height: 120px;
+  } */
   /* nav */
-  .nav {
+  /* .nav {
     gap: 0.2em;
-    font-weight: 600;
+    font-weight: 500;
   }
   .navlink {
     margin-top: 0.4em;
@@ -270,7 +340,7 @@ body {
     opacity: 0.8;
     background-color: transparent;
     padding-left: 0.1rem;
-  }
+  } */
   /* about page */
   .about-h2 {
     padding: 1.5rem 3rem;
@@ -300,14 +370,46 @@ body {
     width: 65%;
   }
 }
+@media only screen and (min-width: 768px) {
+  .logoAndNav {
+    display: flex;
+    padding: 0.5em;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .desktop-navigation-div {
+    display: flex;
+    flex-direction: row;
+    justify-self: flex-end;
+    margin-right: 1rem;
+  }
+  .desktop-navigation-div a {
+    text-decoration: none;
+    color: var(--dark-blue);
+  }
+  .nav-items {
+    list-style: none;
+    position: relative;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .nav-items li {
+    padding-left: 1.2rem;
+  }
+  .navbar-div {
+    display: none;
+  }
+}
 
 /* Rota */
 .rota {
   background-color: brown;
 }
 .rota_container {
-  background-color: rgb(175, 175, 95);
+  background-color: var(--dark-yellow);
 }
 .rota_container2 {
-  background-color: rgb(243, 243, 172);
+  background-color: var(--yellow-green);
 }
