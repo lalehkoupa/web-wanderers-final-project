@@ -1,17 +1,7 @@
-import React, { useEffect } from "react";
 import Hero from "../molecules/Hero.jsx";
 import Classes from "../molecules/Classes.jsx";
-import { useState } from "react";
 
 const Homepage = () => {
-  const [data, setData] = useState([]);
-
-  // const getData = async () => {
-  //   const res = await fetch("https://web-wanderers-cyf.herokuapp.com/jobs");
-  //   const data = await res.json();
-  //   setData(data);
-  // };
-
   return (
     <div>
       <Hero text="Can You Help?" />
