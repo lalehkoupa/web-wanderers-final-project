@@ -39,7 +39,7 @@ body {
   display: flex;
   gap: 1em;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 .navlink {
   border-radius: 12px;
@@ -113,9 +113,12 @@ body {
 .flex {
   display: flex;
 }
+.flex-direction {
+  flex-direction: column;
+}
 .sign-up {
   width: 50%;
-  background-color: rgb(243, 243, 172);
+  background-color: var(--yellow-green);
   margin: auto;
 }
 .sign-up-form {
@@ -159,9 +162,9 @@ body {
   background: none !important;
   border: none;
   color: rgb(229, 56, 56);
-  text-decoration: underline;
   cursor: pointer;
   height: fit-content;
+  float: right;
 }
 
 .form-sign-up-btn {
@@ -175,6 +178,7 @@ body {
 .sign-up-err {
   color: red;
   font-size: large;
+  margin-bottom: 0.5em;
 }
 /* dashboard-google-authentication*/
 .google-login {
@@ -184,8 +188,10 @@ body {
 .sign-out-btn {
   background-color: rgb(33, 33, 240);
   color: white;
+  border: none;
   border-radius: 0.2em;
-  width: 100px;
+  width: 85px;
+  margin-left: 2em;
 }
 .user-details {
   margin-right: 3em;
@@ -197,10 +203,60 @@ body {
 .user-details h4 {
   margin-right: 0.5em;
 }
-
-.login-container {
-  height: 300px;
+/* dashboard-login*/
+.admin-form-container {
+  margin: auto;
+  width: 40%;
 }
+.admin-form-container p {
+  margin-top: 2.5em;
+  margin-bottom: 3.5em;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+}
+.admin-form label {
+  font-weight: 500;
+  font-size: 1.4em;
+}
+
+.admin-form input {
+  margin-bottom: 2em;
+  height: 50px;
+  border: none;
+  border-radius: 0.3em;
+  background-color: lightgray;
+  color: rgb(47, 46, 46);
+}
+.login-btn {
+  background-color: rgb(33, 33, 240);
+  color: white;
+  font-size: large;
+  border-radius: 0.2em;
+  height: 50px;
+  margin-top: 1.5em;
+  margin-bottom: 3em;
+  border: none;
+}
+.login-sigUp-container {
+  margin-top: 2.5em;
+  width: 100%;
+}
+
+.admin-log-out-container {
+  float: right;
+  margin-top: -4rem;
+  margin-right: 2.5em;
+}
+
+.profile-image {
+  height: 30px;
+  width: 30px;
+  margin-left: 0.5em;
+}
+
 @media only screen and (max-width: 980px) {
   /* header logo  */
 
@@ -217,7 +273,7 @@ body {
   /* nav */
   .nav {
     gap: 0.2em;
-    font-weight: 600;
+    font-weight: 500;
   }
   .navlink {
     margin-top: 0.4em;
@@ -266,5 +322,5 @@ body {
   background-color: rgb(175, 175, 95);
 }
 .rota_container2 {
-  background-color: rgb(243, 243, 172);
+  background-color: var(--yellow-green);
 }
