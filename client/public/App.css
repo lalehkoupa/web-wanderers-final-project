@@ -34,7 +34,7 @@ body {
 } */
 
 .header-logo {
-  background-image: url("../public/image/headerlogo.png");
+  background-image: url("./image/new-hero.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
