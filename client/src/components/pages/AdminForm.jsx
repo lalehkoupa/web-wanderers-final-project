@@ -3,18 +3,29 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { addMonths } from "date-fns";
 
-const AdminForm = ({ setAddJobActive, form, handleChange }) => {
+const AdminForm = ({ setAddJobActive }) => {
   const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  // const handleSubmit=async()=>{
-  //    await fetch("url", {
-  //      method: "POST",
-  //      headers: { "Content-Type": "application/json" },
-  //      body: JSON.stringify(form),
-  //    });
-
-  // }
+  const [form, setForm] = useState({
+    jobTitle: "",
+    date: "",
+    startTime: "",
+    endTime: "",
+    availableSlots: "",
+  });
+  console.log(form);
+  const handleChange = (key, value) => {
+    setForm({ ...form, [key]: value });
+  };
+  const handleSubmit = async () => {
+    //  await fetch("url", {
+    //    method: "POST",
+    //    headers: { "Content-Type": "application/json" },
+    //    body: JSON.stringify(form),
+    //  });
+    console.log(form);
+  };
 
   return (
     <div class="container">
@@ -28,7 +39,7 @@ const AdminForm = ({ setAddJobActive, form, handleChange }) => {
           id="jobinput"
           type="text"
           // name="jobTitle"
-          value={form.jobTitle}
+
           onChange={(e) => handleChange("jobTitle", e.target.value)}
         ></input>
 
@@ -37,10 +48,12 @@ const AdminForm = ({ setAddJobActive, form, handleChange }) => {
         </label>
         <DatePicker
           id="date"
+          type="text"
           selected={date}
+          //value={date}
           onChange={(e) => {
             setDate(e);
-            handleChange("date", date.toISOString().substring(0, 10));
+            handleChange("date", e.toISOString().substring(0, 10));
           }}
           closeOnScroll={true}
           dateFormat="dd/MM/yyyy"
@@ -60,7 +73,7 @@ const AdminForm = ({ setAddJobActive, form, handleChange }) => {
             setStartTime(e);
             handleChange(
               "startTime",
-              startTime.toLocaleTimeString([], {
+              e.toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
               })
@@ -84,7 +97,7 @@ const AdminForm = ({ setAddJobActive, form, handleChange }) => {
             setEndTime(e);
             handleChange(
               "endTime",
-              endTime.toLocaleTimeString([], {
+              e.toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
               })
@@ -108,11 +121,7 @@ const AdminForm = ({ setAddJobActive, form, handleChange }) => {
           onChange={(e) => handleChange("availableSlots", e.target.value)}
         ></input>
 
-        <button
-          class="btn"
-          // onClick={handleSubmit}
-          type="submit"
-        >
+        <button class="btn" onClick={handleSubmit} type="submit">
           Confirm
         </button>
         <>

@@ -44,18 +44,7 @@ const AdminPage = () => {
   const [data, setData] = useState(dummyData);
   const [totalJobs, setTotaljobs] = useState(data.length);
   const [addJobActive, setAddJobActive] = useState(false);
-  const [form, setForm] = useState({
-    jobTitle: "",
-    date: "",
-    startTime: "",
-    endTime: "",
-    availableSlots: "",
-  });
-  const handleChange = (key, value) => {
-    setForm({ ...form, [key]: value });
-  };
 
-  console.log(form);
   return (
     <>
       <div class=" d-flex flex-row align-items-center justify-content-end mb-5 px-5">
@@ -67,11 +56,7 @@ const AdminPage = () => {
         <FontAwesomeIcon style={{ height: "45px" }} icon={faCircleUser} />
       </div>
       {addJobActive ? (
-        <AdminForm
-          handleChange={handleChange}
-          form={form}
-          setAddJobActive={setAddJobActive}
-        />
+        <AdminForm setAddJobActive={setAddJobActive} />
       ) : (
         <>
           <span class="container d-flex justify-content-center gap-4 mb-5">
