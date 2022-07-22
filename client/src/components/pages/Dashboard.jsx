@@ -8,6 +8,11 @@ import Button from "../atoms/Button";
 const Dashboard = () => {
   let { token, setToken } = UseToken();
 
+  //clearing localStorage if user close the window
+  window.onbeforeunload = () => {
+    localStorage.clear();
+  };
+
   const handleSignOut = () => {
     setToken("");
     localStorage.clear();
