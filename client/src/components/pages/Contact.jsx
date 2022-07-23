@@ -1,6 +1,12 @@
 import React from "react";
 
 const Contact = () => {
+  // console.log(this.props.location.param1);
+  // const GetDate = () => {
+  // const location = useLocation();
+  // const selDate = location.state.date;
+  // console.log(selDate);
+
   return (
     <div className="m-2 p-4 border text-center">
       <h2>Akwaaba</h2>

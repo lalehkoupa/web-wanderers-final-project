@@ -11,7 +11,6 @@ const Posts = ({ isChecked, setIsChecked, posts }) => {
       listChecked.splice(index, 1);
       setIsChecked(listChecked);
     }
-
   };
   return (
     <div className="card">
