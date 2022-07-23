@@ -35,7 +35,10 @@ const getOneRota = async(req, res) =>
 
 	try
 	{
-		const rota = await prisma.rota.findUnique({ where: {id: idInt} });
+		const rota = await prisma.rota.findUnique({
+			where: { id: idInt },
+			include: { jobs: true }
+		});
 
 		if(!rota)
 			res.status(404).send({ error: true, msg: "Cannot find this rota :'( " });
@@ -51,7 +54,6 @@ const getOneRota = async(req, res) =>
 
 // Create one Rota
 const createOneRota = async(req, res) => {
-
 
 	const {
 		rotaName, startDate, endDate,openSlot,filledSlots,
