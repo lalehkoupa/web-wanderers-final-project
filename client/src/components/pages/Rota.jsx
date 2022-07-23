@@ -8,6 +8,7 @@ import Posts from "../molecules/Posts";
 import Pagination from "../molecules/Pagination";
 
 import { useParams } from "react-router-dom";
+
 const Rota = () => {
   let { date } = useParams();
 
@@ -18,7 +19,7 @@ const Rota = () => {
   const [postsPerPage, setPostsPerPage] = useState(5);
 
   let { date } = useParams();
-  console.log(date);
+
   exampleJobs = exampleJobs.filter((rol) => rol.date === date);
   useEffect(() => {
     const fetchPost = async () => {
