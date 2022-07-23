@@ -1,4 +1,6 @@
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
+const secret = process.env.SECRET;
+const prisma = require("../config/prisma");
 
 
 const secureRoute = async(req, res, next) =>
@@ -10,7 +12,7 @@ const secureRoute = async(req, res, next) =>
 		if(!req.headers.authorization) throw new Error("Missing header");
 		const token = req.headers.authorization.replace("Bearer ", "");
 		const payload = jwt.verify(token, secret);
-		const userToVerify = await User.findById(payload.sub);
+		const userToVerify = await prisma.user.findById(payload.sub);
 
 		if(!userToVerify) throw new Error("You need to login!");
 		req.currentUser = userToVerify;
@@ -33,7 +35,7 @@ const secureRouteAdmin = async(req, res, next) =>
 		if(!req.headers.authorization) throw new Error("Missing header");
 		const token = req.headers.authorization.replace("Bearer ", "");
 		const payload = jwt.verify(token, secret);
-		const userToVerify = await User.findById(payload.sub);
+		const userToVerify = await prisma.user.findById(payload.sub);
 
 		if(!userToVerify) throw new Error("You need to login!");
 		req.currentUser = userToVerify;
