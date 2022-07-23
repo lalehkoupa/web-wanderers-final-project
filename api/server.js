@@ -18,9 +18,12 @@ const rota = require("./exampleRota.json");
 app.get("/", (req, res) => res.send("I'm alive!"));
 
 // Route to all of our api routes.
-app.use("/api", router);
+app.use("api/rota", router);
+app.use("api/job", router);
 
-app.get("/jobs", (req, res) => {
+// not Router >
+app.get("/jobs", (req, res) =>
+{
 	res.status(200).json(jobs);
 });
 app.get("/rota", (req, res) => {
