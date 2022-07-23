@@ -49,25 +49,28 @@ const getOneRota = async(req, res) =>
 	}
 };
 
-// Create one Rota 
-const createOneRota = async (req, res) => {
-	
+// Create one Rota
+const createOneRota = async(req, res) => {
 
-	const { rotaName, startDate, endDate,openSlot,filledSlots,
-		jobs } = req.body
+
+	const {
+		rotaName, startDate, endDate,openSlot,filledSlots,
+		jobs
+	} = req.body;
+
 	try {
 		const createRota = await prisma.rota.create({
 			data: {
 				rotaName,
 				startDate,
-				endDate, 
+				endDate,
 				openSlot,
 				filledSlots,
 				jobs
 			},
-		})
+		});
 
-		if (!createRota)
+		if(!createRota)
 			res.status(404).send({ error: true, msg: "Cannot create any rotas *panic* " });
 
 		res.status(200).send({ sucess: true, createRota });
@@ -79,22 +82,22 @@ const createOneRota = async (req, res) => {
 };
 
 // Update one Rota from the database
-const updateRota = async (req, res) => {
+const updateRota = async(req, res) => {
 	const { id } = req.params;
 
-	if (!id)
+	if(!id)
 		res.status(404).send("No id?");
 
 	const idInt = parseInt(id);
 
 	try {
-		const rota = await prisma.rota.update({ where: { id: idInt } , 
-		data:{
-			body: req.body
-		} })
-			
-		
-		if (!rota)
+		const rota = await prisma.rota.update({
+			where: { id: idInt } ,
+			data:{body: req.body}
+		});
+
+
+		if(!rota)
 			res.status(404).send({ error: true, msg: "Cannot find this rota :'( " });
 
 		res.status(200).send({ sucess: true, rota});
@@ -106,21 +109,19 @@ const updateRota = async (req, res) => {
 };
 
 // Delete one Rota from the database
-const deleteRota = async (req, res) => {
+const deleteRota = async(req, res) => {
 	const { id } = req.params;
 
-	if (!id)
+	if(!id)
 		res.status(404).send("No id?");
 
 	const idInt = parseInt(id);
 
 	try {
-		const rota = await prisma.rota.delete({
-			where: { id: idInt },
-		})
+		const rota = await prisma.rota.delete({where: { id: idInt },});
 
 
-		if (!rota)
+		if(!rota)
 			res.status(404).send({ error: true, msg: "Cannot find this rota :'( " });
 
 		res.status(200).send({ sucess: true, rota });

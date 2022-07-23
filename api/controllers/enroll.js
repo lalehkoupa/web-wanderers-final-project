@@ -32,6 +32,7 @@ const unenrollForJob = async(req, res) => {
 		res.status(400).send({ error: true, msg: error });
 	}
 };
+
 const enrollForJob = async(req, res) => {
 	try {
 		const rotas = await prisma.rota.findMany();
