@@ -1,14 +1,28 @@
 const express = require("express");
-const { getAllRotas, getOneRota } = require("../controllers/rota.ts");
+
+const {
+	enrollForJob,
+	getAllJobVolunteer,
+	unenrollForJob,
+} = require("../controllers/enroll.ts");
+const { dateList,getAllJob, getJob } = require("../controllers/job.ts");
+
+const { loginUser, registerUser } = require("../controllers/auth.ts");
 
 const router = express.Router();
 
-router.route("/hello", (req, res) => res.send("API alive!"));
+router.get("/hello", (req, res) => res.send("API alive!"));
 
-router.route("/rota")
-.get(getAllRotas);
+router.route("/login").post(loginUser);
+router.route("/signup").post(registerUser);
 
-router.route("/rota/:id")
-.get(getOneRota);
+
+router.route("/dates").get(dateList);
+router.route("/job").get(getAllJob);
+router.route("/job/:id").get(getJob);
+router.route("/jobVolunteer").get(getAllJobVolunteer);
+router.route("/enroll").post(enrollForJob);
+router.route("/enroll").delete(unenrollForJob);
+
 
 module.exports = router;

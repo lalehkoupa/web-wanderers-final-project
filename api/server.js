@@ -2,10 +2,15 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 4000;
 const router = require("./config/router");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const jobs = require("./exampleJobs.json");
 const rota = require("./exampleRota.json");
@@ -23,7 +28,6 @@ app.get("/rota", (req, res) => {
 });
 
 /* for rota page to send different dates and the sum of availabe spaces*/
-
 app.get("/dates", (req, res) => {
 	const filteredArray = [];
 
