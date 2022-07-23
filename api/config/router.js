@@ -1,9 +1,9 @@
 const express = require("express");
 
 const {
-  enrollForJob,
-  getAllJobVolunteer,
-  unenrollForJob,
+	enrollForJob,
+	getAllJobVolunteer,
+	unenrollForJob,
 } = require("../controllers/enroll.ts");
 const { dateList,getAllJob, getJob } = require("../controllers/job.ts");
 
@@ -17,15 +17,12 @@ router.route("/login").post(loginUser);
 router.route("/signup").post(registerUser);
 
 
-
 router.route("/dates").get(dateList);
 router.route("/job").get(getAllJob);
 router.route("/job/:id").get(getJob);
 router.route("/jobVolunteer").get(getAllJobVolunteer);
 router.route("/enroll").post(enrollForJob);
 router.route("/enroll").delete(unenrollForJob);
-
-
 
 
 module.exports = router;
