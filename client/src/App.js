@@ -8,6 +8,7 @@ import Rota from "./components/pages/Rota";
 import DefaultLayout from "./components/layouts/DefaultLayout";
 import Homepage from "./components/pages/Homepage";
 import Dashboard from "./components/pages/Dashboard";
+import AdminPage from "./components/pages/AdminPage";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/rota/:date" element={<Rota />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>
     </DefaultLayout>

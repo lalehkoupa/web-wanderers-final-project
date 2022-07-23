@@ -48,10 +48,10 @@ app.get("/dates", (req, res) => {
   });
   const sumArray = [];
 
-  for (let key in sumObject)
-    sumArray.push({ date: key, availableSpots: sumObject[key] });
+	for(let key in sumObject)
+		sumArray.push({ date: key, availableSpots: sumObject[key] });
 
-  res.json(sumArray);
+	res.json(sumArray);
 });
 
 app.post("/rota", (req, res) => {
