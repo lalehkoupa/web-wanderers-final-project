@@ -2,8 +2,6 @@
 const prisma = require("../config/prisma");
 
 const dateList = async(req, res) => {
-
-
 	try {
 		const jobDate = await prisma.job.findMany({ select: { date: true, slots:true } });
 
@@ -30,6 +28,7 @@ const getAllJob = async(req, res) => {
 		res.status(400).send({ error: true, msg: error });
 	}
 };
+
 const getJob = async(req, res) => {
 	const { id } = req.params;
 

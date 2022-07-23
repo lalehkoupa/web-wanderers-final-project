@@ -43,13 +43,13 @@ const run = async() =>
 
 	// upsert all the seed users
 	await prisma.user.upsert({
-		where: { email: "user@test.com" },
+		where: { email: "test@gmail.com" },
 		update: {},
 		create: {
-			email: "user@test.com",
+			email: "test@gmail.com",
 			password: bcrypt.hashSync("password", salt),
-			firstName: "Scott",
-			lastName: "Moss",
+			firstName: "Michael",
+			lastName: "Henderson",
 			phoneNumber: "07777777777",
 			userType: 100
 		},

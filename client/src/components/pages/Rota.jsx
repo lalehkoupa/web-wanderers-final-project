@@ -18,8 +18,6 @@ const Rota = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
 
-  let { date } = useParams();
-
   exampleJobs = exampleJobs.filter((rol) => rol.date === date);
   useEffect(() => {
     const fetchPost = async () => {
