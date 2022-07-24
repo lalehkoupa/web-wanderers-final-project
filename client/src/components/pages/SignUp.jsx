@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import Button from "../atoms/Button";
 import Form from "../molecules/Form";
+import { useParams } from "react-router-dom";
 
-const SignUp = ({ date, time, job }) => {
+const SignUp = () => {
+  let { id, jobTitle, date, time } = useParams();
+  console.log(id, jobTitle, date, time);
+
   const [error, setError] = useState(null);
   const [form, setForm] = useState({
     firstName: "",
@@ -12,9 +16,9 @@ const SignUp = ({ date, time, job }) => {
     phone: "",
   });
 
-  date = " 10/07/22";
-  time = " 12:00-15:00";
-  job = " Kitchen Supervisor";
+  // date = date;
+  // time = " 12:00-15:00";
+  const job = jobTitle;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
