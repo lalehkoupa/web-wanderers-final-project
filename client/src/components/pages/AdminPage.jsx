@@ -9,8 +9,8 @@ import AdminForm from "./AdminForm";
 const AdminPage = () => {
   //   useEffect(() => {
   //     const fetchData = async () => {
-  //       const response = await axios.get("http://......");
-  //       setData(response.data);
+  //       const res= await axios.get("process.env.PUBLIC_URL/weeks");
+  //       setData(res.data);
   //     };
   //     fetchData();
   //   }, []);
@@ -47,10 +47,10 @@ const AdminPage = () => {
 
   return (
     <>
-      <div class=" d-flex flex-row align-items-center justify-content-end mb-5 px-5">
-        <span class="d-flex flex-column align-items-end">
-          <p class="m-0 h5">Admin Name</p>
-          <button class="text-danger border-0 bg-white">Log out</button>
+      <div className=" d-flex flex-row align-items-center justify-content-end mb-5 px-5">
+        <span className="d-flex flex-column align-items-end">
+          <p className="m-0 h5">Admin className</p>
+          <button className="text-danger border-0 bg-white">Log out</button>
           <></>
         </span>
         <FontAwesomeIcon style={{ height: "45px" }} icon={faCircleUser} />
@@ -59,10 +59,10 @@ const AdminPage = () => {
         <AdminForm setAddJobActive={setAddJobActive} />
       ) : (
         <>
-          <span class="container d-flex justify-content-center gap-4 mb-5">
+          <span className="container d-flex justify-content-center gap-4 mb-5">
             <button
               onClick={() => setIsActive(true)}
-              class={
+              className={
                 isActive
                   ? "border border-3 border-primary bg-primary text-white px-5 py-1"
                   : "border border-3 border-primary bg-white text-primary px-5 py-1 "
@@ -72,7 +72,7 @@ const AdminPage = () => {
             </button>
             <button
               onClick={() => setIsActive(false)}
-              class={
+              className={
                 isActive
                   ? "border border-3 border-primary bg-white text-primary px-5 py-1 "
                   : "border border-3 border-primary bg-primary text-white px-5 py-1"

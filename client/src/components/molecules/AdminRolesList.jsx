@@ -1,17 +1,17 @@
 const AdminRolesList = ({ totalJobs, data, setAddJobActive }) => {
   return (
-    <div class="container ">
-      <p class="h4 font-weight-bold pt-4">roles</p>
-      <span class="d-flex d-flex justify-content-end">
+    <div className="container ">
+      <p className="h4 font-weight-bold pt-4">roles</p>
+      <span className="d-flex d-flex justify-content-end">
         <button
           onClick={() => setAddJobActive(true)}
-          class="border-0 py-1 px-3 admin-add-button mb-2 mx-3 "
+          className="border-0 py-1 px-3 admin-add-button mb-2 mx-3 "
         >
           Add New
         </button>
       </span>
-      <table class="table">
-        <thead class="table-secondary">
+      <table className="table">
+        <thead className="table-secondary">
           <tr>
             <th scope="col">Role</th>
             <th scope="col">Date</th>
@@ -28,7 +28,7 @@ const AdminRolesList = ({ totalJobs, data, setAddJobActive }) => {
           </tbody>
         ))}
       </table>
-      <p class="my-5">Showing {totalJobs} Results</p>
+      <p className="my-5">Showing {totalJobs} Results</p>
     </div>
   );
 };

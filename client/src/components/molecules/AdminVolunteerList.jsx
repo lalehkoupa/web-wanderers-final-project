@@ -1,9 +1,9 @@
 const AdminVolunteerList = ({ totalJobs, data }) => {
   return (
-    <div class="container">
-      <p class="h4 font-weight-bold pt-4">Volunteer names and roles</p>
-      <table class="table">
-        <thead class="table-secondary">
+    <div className="container">
+      <p className="h4 font-weight-bold pt-4">Volunteer names and roles</p>
+      <table className="table">
+        <thead className="table-secondary">
           <tr>
             <th scope="col">Volunteer name</th>
             <th scope="col">Date</th>
@@ -22,7 +22,7 @@ const AdminVolunteerList = ({ totalJobs, data }) => {
           </tbody>
         ))}
       </table>
-      <p class="my-5">Showing {totalJobs} Results</p>
+      <p className="my-5">Showing {totalJobs} Results</p>
     </div>
   );
 };
