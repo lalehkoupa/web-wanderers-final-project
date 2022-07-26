@@ -18,8 +18,8 @@ const sendEmail = async(req:any, res:any,firstName:any,lastName:any,email:any,jo
 			from: "akwaabatest@outlook.com",
 			to: `${email}`,
 			subject: "confirmation of volunteer job sign up in Akwaaba",
-			html: `Hello <strong>${firstName} ${lastName}</strong><br> Thanks for applying as a ${job[0]["jobTitle"]}
-             for ${job[0]["date"]} from ${job[0]["startTime"]} to ${job[0]["endTime"]}`
+			html: `Hello ${firstName} ${lastName}<br> Thanks for applying as a <strong>${job[0]["jobTitle"]}</strong>
+             for ${job[0]["date"]} from ${job[0]["startTime"]} to ${job[0]["endTime"]}.<br><br><br>Best Regards<br>Akwaaba team`
         }
 
         const info = await transporter.sendMail(options)
