@@ -13,7 +13,7 @@ const AdminForm = ({ setAddJobActive }) => {
     startTime: "",
     endTime: "",
     availableSlots: "",
-    weekid: 1,
+    // weekid: 1,
   });
   const [error, setError] = useState(null);
 
