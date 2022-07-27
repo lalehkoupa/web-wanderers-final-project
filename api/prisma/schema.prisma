@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,72 +8,46 @@ datasource db {
 	shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-// The User model representing
+// User model
 model User {
 	id Int	@id @default(autoincrement())
 	createdAt DateTime @default(now())
 	updatedAt DateTime @updatedAt
-	// The users email address - is unique
 	email String @unique
-	// The users password - hashed
 	password String
-	// The users first name
 	firstName String
-	// The users last name
 	lastName String
-	// The users phone number
 	phoneNumber String
-	// Indicates the user type, ie 100 = admin, 500 = volunteer
 	userType Int
-	// The users jobs - many to many relationship to the Jobs model
+	// Many to Many relationship to the Jobs model
 	jobs JobsOnUsers[]
 }
 
-// The Job model
 model Job {
-	id Int	@id @default(autoincrement())
+	id Int @id @default(autoincrement())
 	createdAt DateTime @default(now())
 	updatedAt DateTime @updatedAt
-	// The job title
 	jobTitle String
-	// The the date of the job
 	date String
-	// The start time of the job
 	startTime String
-	// The end time of the job
 	endTime String
-	// The total amount of volunteer slots
 	slots Int
-	// The total amount of volunteers signed up
 	filledSlots Int
-	// The rotas this job belongs to - one to one relationship to the Rota model
-	rotas Rota @relation(fields: [rotaId], references: [id])
-	// The rota id
-	rotaId Int
-	// The volunteers this job belongs to - many to many relationship to the User model
+	week Week @relation(fields: [weekId], references: [id])
+	weekId Int
 	users JobsOnUsers[]
 }
 
-// The Rota model
-model Rota {
+model Week {
 	id Int	@id @default(autoincrement())
 	createdAt DateTime @default(now())
 	updatedAt DateTime @updatedAt
-	// The rotas name
-	rotaName String @unique
-	// The start date of the rota
-	startDate String
-	// The end date of the rota
-	endDate String
-	// the total amount slots volunteers can sign up for
+	weekDate String @unique
 	openSlots Int
-	// the total amount of volunteers signed up
 	filledSlots Int
-	// The rotas jobs - one to many relationship to the Jobs model
 	jobs Job[]
 }
 
-// Relationship table to link Jobs to Users
 model JobsOnUsers {
 	job Job @relation(fields: [jobId], references: [id])
 	jobId Int

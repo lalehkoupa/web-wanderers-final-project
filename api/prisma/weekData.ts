@@ -1,18 +1,14 @@
 // In this file we are creating the seed data that will then be seeded to the database.
 // (Basically just fake data we will create in the database to get it up and running)
 
-export const rotaData: {
-  rotaName: string
-	startDate: string
-	endDate: string
+export const weekData: {
+  weekDate: string
 	openSlots: number
 	filledSlots: number
   jobs: any[]
 	}[] = [
 		{
-			rotaName: "Akwaaba Sunday Rota",
-			startDate: "03/01/2021",
-			endDate: "28/08/2022",
+			weekDate: "10/07/2022",
 			openSlots: 122,
 			filledSlots: 0,
 			jobs: [
@@ -35,10 +31,8 @@ export const rotaData: {
 			],
 		},
 		{
-			rotaName: "Kids' Team Sunday Rota",
-			startDate: "31/10/2021",
-			endDate: "11/12/2022",
-			openSlots: 134,
+			weekDate: "17/07/2022",
+			openSlots: 122,
 			filledSlots: 0,
 			jobs: [
 				{
