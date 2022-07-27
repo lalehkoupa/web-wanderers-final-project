@@ -36,9 +36,12 @@
 			"curly": ["error", "multi-or-nest", "consistent"],
 			"space-before-function-paren": ["error", "never"],
 			"keyword-spacing": ["error", {"overrides": {"if": { "after": false }, "for": {"after": false}}}],
-			"require-yield": ["off"],
 			"no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
 			"@typescript-eslint/no-explicit-any": 0,
-			"@typescript-eslint/no-var-requires": 0
+			"@typescript-eslint/no-var-requires": 0,
+			"comma-dangle": ["error", {
+        "imports": "never"
+    }]
     }
 }
+
