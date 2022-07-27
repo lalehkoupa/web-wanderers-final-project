@@ -30,6 +30,9 @@ const NavBar = () => {
             <Nav.Link href="/contact" className="navlink text-dark ">
               Contact Us
             </Nav.Link>
+            <Nav.Link href="/dashboard" className="navlink text-dark ">
+              Admin
+            </Nav.Link>
           </Nav>
         </Navbar.Offcanvas>
       </Navbar>

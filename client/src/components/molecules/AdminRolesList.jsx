@@ -34,7 +34,7 @@ const AdminRolesList = ({ totalJobs, data, setAddJobActive }) => {
             <tr>
               <td>{job.jobTitle}</td>
               <td>{job.date}</td>
-              <td>{`${job.startime}-${job.endtime}`}</td>
+              <td>{`${job.startTime}-${job.endTime}`}</td>
               <td>{job.slots}</td>
               <td>
                 <FontAwesomeIcon

@@ -82,6 +82,21 @@ jobsRouter
       console.log("error ===", error);
       res.status(404).json({ error: true, msg: error });
     }
+  })
+  .delete("/:id", async (req, res) => {
+    try {
+      const { id } = req.body;
+      const selected = await prisma.job.findUnique({
+        where: { id: parseInt(id) },
+      });
+      if (!selected) {
+        res.status(404).json({ error: true, msg: "Cannot find this job" });
+        return;
+      }
+      res.status(200).json({ msg: "job deleted successfully!" });
+    } catch (err) {
+      res.status(404).json({ error: true, msg: err });
+    }
   });
 
 export default jobsRouter;

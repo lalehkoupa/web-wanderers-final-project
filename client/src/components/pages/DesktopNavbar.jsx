@@ -14,6 +14,9 @@ const DesktopNavbar = () => {
         <li className="mx-3">
           <a href="/signup">Contact</a>
         </li>
+        <li className="mx-3">
+          <a href="/dashboard">Admin</a>
+        </li>
       </ul>
     </div>
   );

@@ -8,55 +8,59 @@ import AdminForm from "../molecules/AdminForm";
 import AdminSignUp from "../molecules/AdminSignUp";
 
 const AdminPage = () => {
-  // useEffect(() => {
-  //   fetchUserData();
-  // fetchJobData()
-  // }, []);
+  const [isActive, setIsActive] = useState(1);
+  const [jobData, setJobData] = useState();
+  const [userData, setUserData] = useState();
+  const [totalJobs, setTotaljobs] = useState("");
+  const [addJobActive, setAddJobActive] = useState(false);
 
-  // const fetchUserData = async () => {
-  //   const res = await axios.get("http://localhost:8000/api/user");
-  //   const data = await res.json();
-  //   setData(data);
-  // };
-  // const fetchJobData = async () => {
-  //   const res = await axios.get("http://localhost:8000/api/jobs");
-  //   const data = await res.json();
-  //   setData(data);
-  // };
+  const fetchUserData = async () => {
+    const res = await axios.get("http://localhost:8000/api/user");
+    const data = await res.json();
+    setUserData(data);
+  };
+  const fetchJobData = async () => {
+    const res = await fetch("http://localhost:8000/api/jobs");
+    const data = await res.json();
+    setJobData(data);
+  };
+
+  useEffect(() => {
+    fetchUserData();
+    fetchJobData();
+  }, []);
+
+  console.log(jobData);
+  console.log(userData);
+
   const handleClick = () => {};
 
-  const dummyData = [
-    {
-      firsName: "Alec",
-      lastName: "Mike",
-      date: "22-08-2022",
-      startime: "12:00",
-      endtime: "15:00",
-      jobTitle: "Saturday Driver",
-    },
-    {
-      firsName: "Helen",
-      lastName: "Diba",
-      date: "22-08-2022",
-      startime: "11:00",
-      endtime: "16:00",
-      jobTitle: "Gate volunteer",
-    },
-    {
-      firsName: "Ahmed",
-      lastName: "Ali",
-      date: "22-08-2022",
-      startime: "9:00",
-      endtime: "12:00",
-      jobTitle: "Kitchen volunteer",
-    },
-  ];
-  const [isActive, setIsActive] = useState(1);
-  const [jobData, setJobData] = useState(dummyData);
-  const [userData, setUserData] = useState(dummyData);
-
-  const [totalJobs, setTotaljobs] = useState(userData.length);
-  const [addJobActive, setAddJobActive] = useState(false);
+  // const dummyData = [
+  //   {
+  //     firsName: "Alec",
+  //     lastName: "Mike",
+  //     date: "22-08-2022",
+  //     startime: "12:00",
+  //     endtime: "15:00",
+  //     jobTitle: "Saturday Driver",
+  //   },
+  //   {
+  //     firsName: "Helen",
+  //     lastName: "Diba",
+  //     date: "22-08-2022",
+  //     startime: "11:00",
+  //     endtime: "16:00",
+  //     jobTitle: "Gate volunteer",
+  //   },
+  //   {
+  //     firsName: "Ahmed",
+  //     lastName: "Ali",
+  //     date: "22-08-2022",
+  //     startime: "9:00",
+  //     endtime: "12:00",
+  //     jobTitle: "Kitchen volunteer",
+  //   },
+  // ];
 
   return (
     <>
