@@ -6,7 +6,7 @@ import cors from "cors";
 
 import { router } from "./config/router";
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 4000;
 
 const app = express();
 
