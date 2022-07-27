@@ -9,8 +9,8 @@ import AdminSignUp from "../molecules/AdminSignUp";
 
 const AdminPage = () => {
   const [isActive, setIsActive] = useState(1);
-  const [jobData, setJobData] = useState();
   const [userData, setUserData] = useState();
+  const [jobData, setJobData] = useState();
   const [totalJobs, setTotaljobs] = useState("");
   const [addJobActive, setAddJobActive] = useState(false);
 
@@ -20,7 +20,7 @@ const AdminPage = () => {
     setUserData(data);
   };
   const fetchJobData = async () => {
-    const res = await fetch("http://localhost:8000/api/jobs");
+    const res = await axios.get("http://localhost:8000/api/jobs");
     const data = await res.json();
     setJobData(data);
   };
@@ -29,38 +29,6 @@ const AdminPage = () => {
     fetchUserData();
     fetchJobData();
   }, []);
-
-  console.log(jobData);
-  console.log(userData);
-
-  const handleClick = () => {};
-
-  // const dummyData = [
-  //   {
-  //     firsName: "Alec",
-  //     lastName: "Mike",
-  //     date: "22-08-2022",
-  //     startime: "12:00",
-  //     endtime: "15:00",
-  //     jobTitle: "Saturday Driver",
-  //   },
-  //   {
-  //     firsName: "Helen",
-  //     lastName: "Diba",
-  //     date: "22-08-2022",
-  //     startime: "11:00",
-  //     endtime: "16:00",
-  //     jobTitle: "Gate volunteer",
-  //   },
-  //   {
-  //     firsName: "Ahmed",
-  //     lastName: "Ali",
-  //     date: "22-08-2022",
-  //     startime: "9:00",
-  //     endtime: "12:00",
-  //     jobTitle: "Kitchen volunteer",
-  //   },
-  // ];
 
   return (
     <>

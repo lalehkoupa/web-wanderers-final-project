@@ -43,13 +43,14 @@ const AdminRolesList = ({ totalJobs, data, setAddJobActive }) => {
                   data-target="#myModal"
                   className="mx-3"
                   icon={faPencil}
+                  onClick={() => setSelectedJob(job)}
                 />
                 <FontAwesomeIcon
                   type="button"
                   data-toggle="modal"
                   data-target="#myModalDel"
                   icon={faTrashCan}
-                  onClick={() => setSelectedJob({ job })}
+                  onClick={() => setSelectedJob(job)}
                 />
               </td>
             </tr>
@@ -57,7 +58,11 @@ const AdminRolesList = ({ totalJobs, data, setAddJobActive }) => {
         ))}
       </table>
       <p className="my-5">Showing {totalJobs} Results</p>
-      <Modal text="Update details" btnText="Update job" />
+      <Modal
+        selectedJob={selectedJob}
+        text="Update details"
+        btnText="Update job"
+      />
       <ModalDelete
         selectedJob={selectedJob}
         text="Delete job"

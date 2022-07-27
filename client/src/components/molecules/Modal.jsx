@@ -2,9 +2,8 @@ import DatePicker from "react-datepicker";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { addMonths } from "date-fns";
-import axios from "axios";
 
-const Modal = ({ text, btnText }) => {
+const Modal = ({ text, btnText, selectedJob }) => {
   const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
@@ -37,8 +36,8 @@ const Modal = ({ text, btnText }) => {
   const handleSubmit = async () => {
     if (validateForm()) {
       try {
-        await fetch("http://localhost:8000/jobs", {
-          method: "patch",
+        await fetch(`http://localhost:8000/jobs/:${selectedJob.id}`, {
+          method: "put",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
         });

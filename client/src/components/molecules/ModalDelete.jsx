@@ -3,7 +3,7 @@ import axios from "axios";
 const ModalDelete = ({ text, btnText, selectedJob }) => {
   const onclickHandle = async () => {
     const res = await axios({
-      url: `http://localhost:8000/api/job/:${selectedJob.job.id}`,
+      url: `http://localhost:8000/api/job/:${selectedJob.id}`,
       method: "delete",
     });
     res.json();
@@ -19,10 +19,10 @@ const ModalDelete = ({ text, btnText, selectedJob }) => {
             <div className="modal-body"></div>
             {selectedJob ? (
               <div className="mx-4">
-                <p>{selectedJob.job.jobTitle}</p>
-                <p>{selectedJob.job.date}</p>
-                <p>{selectedJob.job.startime}</p>
-                <p>{selectedJob.job.endtime}</p>
+                <p>{selectedJob.jobTitle}</p>
+                <p>{selectedJob.date}</p>
+                <p>{selectedJob.startime}</p>
+                <p>{selectedJob.endtime}</p>
               </div>
             ) : (
               ""
