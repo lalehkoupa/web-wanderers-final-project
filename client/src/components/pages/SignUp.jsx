@@ -36,12 +36,13 @@ const SignUp = () => {
          body: JSON.stringify(data),
        });
       const resData=await res.json();
-       if(!res.status(200)){
+       if(res.status!==200){
          setSuccess(false);
          setError(resData.msg);
          emptyFields();
        }else{
          setSuccess(true);
+         window.scrollTo(0, 0);
        }
         
     
@@ -122,7 +123,7 @@ const SignUp = () => {
        </div>
      </div>
      ):(
-       <p >Thanks for applying for a role in akwaaba, you will receive a confirmation email shortly</p>
+       <p className="confirmationEmail">Thanks for applying for a role in akwaaba, you will receive a confirmation email shortly</p>
      )
      }
     
