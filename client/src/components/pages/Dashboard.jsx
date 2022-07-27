@@ -4,7 +4,7 @@ import AdminLogin from "../molecules/AdminLogin";
 import AdminSignUp from "../molecules/AdminSignUp";
 import UseToken from "../molecules/UseToken";
 import Button from "../atoms/Button";
-import AdminPage  from "./AdminPage"
+import AdminPage from "./AdminPage";
 
 const Dashboard = () => {
   let { token, setToken } = UseToken();
@@ -54,7 +54,7 @@ const Dashboard = () => {
               />
             </div>
             <div>
-              {!success ?<AdminPage setSuccess={handleSignUpSuccess}/> :''}
+              {!success ? <AdminPage setSuccess={handleSignUpSuccess} /> : ""}
               {/* {!success ? (
                 
                 <AdminSignUp setSuccess={handleSignUpSuccess} />

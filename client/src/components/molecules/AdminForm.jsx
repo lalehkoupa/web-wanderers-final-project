@@ -13,34 +13,58 @@ const AdminForm = ({ setAddJobActive }) => {
     startTime: "",
     endTime: "",
     availableSlots: "",
+    weekid: 1,
   });
-  console.log(form);
+  const [error, setError] = useState(null);
+
+  const validateForm = () => {
+    if (
+      !form.jobTitle ||
+      !form.date ||
+      !form.startTime ||
+      !form.endTime ||
+      !form.availableSlots
+    ) {
+      setError("It's mandatory to fill up all fields");
+      return false;
+    }
+    return true;
+  };
+
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
   const handleSubmit = async () => {
-    //  await fetch("url", {
-    //    method: "POST",
-    //    headers: { "Content-Type": "application/json" },
-    //    body: JSON.stringify(form),
-    //  });
+    if (validateForm()) {
+      try {
+        //  await fetch("http://localhost:8000/api/job", {
+        //    method: "POST",
+        //    headers: { "Content-Type": "application/json" },
+        //    body: JSON.stringify(form),
+        //  });
+        setError(null);
+      } catch (err) {
+        console.log(err);
+        setError(err);
+      }
+    }
   };
 
   return (
-    <div class="container">
+    <div className="container">
       <h3>Add dates, slots and roles</h3>
-      <div class="form-group">
-        <label class="fw-bold" htmlFor="jobinput">
+      <div className="form-group">
+        <label className="fw-bold" htmlFor="jobinput">
           Job title
         </label>
         <input
-          class="form-control"
+          className="form-control"
           id="jobinput"
           type="text"
           onChange={(e) => handleChange("jobTitle", e.target.value)}
         ></input>
 
-        <label class="fw-bold" htmlFor="date">
+        <label className="fw-bold" htmlFor="date">
           Date
         </label>
         <DatePicker
@@ -56,10 +80,10 @@ const AdminForm = ({ setAddJobActive }) => {
           minDate={new Date()}
           maxDate={addMonths(new Date(), 5)}
           showDisabledMonthNavigation
-          class="form-control"
+          className="form-control"
         />
 
-        <label class="fw-bold" htmlFor="starttime">
+        <label className="fw-bold" htmlFor="starttime">
           Start time
         </label>
         <DatePicker
@@ -80,10 +104,10 @@ const AdminForm = ({ setAddJobActive }) => {
           timeIntervals={15}
           timeCaption="Start time"
           dateFormat="HH:mm"
-          class="form-control"
+          className="form-control"
         />
 
-        <label class="fw-bold" htmlFor="endtime">
+        <label className="fw-bold" htmlFor="endtime">
           End time
         </label>
         <DatePicker
@@ -104,26 +128,27 @@ const AdminForm = ({ setAddJobActive }) => {
           timeIntervals={15}
           timeCaption="End time"
           dateFormat="HH:mm"
-          class="form-control"
+          className="form-control"
         />
-        <label class="fw-bold" htmlFor="availableslots">
+        <label className="fw-bold" htmlFor="availableslots">
           Available slots
         </label>
         <input
-          class="form-control"
+          className="form-control"
           type="text"
           id="availableslots"
           value={form.availableSlots}
           onChange={(e) => handleChange("availableSlots", e.target.value)}
         ></input>
+        {error ? <p className="text-danger">{error}</p> : ""}
 
-        <button class="btn" onClick={handleSubmit} type="submit">
+        <button className="btn mb-1" onClick={handleSubmit} type="submit">
           Confirm
         </button>
         <>
           <button
             onClick={() => setAddJobActive(false)}
-            class="bg-blue-button text-light mb-5 py-1"
+            className="bg-blue-button text-light mb-5 py-1"
           >
             Cancel
           </button>
