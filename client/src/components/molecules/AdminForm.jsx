@@ -37,11 +37,11 @@ const AdminForm = ({ setAddJobActive }) => {
   const handleSubmit = async () => {
     if (validateForm()) {
       try {
-        //  await fetch("http://localhost:8000/api/job", {
-        //    method: "POST",
-        //    headers: { "Content-Type": "application/json" },
-        //    body: JSON.stringify(form),
-        //  });
+        await fetch("http://localhost:8000/api/job", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
         setError(null);
       } catch (err) {
         console.log(err);

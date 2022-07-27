@@ -37,11 +37,11 @@ const Modal = ({ text, btnText }) => {
   const handleSubmit = async () => {
     if (validateForm()) {
       try {
-        //  await fetch("url", {
-        //    method: "patch",
-        //    headers: { "Content-Type": "application/json" },
-        //    body: JSON.stringify(form),
-        //  });
+        await fetch("http://localhost:8000/jobs", {
+          method: "patch",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
         setError(null);
       } catch (err) {
         setError(err);

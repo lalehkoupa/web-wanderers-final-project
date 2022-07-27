@@ -3,9 +3,8 @@ import axios from "axios";
 const ModalDelete = ({ text, btnText, selectedJob }) => {
   const onclickHandle = async () => {
     const res = await axios({
-      url: "http://localhost:8000/api/job",
+      url: `http://localhost:8000/api/job/:${selectedJob.job.id}`,
       method: "delete",
-      data: selectedJob.job.id,
     });
     res.json();
   };
