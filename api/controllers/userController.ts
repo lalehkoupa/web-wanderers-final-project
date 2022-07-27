@@ -1,6 +1,7 @@
 import { Router } from "express";
 import prisma from "../config/prisma";
 import _ from "lodash";
+import sendEmail from "./nodeEmailer";
 
 const userRouter = Router();
 
@@ -46,6 +47,7 @@ userRouter.get("/:id", async(req, res) =>
 		res.status(404).json({ error: true, msg: error });
 	}
 })
+//create new user
 .post("/", async(req, res) =>
 {
 	try
@@ -75,25 +77,60 @@ userRouter.get("/:id", async(req, res) =>
 {
 	try
 	{
-		const { email, password, firstName, lastName, phoneNumber, userType = 100, jobId, userId } = req.body;
+		const { email, password="", firstName, lastName, phoneNumber, userType = 100, jobId} = req.body;
 
 		const userExists = await prisma.user.findUnique({ where: { email: email }});
 
 		let newUser;
+		let userId;
 
 		if(!userExists)
 		{
 			newUser = await createUser(email, password, firstName, lastName, phoneNumber, userType);
+			userId=newUser.id;
 
 			console.log("newUser", newUser);
+		}else{
+			userId=userExists.id;
+			//check if the existing user has applied for this job before
+			const userAppliedBefore = await prisma.jobsOnUsers.findMany({
+      			where: {
+       			 AND: [
+					{ userId : userExists.id},
+					{ jobId : jobId},
+        			],
+     			 },
+			})
+			if (userAppliedBefore.length!==0){
+				res.status(404).send({ error: true, msg: "This user already signed up for this job" }) ;
+				return;
+			}
+			//update the new information that user has entered for existing user
+			try
+			{
+			const user = await prisma.user.update({
+				where: { id: userId },
+				data: {
+					email:email,
+					firstName:firstName,
+					lastName:lastName,
+					phoneNumber:phoneNumber,
+				}
+			});
+			}
+			catch (error)
+			{
+				console.log("error ===", error);
+				res.status(404).json({ error: true, msg: error });
+			}
 		}
-
 		const signUpForJob = await prisma.jobsOnUsers.create({
 			data: {
 				jobId: jobId,
-				userId: userExists ? userId : newUser?.id
+				userId: userId
 			}
 		});
+
 
 		if(!signUpForJob)
 			res.status(404).send({ error: true, msg: "Cannot sign up for this role" });
@@ -101,8 +138,11 @@ userRouter.get("/:id", async(req, res) =>
 		//Laleh to add nodemailer
 		// send email confimation if everything is sucsefull.
 
-		res.status(200).send({ sucess: true, msg: "You have signed up sucesfully!" });
-		return;
+		// res.status(200).send({ sucess: true, msg: "You have signed up sucesfully!" });
+		// return;
+		//get information from job table to pass for the confirmation email body
+			const job = await prisma.job.findMany({ where: { id: jobId }});
+			sendEmail(req,res,firstName,lastName,email,job);
 	}
 	catch (error)
 	{
