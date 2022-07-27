@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Button from "../atoms/Button";
-import Axios from "axios";
-//import { useHistory } from "react-router-dom";
 
 const AdminSignUp = ({ setSuccess }) => {
   const [formDataReg, setFormDataReg] = useState({
@@ -10,6 +8,7 @@ const AdminSignUp = ({ setSuccess }) => {
     repeatPassword: "",
   });
   const [error, setError] = useState(false);
+
 
   const handleChange = (event) => {
     const newFormData = {

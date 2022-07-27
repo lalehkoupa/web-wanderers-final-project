@@ -37,10 +37,10 @@ const Form = ({ onChange, formData }) => {
         />*/}
         <label>Phone Number </label>
         <input
-          name="phone"
+          name="phoneNumber"
           type="tel"
-          value={formData.phone}
-          onChange={(e) => onChange("phone", e.target.value)}
+          value={formData.phoneNumber}
+          onChange={(e) => onChange("phoneNumber", e.target.value)}
         />
       </form>
     </div>

@@ -1,24 +1,30 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import Button from "../atoms/Button";
 import Form from "../molecules/Form";
 import { useParams } from "react-router-dom";
+import _ from "lodash";
+
+
 
 const SignUp = () => {
-  let { id, jobTitle, day, month, year, time } = useParams();
-  console.log(id, jobTitle, day, month, year, time);
- let date = `${day}/${month}/${year}`;
   const [error, setError] = useState(null);
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    //password: "",
-    phone: "",
+    phoneNumber: "",
+    jobId:"",
+    jobTitle:"",
+    date:"",
+    time:""
   });
+  const[success,setSuccess]=useState(false);
 
-  // date = date;
-  // time = " 12:00-15:00";
-  const job = jobTitle;
+  let { id, jobTitle, day, month, year, time } = useParams();
+  let date = `${day}/${month}/${year}`;
+  const jobObj = {"jobId":parseInt(id) ,  "jobTitle":jobTitle , "date":date , "time":time}
+
+  const data=_.merge({},form,jobObj);        
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,13 +32,12 @@ const SignUp = () => {
 
     if (validateForm()) {
       try {
-        // await fetch(" ", {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify(form),
-        // });
-        //console.log(form);
-        //console.log("submit");
+         await fetch("http://localhost:8000/api/user/signUpForJob ", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+     
         emptyFields();
       } catch (error) {
         console.log("Error", error);
@@ -46,10 +51,11 @@ const SignUp = () => {
   };
 
   const validateForm = () => {
-    if (!form.firstName || !form.lastName || !form.email || !form.phone) {
+    if (!form.firstName || !form.lastName || !form.email || !form.phoneNumber) {
       setError("It's mandatory to fill up all fields");
       return false;
-    } else if (!form.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+    } 
+    if (!form.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
       setError("Please enter the valid email address");
       return false;
     } else {
@@ -62,8 +68,7 @@ const SignUp = () => {
       firstName: "",
       lastName: "",
       email: "",
-      //password: "",
-      phone: "",
+      phoneNumber: "",
     });
   };
 
@@ -85,7 +90,7 @@ const SignUp = () => {
 
           <p>
             <span>Volunteer Role:</span>
-            {job}
+            {jobTitle}
           </p>
         </div>
         <div className="sign-up-fields">
