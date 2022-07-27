@@ -4,9 +4,9 @@ import Form from "../molecules/Form";
 import { useParams } from "react-router-dom";
 
 const SignUp = () => {
-  let { id, jobTitle, date, time } = useParams();
-  console.log(id, jobTitle, date, time);
-
+  let { id, jobTitle, day, month, year, time } = useParams();
+  console.log(id, jobTitle, day, month, year, time);
+ let date = `${day}/${month}/${year}`;
   const [error, setError] = useState(null);
   const [form, setForm] = useState({
     firstName: "",
