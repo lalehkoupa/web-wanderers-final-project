@@ -1,5 +1,6 @@
 import { Router } from "express";
 import prisma from "../config/prisma";
+import _ from "lodash";
 
 const userRouter = Router();
 
@@ -8,7 +9,7 @@ const createUser = async(email: string, password: string, firstName: string, las
 	const newUser = await prisma.user.create({
 		data: {
 			email: email,
-			pasword: password,
+			password: password,
 			firstName: firstName,
 			lastName: lastName,
 			phoneNumber: phoneNumber,
@@ -25,7 +26,8 @@ userRouter.get("/:id", async(req, res) =>
 	{
 		const { id } = req.params;
 
-		const user = await prisma.job.findMany({ where: { id: parseInt(id) }});
+		// Find the user by id using the req.params
+		const user = await prisma.user.findUnique({ where: { id: parseInt(id) }});
 
 		if(!user)
 		{
@@ -33,7 +35,10 @@ userRouter.get("/:id", async(req, res) =>
 			return;
 		}
 
-		return res.status(200).json(user);
+		// Only send back important date, do not send back password for example
+		const userJSON = _.pick(user, "id", "email", "firstName", "lastName", "phoneNumber", "userType");
+
+		return res.status(200).json(userJSON);
 	}
 	catch (error)
 	{
@@ -41,31 +46,38 @@ userRouter.get("/:id", async(req, res) =>
 		res.status(404).json({ error: true, msg: error });
 	}
 })
-.post("/createNewUser", async(req, res) =>
+.post("/", async(req, res) =>
 {
-	const { email, password, firstName, lastName, phoneNumber, userType } = req.body;
-
-	const userExists = await prisma.user.find({ where: { email: email }});
-
-	if(userExists)
+	try
 	{
-		res.status(400).json("This email is already in use");
-		return;
+		const { email, password, firstName, lastName, phoneNumber, userType } = req.body;
+
+		const userExists = await prisma.user.findUnique({ where: { email: email }});
+
+		if(userExists)
+		{
+			res.status(400).json("This email is already in use");
+			return;
+		}
+
+		const newUser = await createUser(email, password, firstName, lastName, phoneNumber, userType);
+
+		const userJSON = _.pick(newUser, "id", "email", "firstName", "lastName", "phoneNumber", "userType");
+
+		return res.status(200).json({ msg: "New user added!!!", ...userJSON });
+	} catch (error)
+	{
+		console.log("error posting new user", error);
+		return res.status(400).json({ msg: "cannot add this user", error: true });
 	}
-
-	const newUser = await createUser(email, password, firstName, lastName, phoneNumber, userType);
-
-	console.log("newUser", newUser);
-
-
 })
 .post("/signUpForJob", async(req, res) =>
 {
 	try
 	{
-		const { email, password, firstName, lastName, phoneNumber, userType, jobId, userId } = req.body;
+		const { email, password, firstName, lastName, phoneNumber, userType = 100, jobId, userId } = req.body;
 
-		const userExists = await prisma.user.upsert({ where: { email: email }});
+		const userExists = await prisma.user.findUnique({ where: { email: email }});
 
 		let newUser;
 
@@ -79,7 +91,7 @@ userRouter.get("/:id", async(req, res) =>
 		const signUpForJob = await prisma.jobsOnUsers.create({
 			data: {
 				jobId: jobId,
-				userId: userExists ? userId : newUser.id
+				userId: userExists ? userId : newUser?.id
 			}
 		});
 
@@ -98,6 +110,12 @@ userRouter.get("/:id", async(req, res) =>
 		res.status(400).send({ error: true, msg: error });
 	}
 });
+
+export const USER_TYPES = {
+	100: "VOLUNTEER",
+	500: "ADMIN",
+	1000: "SUPER_ADMIN"
+};
 
 
 export default userRouter;
