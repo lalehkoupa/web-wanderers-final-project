@@ -67,17 +67,17 @@ jobsRouter
 	try {
 		const { id } = req.params;
 
-		const week = await prisma.week.findUnique({
+		const job = await prisma.job.findUnique({
 			where: { id: parseInt(id) },
-			include: { jobs: true }
+			include: { week: true }
 		});
 
-		if(!week) {
-			res.status(404).json({ error: true, msg: "Cannot find this week :(" });
+		if(!job) {
+			res.status(404).json({ error: true, msg: "Cannot find this job :(" });
 			return;
 		}
 
-		res.status(200).json({ msg: "week added successfully!", data: week });
+		res.status(200).json({ msg: "Job added successfully!", data: job });
 	} catch (error) {
 		console.log("error ===", error);
 		res.status(404).json({ error: true, msg: error });
