@@ -1,18 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Posts = ({ isChecked, setIsChecked, posts }) => {
-  const handleClick = (event) => {
-    const keyIndex = event.target.value;
-    const index = isChecked.indexOf(keyIndex);
-    let listChecked = [...isChecked];
-    if (index === -1 && event.target.checked)
-      setIsChecked(listChecked.concat(keyIndex));
-    if (index !== -1 && !event.target.checked) {
-      listChecked.splice(index, 1);
-      setIsChecked(listChecked);
-    }
-  };
+const Posts = ({  posts }) => {
+
 
   return (
     <div className="card">
