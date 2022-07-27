@@ -7,6 +7,6 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "cd api && npm install && node index.ts"
+    "start": "cd api && node index.ts"
   }
 }
