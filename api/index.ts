@@ -1,13 +1,21 @@
-import express from "express";
+import express, { Request, Response} from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+
 import { router } from "./config/router";
 
+const port = process.env.PORT || 4000;
 const app = express();
-const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("Api alive");
-});
+app.use(cors());
+app.use(express.json());
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get("/", (req: Request, res: Response) => res.send("I'm alive!"));
+
+// Route to all of our api routes.
 app.use("/api", router);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
