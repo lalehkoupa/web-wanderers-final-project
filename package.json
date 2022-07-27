@@ -2,11 +2,11 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "cd api && npm install && node server.js"
+    "start": "cd api && npm install && node index.ts"
   }
 }

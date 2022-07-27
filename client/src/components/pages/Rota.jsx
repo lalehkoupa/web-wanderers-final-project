@@ -1,50 +1,51 @@
 import React from "react";
 import Hero from "../molecules/Hero";
-import { useEffect } from "react";
-import { useState } from "react";
-import exampleJobs from "../../exampleJobs.json";
+// import { useEffect } from "react";
+import { useState, useEffect } from "react";
+// import exampleJobs from "../../exampleJobs.json";
 import axios from "axios";
 import Posts from "../molecules/Posts";
 import Pagination from "../molecules/Pagination";
-
 import { useParams } from "react-router-dom";
 
 const Rota = () => {
-  let { date } = useParams();
-
-  const [isChecked, setIsChecked] = useState(false);
-  const [posts, setPost] = useState();
-  const [loading, setLoading] = useState(false);
+  const [isChecked, setIsChecked] = useState([]);
+  const [posts, setPost] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
+  let { day, month, year } = useParams();
 
-  exampleJobs = exampleJobs.filter((rol) => rol.date === date);
+  let date = `${day}/${month}/${year}`;
   useEffect(() => {
     const fetchPost = async () => {
-      const res = await axios.get(
-        "https://web-wanderers-cyf.herokuapp.com/rota"
-      );
+      const res = await axios.get("http://localhost:8000/api/job");
       setPost(res.data);
-      setLoading(false);
     };
     fetchPost();
   }, []);
+  let exampleJobs = posts.filter((rol) => rol.date === date);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPost = exampleJobs.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  console.log(posts);
   return (
     <>
       <Hero />
       <div className="container mt-5">
-        {/* <h1 className=" text-primary mb-3">This is the Rota</h1> */}
-        <Posts loading={loading} posts={currentPost} />
+        <h1 className=" text-primary mb-3">This is the Rota</h1>
+        <Posts
+          posts={currentPost}
+          setIsChecked={setIsChecked}
+          isChecked={isChecked}
+        />
         <Pagination
           postsPerPage={postsPerPage}
           totalPost={exampleJobs.length}
           paginate={paginate}
         />
       </div>
+      <div class="text-center"></div>
     </>
   );
 };

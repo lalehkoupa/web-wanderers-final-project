@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import ClassRow from "./ClassRow";
-import _ from "lodash"
+import _ from "lodash";
 
 const Classes = () => {
   const [data, setData] = useState([]);
 
-	useEffect(() => {
-		getData();
-	}, []);
+  useEffect(() => {
+    getData();
+  }, []);
 
-	const getData = async() =>
-	{
-		const res = await fetch("http://localhost:8000/api/weeks");
-		const data = await res.json();
+  const getData = async () => {
+    const res = await fetch("http://localhost:8000/api/week");
+    const data = await res.json();
 
-		setData(data);
-	};
+    setData(data);
+  };
 
   return (
     <>
@@ -27,8 +26,6 @@ const Classes = () => {
             available={oneClass.openSlots}
             date={oneClass.weekDate}
             filled={oneClass.filledSlots}
-            startTime={oneClass.startTime}
-            endTime={oneClass.endDate}
           />
         ))}
       </div>

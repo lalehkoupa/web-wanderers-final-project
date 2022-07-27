@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css"; //Mohammad imported this .App.css as it was not imported when it was merged, hence the styling was not working for you none of you
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
@@ -19,8 +19,11 @@ const App = () => {
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/rota/:date" element={<Rota />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/rota/:day/:month/:year" element={<Rota />} />
+          <Route
+            path="/signup/:id/:jobTitle/:day/:month/:year/:time"
+            element={<SignUp />}
+          />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>

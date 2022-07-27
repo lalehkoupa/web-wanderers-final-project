@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
-import { rotaData } from "./rotaData";
+import { weekData } from "./weekData";
 
 // handles the database connections for us
 const prisma = new PrismaClient();
@@ -10,21 +10,19 @@ const run = async() =>
 {
 	// We Promise all becuase it runs faster than doing indervidual awaits.
 	await Promise.all(
-		rotaData.map(async(rota) =>
+		weekData.map(async(week) =>
 		{
 			// upsert will either update a row if it exsists, or create a new row if it does not.
 			// with upsert we can write queries in JavaScript that are translated in to SQL for us
-			return prisma.rota.upsert({
-				where: { rotaName: rota.rotaName },
+			return prisma.week.upsert({
+				where: { weekDate: week.weekDate },
 				update: {},
 				create: {
-					rotaName: rota.rotaName,
-					startDate: rota.startDate,
-					endDate: rota.endDate,
-					openSlots: rota.openSlots,
-					filledSlots: rota.filledSlots,
+					weekDate: week.weekDate,
+					openSlots: week.openSlots,
+					filledSlots: week.filledSlots,
 					jobs: {
-						create: rota.jobs.map((job) => ({
+						create: week.jobs.map((job) => ({
 							jobTitle: job.jobTitle,
 							date: job.date,
 							startTime: job.startTime,

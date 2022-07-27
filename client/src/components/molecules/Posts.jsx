@@ -1,17 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Posts = ({ isChecked, setIsChecked, posts }) => {
-  const handleClick = (event) => {
-    const keyIndex = event.target.value;
-    const index = isChecked.indexOf(keyIndex);
-    let listChecked = [...isChecked];
-    if (index === -1 && event.target.checked)
-      setIsChecked(listChecked.concat(keyIndex));
-    if (index !== -1 && !event.target.checked) {
-      listChecked.splice(index, 1);
-      setIsChecked(listChecked);
-    }
-  };
+const Posts = ({  posts }) => {
+
+
   return (
     <div className="card">
       {posts.map((rota) => (
@@ -31,18 +23,13 @@ const Posts = ({ isChecked, setIsChecked, posts }) => {
                 1 of {rota.availableSpots} slots filled{" "}
               </li>
               <li className="list-group-item rota_container">
-                Sign UP
-                <input
-                  className="form-check-input-2 ms-2 me-1"
-                  type="checkbox"
-                  value={rota.id}
-                  key={rota.id}
-                  aria-label="..."
-                  onChange={handleClick}
-                  defaultChecked={
-                    isChecked.indexOf(rota.id.toString()) !== -1 ? true : false
-                  }
-                />
+                <Link
+                  to={`/signUp/${rota.id}/${rota.jobTitle}/${rota.date}/${rota.startTime}-${rota.endTime}`}
+                >
+                  <button type="button" class="btn btn-primary mt-0">
+                    Sign Up
+                  </button>
+                </Link>
               </li>
             </ul>
           </span>

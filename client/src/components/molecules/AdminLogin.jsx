@@ -25,7 +25,7 @@ const AdminLogin = ({ setToken }) => {
     if (!formData.email || !formData.password) {
       setError("It's mandatory to fill up all fields");
       return false;
-    } else {
+    } 
       try {
         // const response = await Axios.post("/api/login", formData);
         // const token = response.data.token;
@@ -38,7 +38,7 @@ const AdminLogin = ({ setToken }) => {
       } catch (err) {
         setError(err);
       }
-    }
+  
   };
 
   return (
