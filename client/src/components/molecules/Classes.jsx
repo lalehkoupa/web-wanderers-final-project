@@ -11,7 +11,7 @@ const Classes = () => {
 
 	const getData = async() =>
 	{
-		const res = await fetch("http://localhost:4000/api/rota");
+		const res = await fetch("http://localhost:8000/api/week");
 		const data = await res.json();
 
 		setData(data);
@@ -26,10 +26,9 @@ const Classes = () => {
           <ClassRow
             key={index}
             available={oneClass.openSlots}
-            date={oneClass.startDate}
+            date={oneClass.weekDate}
             filled={oneClass.filledSlots}
-            startTime={oneClass.startTime}
-            endTime={oneClass.endDate}
+            
           />
         ))}
       </div>
