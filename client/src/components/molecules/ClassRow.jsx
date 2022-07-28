@@ -10,7 +10,7 @@ const ClassRow = ({ available, filled, date }) => {
         <>
 
           <Link to={`/rota/${date}`}>
-            <button type="button" class="btn btn-primary mt-0">
+            <button type="button" className="btn btn-primary mt-0">
               {date}
             </button>
           </Link>

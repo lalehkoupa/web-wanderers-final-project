@@ -283,6 +283,7 @@ body {
 .admin-form-container p {
   margin-top: 2.5em;
   margin-bottom: 3.5em;
+  font-size: large;
 }
 
 .admin-form {
