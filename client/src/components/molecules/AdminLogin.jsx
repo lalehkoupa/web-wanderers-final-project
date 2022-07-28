@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import Button from "../atoms/Button";
-import Axios from "axios";
-//import { useHistory } from "react-router-dom";
-
 const AdminLogin = ({ setToken }) => {
   const [formData, setFormData] = useState({
     email: "",
@@ -22,23 +19,42 @@ const AdminLogin = ({ setToken }) => {
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
 
-    if (!formData.email || !formData.password) {
-      setError("It's mandatory to fill up all fields");
-      return false;
-    } 
+    if (validateForm()) {
       try {
-        // const response = await Axios.post("/api/login", formData);
-        // const token = response.data.token;
-        const token = { token: "test123" };
-        //console.log(token);
-        setToken(token);
+        const res= await fetch("http://localhost:4000/api/auth/login", {
+ 
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify(formData),
+        });
+        const resData = await res.json();
+      
+        if(res.status!==200){
+         setError(resData.msg);
+    
+        }else{
+         const token = resData.token;
+         console.log(token);
+         setToken(token);
+       }  
+     } catch (error) {
+       console.log("Error", error);
+       setError(error);
+     }
+   }
+  }
 
-        //window.localStorage.setItem("token", token);
-        //useHistory.goBack();
-      } catch (err) {
-        setError(err);
-      }
+   const validateForm = () => {
+     if (!formData.email || !formData.password) {
+      setError("It's mandatory to fill up all fields");
+      return false}
   
+    if (!formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+      setError("Please enter the valid email address");
+     return false;
+   } else {
+     return true;
+    }
   };
 
   return (

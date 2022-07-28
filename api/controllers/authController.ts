@@ -7,7 +7,6 @@ const authRouter = Router();
 
 authRouter.post("/registerAdmin", async(req, res) =>{
  	const { email, password} = req.body;
-
 	try {
 		//console.log(bcrypt(password));
 		const newUser = await prisma.user.create({
@@ -33,7 +32,7 @@ authRouter.post("/registerAdmin", async(req, res) =>{
 	const {email,password} = req.body;
 	
 
-	if(!email) res.status(404).send("No id?");
+	//if(!email) res.status(404).send("No id?");
 	//console.log(email);
 	try {
 		const userToLogin = await prisma.user.findUnique({where: {email: email,},});
@@ -42,12 +41,15 @@ authRouter.post("/registerAdmin", async(req, res) =>{
 		if(!userToLogin)
 		return res.status(404).json({ success: false, msg: "Woah! Have you registered?"})
 			//throw new ReferenceError("Woah! Have you registered?");
+		if (userToLogin.password!==password){
+			return res.status(404).json({ success: false, msg: "Hmm... That's not correct password"})
+		}
 
-const isPasswordCorrect=await bcrypt.compare(password, userToLogin.password);
-console.log(isPasswordCorrect);
-		if( !isPasswordCorrect)
-			//throw new ReferenceError("Hmm... That's not correct");
-		return res.status(404).json({ success: false, msg: "Hmm... That's not correct password"})
+		// const isPasswordCorrect=await bcrypt.compare(password, userToLogin.password);
+		// console.log(isPasswordCorrect);
+		// if( !isPasswordCorrect)
+		// 	//throw new ReferenceError("Hmm... That's not correct");
+		// return res.status(404).json({ success: false, msg: "Hmm... That's not correct password"})
 
 
 		const token = jwt.sign({ sub: userToLogin.id }, "abc", {expiresIn: "7 days",});
