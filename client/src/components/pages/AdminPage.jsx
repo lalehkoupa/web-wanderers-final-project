@@ -20,7 +20,7 @@ const AdminPage = () => {
     setUserData(data);
   };
   const fetchJobData = async () => {
-    const res = await axios.get("http://localhost:4000/api/jobs");
+    const res = await axios.get("http://localhost:4000/api/job");
     const data = await res.json();
     setJobData(data);
   };

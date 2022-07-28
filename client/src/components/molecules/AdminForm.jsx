@@ -12,8 +12,7 @@ const AdminForm = ({ setAddJobActive }) => {
     date: "",
     startTime: "",
     endTime: "",
-    availableSlots: "",
-    // weekid: 1,
+    availableSlots: 0,
   });
   const [error, setError] = useState(null);
 
@@ -34,10 +33,11 @@ const AdminForm = ({ setAddJobActive }) => {
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
+  
   const handleSubmit = async () => {
     if (validateForm()) {
       try {
-        await fetch("http://localhost:8000/api/job", {
+        await fetch("http://localhost:4000/api/job", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),

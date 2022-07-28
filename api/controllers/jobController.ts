@@ -1,5 +1,8 @@
+import { Week } from "@prisma/client";
 import { Router } from "express";
+import { connect } from "http2";
 import prisma from "../config/prisma";
+import { weekData } from "../prisma/weekData";
 
 const jobsRouter = Router();
 
@@ -38,23 +41,50 @@ jobsRouter
         date,
         startTime,
         endTime,
-        slots,
-        filledSlots = 0,
-        weekId,
+        availableSlots,
       } = req.body;
-
+      const availableSlot:number = +availableSlots;
+      const  weekId = await prisma.week.findUnique({
+        select:{
+          id:true,
+        },
+        where:{
+          weekDate :date
+        }
+      })
+      var id: any ;
+      if(weekId) { id = weekId?.id;
+      const updatedWeek = await prisma.week.update({
+        where: { id: id },
+        data: {
+          openSlots: {
+            increment: availableSlot,
+          },
+        },
+      }); }
+      if(!weekId) {const  Week = await prisma.week.create({
+        data: {
+          weekDate: date,
+          openSlots: availableSlot,
+          filledSlots: 0,
+        },
+        select:{
+          id:true,
+        }
+      });id = Week?.id;}
+      
+      console.log(req.body, "weekId", weekId);
       const job: Job = await prisma.job.create({
         data: {
           jobTitle: jobTitle,
           date: date,
           startTime: startTime,
           endTime: endTime,
-          slots: slots,
-          filledSlots: filledSlots,
-          weekId: weekId,
+          slots: availableSlot,
+          filledSlots: 0,
+          weekId: id,
         },
       });
-
       return res
         .status(200)
         .json({ msg: "Week added successfully!", data: job });
