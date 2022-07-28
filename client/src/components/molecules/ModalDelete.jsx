@@ -1,12 +1,19 @@
-import axios from "axios";
+import { useState } from "react";
 
 const ModalDelete = ({ text, btnText, selectedJob }) => {
+  const [response, setResponse] = useState();
+  console.log(selectedJob.id);
+  console.log(response);
   const onclickHandle = async () => {
-    const res = await axios({
-      url: `http://localhost:8000/api/job/:${selectedJob.id}`,
-      method: "delete",
-    });
-    res.json();
+    const res = await fetch(
+      `http://localhost:4000/api/job/:${selectedJob.id}`,
+      {
+        method: "delete",
+      }
+    );
+    const data = res.json();
+    console.log(data);
+    setResponse(data);
   };
   return (
     <div className="container">

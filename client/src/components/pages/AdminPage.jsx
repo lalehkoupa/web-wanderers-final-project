@@ -15,12 +15,12 @@ const AdminPage = () => {
   const [addJobActive, setAddJobActive] = useState(false);
 
   const fetchUserData = async () => {
-    const res = await axios.get("http://localhost:4000/api/user");
+    const res = await fetch("http://localhost:4000/api/user");
     const data = await res.json();
     setUserData(data);
   };
   const fetchJobData = async () => {
-    const res = await axios.get("http://localhost:4000/api/job");
+    const res = await fetch("http://localhost:4000/api/job");
     const data = await res.json();
     setJobData(data);
   };

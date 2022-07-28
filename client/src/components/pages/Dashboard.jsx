@@ -5,13 +5,15 @@ import AdminLogin from "../molecules/AdminLogin";
 import UseToken from "../molecules/UseToken";
 import Button from "../atoms/Button";
 import AdminPage from "./AdminPage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
   let { token, setToken } = UseToken();
   const [success, setSuccess] = useState(false);
-  const[email,setEmail]=useState("");
+  const [email, setEmail] = useState("");
 
-console.log(token);
+  console.log(token);
   const handleSignOut = () => {
     setToken("");
     localStorage.clear();
@@ -21,10 +23,9 @@ console.log(token);
     setSuccess(isSuccess);
   };
 
-  const handleSetEmail=(email)=>{
+  const handleSetEmail = (email) => {
     setEmail(email);
-
-  }
+  };
   // const handleAddUser = () => {
   //   setSuccess(false);
   // };
@@ -34,18 +35,19 @@ console.log(token);
         {!token ? (
           <div>
             {/*<GoogleLogin />*/}
-            <AdminLogin setToken={setToken} setEmail={handleSetEmail}/>
+            <AdminLogin setToken={setToken} setEmail={handleSetEmail} />
           </div>
         ) : (
           <div>
             <div className="admin-log-out-container">
               <div className="flex">
-                <h4>{email}</h4>
-                <img
+                <h4>{token}</h4>
+                {/* <img
                   src={`${process.env.PUBLIC_URL}/image/login_profile-circled.svg`}
                   alt="loginProfile"
                   className="profile-image"
-                />
+                /> */}
+                <FontAwesomeIcon icon={faCircleUser} className="fa-2x mx-2" />
               </div>
 
               <Button
