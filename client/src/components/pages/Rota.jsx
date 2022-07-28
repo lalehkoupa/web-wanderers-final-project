@@ -1,6 +1,5 @@
 import React from "react";
 import Hero from "../molecules/Hero";
-// import { useEffect } from "react";
 import { useState, useEffect } from "react";
 // import exampleJobs from "../../exampleJobs.json";
 import axios from "axios";
@@ -22,6 +21,8 @@ const Rota = () => {
       setPost(res.data);
     };
     fetchPost();
+    //scroll up to the top of the page when we redirect from homepage to this component
+    window.scrollTo(0, 0);
   }, []);
   let exampleJobs = posts.filter((rol) => rol.date === date);
   const indexOfLastPost = currentPage * postsPerPage;
@@ -29,6 +30,8 @@ const Rota = () => {
   const currentPost = exampleJobs.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   console.log(posts);
+
+  
   return (
     <>
       <Hero />

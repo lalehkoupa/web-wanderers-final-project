@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../atoms/Button";
-const AdminLogin = ({ setToken }) => {
+const AdminLogin = ({ setToken,setEmail }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,9 +17,9 @@ const AdminLogin = ({ setToken }) => {
   };
 
   const handleLoginSubmit = async (event) => {
-    event.preventDefault();
-
+   
     if (validateForm()) {
+        event.preventDefault();
       try {
         const res= await fetch("http://localhost:4000/api/auth/login", {
  
@@ -33,10 +33,11 @@ const AdminLogin = ({ setToken }) => {
          setError(resData.msg);
     
         }else{
-         const token = resData.token;
-         console.log(token);
+         const token = { token: resData.token };
+         setEmail(formData.email);
          setToken(token);
-       }  
+       } 
+
      } catch (error) {
        console.log("Error", error);
        setError(error);
@@ -45,15 +46,17 @@ const AdminLogin = ({ setToken }) => {
   }
 
    const validateForm = () => {
-     if (!formData.email || !formData.password) {
+    if (!formData.email || !formData.password) {
       setError("It's mandatory to fill up all fields");
       return false}
   
     if (!formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
       setError("Please enter the valid email address");
-     return false;
+      return false;
+
    } else {
-     return true;
+      setError("");
+      return true;
     }
   };
 
