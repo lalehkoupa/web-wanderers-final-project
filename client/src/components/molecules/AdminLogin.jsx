@@ -33,8 +33,7 @@ const AdminLogin = ({ setToken,setEmail }) => {
          setError(resData.msg);
     
         }else{
-         const token = { token: resData.token };
-         setEmail(formData.email);
+         const token = { token: resData.token , email:formData.email};
          setToken(token);
        } 
 

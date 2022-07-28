@@ -9,11 +9,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
-  let { token, setToken } = UseToken();
-  const [success, setSuccess] = useState(false);
-  const [email, setEmail] = useState("");
+  let { token,email, setToken } = UseToken();
 
-  console.log(token);
+  const [success, setSuccess] = useState(false);
+  //const [email, setEmail] = useState("");
+//console.log(email);
+//console.log(token);
   const handleSignOut = () => {
     setToken("");
     localStorage.clear();
@@ -24,7 +25,7 @@ const Dashboard = () => {
   };
 
   const handleSetEmail = (email) => {
-    setEmail(email);
+    //setEmail(email);
   };
   // const handleAddUser = () => {
   //   setSuccess(false);

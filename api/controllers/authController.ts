@@ -32,15 +32,15 @@ authRouter
           });
         });
       });}else{
-		      return res.status(422).json({ message: "user already exist" });
+		      return res.status(404).json({ msg: "user already exist" });
 
 	  }
 
 
-      return res.status(202).json({ message: `Welcome ${email}!` });
+      return res.status(200).json({ msg: `New Admin has been added!` });
     } catch (err) {
       console.log("error", err);
-      return res.status(422).json({ message: err });
+      return res.status(404).json({ msg: err });
     }
   })
 
@@ -66,7 +66,7 @@ authRouter
       if (!match) {
         return res
           .status(404)
-          .json({ success: false, msg: "password is not correct password" });
+          .json({ success: false, msg: "Password is incorrect" });
       }
  if (userToLogin.userType !== 500) {
    return res.status(404).json({ success: false, msg: "Not authorized" });
