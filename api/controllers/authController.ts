@@ -5,6 +5,9 @@ import { Router } from "express";
 
 const authRouter = Router();
 
+const SECRET = "alright then, keep your secrets";
+
+
 authRouter.post("/registerAdmin", async(req, res) =>{
  	const { email, password} = req.body;
 	try {
@@ -20,6 +23,7 @@ authRouter.post("/registerAdmin", async(req, res) =>{
 		}
 	});
 		//console.log("new user ", newUser.firstName);
+
 		return res.status(202).json({ message: `Welcome ${newUser.email}!` });
 	} catch (err) {
 		console.log("error", err);
@@ -27,6 +31,7 @@ authRouter.post("/registerAdmin", async(req, res) =>{
 	}
 
 })
+
 
 .post("/login", async(req, res) =>{
 	const {email,password} = req.body;
@@ -52,11 +57,14 @@ authRouter.post("/registerAdmin", async(req, res) =>{
 		// return res.status(404).json({ success: false, msg: "Hmm... That's not correct password"})
 
 
-		const token = jwt.sign({ sub: userToLogin.id }, "abc", {expiresIn: "7 days",});
+		const token = jwt.sign({ sub: userToLogin.id }, SECRET, {
+      expiresIn: "1h",
+    });
 
 		return res
 		.status(200)
 		.json({ message: `Welcome back ${userToLogin.email}`, token });
+
 
 	}catch (error)
 		{
