@@ -41,7 +41,7 @@ const Dashboard = () => {
           <div>
             <div className="admin-log-out-container">
               <div className="flex">
-                <h4>{token}</h4>
+                <h4>{email}</h4>
                 {/* <img
                   src={`${process.env.PUBLIC_URL}/image/login_profile-circled.svg`}
                   alt="loginProfile"
