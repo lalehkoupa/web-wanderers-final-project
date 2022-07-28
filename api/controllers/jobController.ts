@@ -38,7 +38,7 @@ jobsRouter
         date,
         startTime,
         endTime,
-        slots,
+        availableSlots,
         filledSlots = 0,
         weekId,
       } = req.body;
@@ -49,15 +49,14 @@ jobsRouter
           date: date,
           startTime: startTime,
           endTime: endTime,
-          slots: slots,
-          filledSlots: filledSlots,
-          weekId: weekId,
+          slots: parseInt(availableSlots),
+          filledSlots: parseInt(filledSlots),
+          weekId: parseInt(weekId),
         },
       });
-
       return res
         .status(200)
-        .json({ msg: "Week added successfully!", data: job });
+        .json({ msg: "Job added successfully!", data: job });
     } catch (error) {
       console.log("error ===", error);
       res.status(404).json({ error: true, msg: error });
@@ -83,17 +82,50 @@ jobsRouter
       res.status(404).json({ error: true, msg: error });
     }
   })
+  .put("/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const {
+        jobTitle,
+        date,
+        startTime,
+        endTime,
+        slots,
+        filledSlots = 0,
+      } = req.body;
+      await prisma.job.update({
+        where: {
+          id: parseInt(id),
+        },
+        data: {
+          jobTitle: jobTitle,
+          date: date,
+          startTime: startTime,
+          endTime: endTime,
+          slots: slots,
+          filledSlots: filledSlots,
+        },
+      });
+
+      res.status(200).json({ msg: "Job updated!" });
+      return;
+    } catch (err) {
+      res.status(404).json({ error: "there is an error", msg: err });
+    }
+  })
   .delete("/:id", async (req, res) => {
     try {
       const { id } = req.body;
-      const selected = await prisma.job.findUnique({
+      const selected = await prisma.job.deleteMany({
         where: { id: parseInt(id) },
       });
+
+      console.log(selected);
       if (!selected) {
         res.status(404).json({ error: true, msg: "Cannot find this job" });
         return;
       }
-      res.status(200).json({ msg: "job deleted successfully!" });
+      res.status(200).json({ msg: "Job deleted successfully!" });
     } catch (err) {
       res.status(404).json({ error: true, msg: err });
     }
