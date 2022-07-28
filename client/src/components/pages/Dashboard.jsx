@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import GoogleLogin from "../molecules/GoogleLogin";
+//import GoogleLogin from "../molecules/GoogleLogin";
 import AdminLogin from "../molecules/AdminLogin";
-import AdminSignUp from "../molecules/AdminSignUp";
+//import AdminSignUp from "../molecules/AdminSignUp";
 import UseToken from "../molecules/UseToken";
 import Button from "../atoms/Button";
 import AdminPage from "./AdminPage";
@@ -10,10 +10,6 @@ const Dashboard = () => {
   let { token, setToken } = UseToken();
   const [success, setSuccess] = useState(false);
 
-  //for clearing localStorage if user close the window
-  // window.onbeforeunload = function () {
-  //   localStorage.clear();
-  // };
 
   const handleSignOut = () => {
     setToken("");
@@ -24,15 +20,15 @@ const Dashboard = () => {
     setSuccess(isSuccess);
   };
 
-  const handleAddUser = () => {
-    setSuccess(false);
-  };
+  // const handleAddUser = () => {
+  //   setSuccess(false);
+  // };
   const loadPage = () => {
     return (
       <>
         {!token ? (
           <div>
-            <GoogleLogin />
+            {/*<GoogleLogin />*/}
             <AdminLogin setToken={setToken} />
           </div>
         ) : (

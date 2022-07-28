@@ -5,12 +5,12 @@ const Homepage = () => {
   return (
     <div>
       <Hero text="Can You Help?" />
-      <div class="container-fluid text-center bg-yellow_green mt-5 mb-3">
-        <p class="pb-2 pt-2 h3 mb-4">
+      <div className="container-fluid text-center bg-yellow_green mt-5 mb-3">
+        <p className="pb-2 pt-2 h3 mb-4">
           New venue: Stoke Newington School, Clissold Road N16 9EX
         </p>
       </div>
-      <div class="container col-10 pt-5">
+      <div className="container col-10 pt-5">
         <p>
           There are Lots of ways you can get involved here at AKWAABA. You can
           help as a kitchen supervisor, driver, etc. You can choose suitable
