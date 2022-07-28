@@ -2,9 +2,11 @@ import DatePicker from "react-datepicker";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { addMonths } from "date-fns";
+import moment from "moment";
 
 const AdminForm = ({ setAddJobActive }) => {
   const [date, setDate] = useState("");
+
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [form, setForm] = useState({
@@ -13,10 +15,11 @@ const AdminForm = ({ setAddJobActive }) => {
     startTime: "",
     endTime: "",
     availableSlots: "",
-    // weekid: 1,
+    filledSlots: 0,
+    weekId: 1,
   });
   const [error, setError] = useState(null);
-
+  const [response, setResponse] = useState("");
   const validateForm = () => {
     if (
       !form.jobTitle ||
@@ -34,17 +37,18 @@ const AdminForm = ({ setAddJobActive }) => {
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (validateForm()) {
       try {
-        await fetch("http://localhost:8000/api/job", {
+        await fetch("http://localhost:4000/api/job", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
         });
         setError(null);
+        setResponse("Job added!");
       } catch (err) {
-        console.log(err);
         setError(err);
       }
     }
@@ -73,7 +77,7 @@ const AdminForm = ({ setAddJobActive }) => {
           selected={date}
           onChange={(e) => {
             setDate(e);
-            handleChange("date", e.toISOString().substring(0, 10));
+            handleChange("date", moment(e).format("DD/MM/YYYY"));
           }}
           closeOnScroll={true}
           dateFormat="dd/MM/yyyy"
@@ -82,7 +86,6 @@ const AdminForm = ({ setAddJobActive }) => {
           showDisabledMonthNavigation
           className="form-control"
         />
-
         <label className="fw-bold" htmlFor="starttime">
           Start time
         </label>
@@ -91,19 +94,13 @@ const AdminForm = ({ setAddJobActive }) => {
           selected={startTime}
           onChange={(e) => {
             setStartTime(e);
-            handleChange(
-              "startTime",
-              e.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })
-            );
+            handleChange("startTime", moment(e).format("HH:mm"));
           }}
           showTimeSelect
           showTimeSelectOnly
           timeIntervals={15}
           timeCaption="Start time"
-          dateFormat="HH:mm"
+          timeFormat="HH:mm aa"
           className="form-control"
         />
 
@@ -115,19 +112,14 @@ const AdminForm = ({ setAddJobActive }) => {
           selected={endTime}
           onChange={(e) => {
             setEndTime(e);
-            handleChange(
-              "endTime",
-              e.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })
-            );
+            console.log(e);
+            handleChange("endTime", moment(e).format("HH:mm"));
           }}
           showTimeSelect
           showTimeSelectOnly
           timeIntervals={15}
+          timeFormat="HH:mm aa"
           timeCaption="End time"
-          dateFormat="HH:mm"
           className="form-control"
         />
         <label className="fw-bold" htmlFor="availableslots">
@@ -140,7 +132,16 @@ const AdminForm = ({ setAddJobActive }) => {
           value={form.availableSlots}
           onChange={(e) => handleChange("availableSlots", e.target.value)}
         ></input>
-        {error ? <p className="text-danger">{error}</p> : ""}
+        {error ? (
+          <p className="text-danger text-center fw-bold">{error}</p>
+        ) : (
+          ""
+        )}
+        {response ? (
+          <p className="text-primary text-center fw-bold">{response}</p>
+        ) : (
+          ""
+        )}
 
         <button className="btn mb-1" onClick={handleSubmit} type="submit">
           Confirm

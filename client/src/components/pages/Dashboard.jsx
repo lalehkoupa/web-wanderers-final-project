@@ -5,6 +5,8 @@ import AdminSignUp from "../molecules/AdminSignUp";
 import UseToken from "../molecules/UseToken";
 import Button from "../atoms/Button";
 import AdminPage from "./AdminPage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
   let { token, setToken } = UseToken();
@@ -40,11 +42,12 @@ const Dashboard = () => {
             <div className="admin-log-out-container">
               <div className="flex">
                 <h4>{token}</h4>
-                <img
+                {/* <img
                   src={`${process.env.PUBLIC_URL}/image/login_profile-circled.svg`}
                   alt="loginProfile"
                   className="profile-image"
-                />
+                /> */}
+                <FontAwesomeIcon icon={faCircleUser} className="fa-2x mx-2" />
               </div>
 
               <Button

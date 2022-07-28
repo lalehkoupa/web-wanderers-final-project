@@ -24,6 +24,13 @@ body {
   background-color: #d1cd67;
 }
 
+.hero {
+  position: relative;
+  background-image: url("../public/image/hero-image-hands.png");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
 /*navigation */
 .offcanvas-start {
   width: 60%;
@@ -35,21 +42,7 @@ body {
 .offcanvas.show {
   background-color: var(--yellow-green);
 }
-.hero {
-  position: relative;
-  background-image: url("../public/image/hero-image-hands.png");
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
-}
-/* Header logo and navbar  */
-/* .logoAndNav {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-  align-items: center;
-  padding: 0.5rem 3rem;
-} */
+
 .desktop-navigation-div {
   display: none;
 }
@@ -61,27 +54,17 @@ body {
   width: 190px;
   height: 140px;
 }
-/* nav */
 
 .nav {
   display: flex;
   gap: 1em;
   font-weight: bold;
 }
-
-/*
-  font-size: 1rem;
+.navbar-toggler {
+  position: relative;
+  right: 0;
+  top: 0;
 }
-.navlink {
-  border-radius: 12px;
-}
-.navlink:hover {
-  transition: 0.39s ease-out;
-  opacity: 0.8;
-  background-color: rgb(41, 2, 74);
-  padding-left: 0.25rem;
-} */
-
 /* about page */
 .about-div {
   padding: 5%;
@@ -336,7 +319,7 @@ body {
   margin-left: 0.5em;
 }
 
-.confirmationEmail{
+.confirmationEmail {
   font-size: large;
   height: 300px;
   margin-top: 3rem;
@@ -406,8 +389,8 @@ body {
   .sign-up-form input {
     width: 65%;
   }
-  .confirmationEmail{
-     height: 100px;
+  .confirmationEmail {
+    height: 100px;
   }
 }
 @media only screen and (min-width: 768px) {
