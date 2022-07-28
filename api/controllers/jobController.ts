@@ -42,8 +42,6 @@ jobsRouter
         startTime,
         endTime,
         availableSlots,
-        filledSlots = 0,
-        weekId,
       } = req.body;
       const availableSlot: number = +availableSlots;
       const weekId = await prisma.week.findUnique({
@@ -87,9 +85,9 @@ jobsRouter
           date: date,
           startTime: startTime,
           endTime: endTime,
-          slots: parseInt(availableSlots),
-          filledSlots: parseInt(filledSlots),
-          weekId: parseInt(weekId),
+          slots: availableSlot,
+          filledSlots: 0,
+          weekId: id,
         },
       });
       return res
