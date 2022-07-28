@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../atoms/Button";
-const AdminLogin = ({ setToken,setEmail }) => {
+const AdminLogin = ({ setToken}) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
