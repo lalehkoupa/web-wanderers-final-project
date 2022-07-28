@@ -18,8 +18,8 @@ const Classes = () => {
 
   return (
     <>
-      <h2 class="text-center fw-bold">Availabe Dates and Slots</h2>
-      <div class="row d-flex justify-content-center mb-5">
+      <h2 className="text-center fw-bold">Availabe Dates and Slots</h2>
+      <div className="row d-flex justify-content-center mb-5">
         {_.map(data, (oneClass, index) => (
           <ClassRow
             key={index}

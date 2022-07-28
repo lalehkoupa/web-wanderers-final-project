@@ -45,7 +45,7 @@ const Rota = () => {
           paginate={paginate}
         />
       </div>
-      <div class="text-center"></div>
+      <div className="text-center"></div>
     </>
   );
 };
