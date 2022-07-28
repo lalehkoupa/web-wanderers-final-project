@@ -18,7 +18,7 @@ const Rota = () => {
   let date = `${day}/${month}/${year}`;
   useEffect(() => {
     const fetchPost = async () => {
-      const res = await axios.get("http://localhost:8000/api/job");
+      const res = await axios.get("http://localhost:4000/api/job");
       setPost(res.data);
     };
     fetchPost();

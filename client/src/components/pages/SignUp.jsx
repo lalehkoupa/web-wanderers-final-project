@@ -30,7 +30,7 @@ const SignUp = () => {
  
    if (validateForm()) {
      try {
-        const res= await fetch("http://localhost:8000/api/user/signUpForJob ", {
+        const res= await fetch("http://localhost:4000/api/user/signUpForJob ", {
  
          method: "POST",
          headers: { "Content-Type": "application/json" },
