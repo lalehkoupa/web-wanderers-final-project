@@ -102,7 +102,7 @@ userRouter.get("/:id", async(req, res) =>
      			 },
 			})
 			if (userAppliedBefore.length!==0){
-				res.status(404).send({ error: true, msg: "This user already signed up for this job" }) ;
+				res.status(404).send({ error: true, msg: "You already have signed up for this job" }) ;
 				return;
 			}
 			//update the new information that user has entered for existing user
@@ -135,11 +135,6 @@ userRouter.get("/:id", async(req, res) =>
 		if(!signUpForJob)
 			res.status(404).send({ error: true, msg: "Cannot sign up for this role" });
 
-		//Laleh to add nodemailer
-		// send email confimation if everything is sucsefull.
-
-		// res.status(200).send({ sucess: true, msg: "You have signed up sucesfully!" });
-		// return;
 		//get information from job table to pass for the confirmation email body
 			const job = await prisma.job.findMany({ where: { id: jobId }});
 			sendEmail(req,res,firstName,lastName,email,job);

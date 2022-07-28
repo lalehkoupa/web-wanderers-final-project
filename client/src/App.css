@@ -336,6 +336,17 @@ body {
   margin-left: 0.5em;
 }
 
+.confirmationEmail{
+  font-size: large;
+  height: 300px;
+  margin-top: 3rem;
+  margin-left: 2rem;
+}
+
+.redirect-to-rota {
+  cursor: pointer;
+  text-decoration: none !important;
+}
 @media only screen and (max-width: 980px) {
   /* header logo  */
 
@@ -394,6 +405,9 @@ body {
   }
   .sign-up-form input {
     width: 65%;
+  }
+  .confirmationEmail{
+     height: 100px;
   }
 }
 @media only screen and (min-width: 768px) {
