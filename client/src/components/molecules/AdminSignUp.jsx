@@ -36,9 +36,11 @@ const AdminSignUp = ({ setSuccess }) => {
     ) {
       setError("It's mandatory to fill up all fields");
       return false;
-    } else if (formDataReg.passwordReg !== formDataReg.repeatPassword) {
+    } 
+    if (formDataReg.passwordReg !== formDataReg.repeatPassword) {
       setError("Both password should be same");
-    } else {
+      return false;
+    } 
       try {
         // await fetch(" ", {
         //   method: "POST",
@@ -52,7 +54,6 @@ const AdminSignUp = ({ setSuccess }) => {
         console.log("Error", error);
         setError(error);
       }
-    }
   };
 
   const emptyFieldsReg = () => {

@@ -1,57 +1,91 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import prisma from "../config/prisma";
+import { Router } from "express";
 
-const registerUser = async(req, res) => {
-	const { email, password, firstName, lastName, phoneNumber } = req.body;
+const authRouter = Router();
 
-	try {
-		const newUser = await prisma.User.create({
-			data: {
-				email: email,
-				password: password,
-				firstName: firstName,
-				lastName: lastName,
-				phoneNumber: phoneNumber,
-				userType: 500,
-			},
-		});
+const SECRET = "alright then, keep your secrets";
+const saltRounds = 10;
 
-		console.log("new user ", newUser.firstName);
-		return res.status(202).json({ message: `Welcome ${newUser.username}!` });
-	} catch (err) {
-		console.log("error", err);
-		return res.status(422).json({ message: err });
-	}
-};
+authRouter
+  .post("/registerAdmin", async (req, res) => {
+    const { email, password } = req.body;
+    try {
+	  const user = await prisma.user.findUnique({where:{
+		email:email,
+	  },
+	})
 
-const loginUser = async(req, res) => {
-	const userEmail = req.body.userEmail;
-	const password = req.body.password;
+	if(!user){
+	  bcrypt.genSalt(saltRounds, function (err, salt) {
+        bcrypt.hash(password, salt, async function (err, hash) {
+          const newUser = await prisma.user.create({
+            data: {
+              email: email,
+              password: hash,
+              firstName: "",
+              lastName: "",
+              phoneNumber: "",
+              userType: 500,
+            },
+          });
+        });
+      });}else{
+		      return res.status(422).json({ message: "user already exist" });
 
-	if(!userEmail) res.status(404).send("No id?");
-	console.log(userEmail);
-	try {
-		const userToLogin = await prisma.user.findUnique({where: {email: userEmail,},});
-
-		// console.log(userToLogin, password);
-		if(!userToLogin)
-			throw new ReferenceError("Woah! Have you registered?");
+	  }
 
 
-		if(!bcrypt.compare(password, userToLogin.password))
-			throw new ReferenceError("Hmm... That's not correct");
+      return res.status(202).json({ message: `Welcome ${email}!` });
+    } catch (err) {
+      console.log("error", err);
+      return res.status(422).json({ message: err });
+    }
+  })
+
+  .post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    //if(!email) res.status(404).send("No id?");
+    //console.log(email);
+    try {
+      const userToLogin = await prisma.user.findUnique({
+        where: { email: email },
+      });
+
+      
+      if (!userToLogin)
+        return res
+          .status(404)
+          .json({ success: false, msg: "user not register" });
+          const match = await bcrypt.compare(
+            password,
+            userToLogin.password
+          );
+      if (!match) {
+        return res
+          .status(404)
+          .json({ success: false, msg: "password is not correct password" });
+      }
+ if (userToLogin.userType !== 500) {
+   return res.status(404).json({ success: false, msg: "Not authorized" });
+ }
+ 
+      const token = jwt.sign({ sub: userToLogin.id }, SECRET, {
+        expiresIn: "1h",
+      });
+
+      return res
+        .status(200)
+        .json({ message: `Welcome back ${userToLogin.email}`, token });
+    } catch (error) {
+      console.log("AUTH ERROR!", error);
+      res.status(404).json({ error: true, msg: error });
+    }
+  });
 
 
-		const token = jwt.sign({ sub: userToLogin.id }, "abc", {expiresIn: "7 days",});
+export default authRouter;
 
-		return res
-		.status(200)
-		.json({ message: `Welcome back ${userToLogin.email}`, token });
-	} catch (err) {
-		console.log("AUTH ERROR!", err.message);
-		return res.status(422).json({ message: err.message });
-	}
-};
 
-module.exports = { loginUser, registerUser };

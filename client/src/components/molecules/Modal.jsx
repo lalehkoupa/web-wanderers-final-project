@@ -36,7 +36,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
   const handleSubmit = async () => {
     if (validateForm()) {
       try {
-        await fetch(`http://localhost:8000/jobs/:${selectedJob.id}`, {
+        await fetch(`http://localhost:4000/jobs/:${selectedJob.id}`, {
           method: "put",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),

@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState,useEffect} from "react";
 import Button from "../atoms/Button";
 import Form from "../molecules/Form";
 import { useParams } from "react-router-dom";
@@ -22,7 +22,9 @@ const SignUp = () => {
  let date = `${day}/${month}/${year}`;
  const jobObj = {"jobId":parseInt(id)}
  
- const data=_.merge({},form,jobObj);       
+ const data=_.merge({},form,jobObj);    
+ 
+ useEffect(()=>{ window.scrollTo(0, 0);},[])
  
  const handleSubmit = async (event) => {
    event.preventDefault();

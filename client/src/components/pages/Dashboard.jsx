@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import GoogleLogin from "../molecules/GoogleLogin";
+//import GoogleLogin from "../molecules/GoogleLogin";
 import AdminLogin from "../molecules/AdminLogin";
-import AdminSignUp from "../molecules/AdminSignUp";
+//import AdminSignUp from "../molecules/AdminSignUp";
 import UseToken from "../molecules/UseToken";
 import Button from "../atoms/Button";
 import AdminPage from "./AdminPage";
@@ -11,12 +11,9 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 const Dashboard = () => {
   let { token, setToken } = UseToken();
   const [success, setSuccess] = useState(false);
+  const [email, setEmail] = useState("");
 
-  //for clearing localStorage if user close the window
-  // window.onbeforeunload = function () {
-  //   localStorage.clear();
-  // };
-
+  console.log(token);
   const handleSignOut = () => {
     setToken("");
     localStorage.clear();
@@ -26,16 +23,19 @@ const Dashboard = () => {
     setSuccess(isSuccess);
   };
 
-  const handleAddUser = () => {
-    setSuccess(false);
+  const handleSetEmail = (email) => {
+    setEmail(email);
   };
+  // const handleAddUser = () => {
+  //   setSuccess(false);
+  // };
   const loadPage = () => {
     return (
       <>
         {!token ? (
           <div>
-            <GoogleLogin />
-            <AdminLogin setToken={setToken} />
+            {/*<GoogleLogin />*/}
+            <AdminLogin setToken={setToken} setEmail={handleSetEmail} />
           </div>
         ) : (
           <div>

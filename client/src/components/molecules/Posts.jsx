@@ -16,7 +16,7 @@ const Posts = ({  posts }) => {
             </p>
           </span>
 
-          <span class="badge rota_container2 ">
+          <span className="badge rota_container2 ">
             <ul className="list-group">
               <li className="list-group-item rota_container">
                 {" "}
@@ -26,7 +26,7 @@ const Posts = ({  posts }) => {
                 <Link
                   to={`/signUp/${rota.id}/${rota.jobTitle}/${rota.date}/${rota.startTime}-${rota.endTime}`}
                 >
-                  <button type="button" class="btn btn-primary mt-0">
+                  <button type="button" className="btn btn-primary mt-0">
                     Sign Up
                   </button>
                 </Link>

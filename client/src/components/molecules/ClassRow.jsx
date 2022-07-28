@@ -8,6 +8,7 @@ const ClassRow = ({ available, filled, date }) => {
           {filled} of {available} Slots Filled
         </p>
         <>
+
           <Link to={`/rota/${date}`}>
             <button type="button" className="btn btn-primary mt-0">
               {date}
