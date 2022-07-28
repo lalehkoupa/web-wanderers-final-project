@@ -7,7 +7,7 @@ const HeaderAndNav = () => {
   return (
     <div className="logoAndNav">
       <a href={"/"}>
-        <div class="header-logo"></div>
+        <div className="header-logo"></div>
       </a>
       <DesktopNavbar />
       <NavBar />

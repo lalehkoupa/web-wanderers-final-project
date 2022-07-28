@@ -14,7 +14,7 @@ const NavBar = () => {
       >
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Offcanvas id="responsive-navbar-nav text-dark">
-          <Nav className="nav p-3">
+          <Nav className="nav p-3 ">
             <Nav.Link href="/" className="navlink text-dark">
               Home
             </Nav.Link>
@@ -29,6 +29,9 @@ const NavBar = () => {
             </Nav.Link>
             <Nav.Link href="/contact" className="navlink text-dark ">
               Contact Us
+            </Nav.Link>
+            <Nav.Link href="/dashboard" className="navlink text-dark ">
+              Admin
             </Nav.Link>
           </Nav>
         </Navbar.Offcanvas>

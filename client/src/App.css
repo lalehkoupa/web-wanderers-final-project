@@ -1,6 +1,5 @@
 * {
   --yellow-green: #edf286;
-  --dark-yellow: #d1cd67;
   --form-background: #d9d9d9;
   --button-background-primary: #3852d0;
   --admin-button: #b9b9b9;
@@ -29,6 +28,8 @@ body {
 .offcanvas-start {
   width: 60%;
   font-weight: bold;
+  font-size: 16px;
+  padding-left: 2rem;
   box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.2);
 }
 .offcanvas.show {
@@ -169,6 +170,16 @@ body {
 .admin-add-button {
   background-color: var(--admin-button);
 }
+.modal-footer button {
+  border: 3px solid var(--button-background-primary);
+  color: var(--button-background-primary);
+  background-color: #fff;
+  padding: 0.3rem 1rem;
+}
+.modal-footer button:hover {
+  background-color: var(--button-background-primary);
+  color: #fff;
+}
 
 /* Sign-Up*/
 .flex {
@@ -225,7 +236,7 @@ body {
   color: rgb(229, 56, 56);
   cursor: pointer;
   height: fit-content;
-  float: right;
+  /* float: right; */
 }
 
 .form-sign-up-btn {
@@ -291,6 +302,9 @@ body {
   background-color: lightgray;
   color: rgb(47, 46, 46);
 }
+.react-datepicker__time-list li {
+  font-size: 12px;
+}
 .login-btn {
   background-color: rgb(33, 33, 240);
   color: white;
@@ -307,9 +321,13 @@ body {
 }
 
 .admin-log-out-container {
-  float: right;
+  /* float: right; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   margin-top: -4rem;
   margin-right: 2.5em;
+  margin-bottom: 5rem;
 }
 
 .profile-image {
