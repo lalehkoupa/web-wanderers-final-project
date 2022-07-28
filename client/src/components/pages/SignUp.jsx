@@ -16,6 +16,7 @@ const SignUp = () => {
    phoneNumber: ""
  });
  const[success,setSuccess]=useState(false);
+ const[formValidation,setFormValidation]=useState(true);
  
  let { id, jobTitle, day, month, year, time } = useParams();
  let date = `${day}/${month}/${year}`;
@@ -36,9 +37,11 @@ const SignUp = () => {
          body: JSON.stringify(data),
        });
       const resData=await res.json();
+
        if(res.status!==200){
          setSuccess(false);
          setError(resData.msg);
+         setFormValidation(false);
          emptyFields();
        }else{
          setSuccess(true);
@@ -61,10 +64,12 @@ const SignUp = () => {
  const validateForm = () => {
    if (!form.firstName || !form.lastName || !form.email || !form.phoneNumber) {
      setError("It's mandatory to fill up all fields");
+     setFormValidation(true);
      return false;
    }
    if (!form.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
-     setError("Please enter the valid email address");
+      setError("Please enter the valid email address");
+      setFormValidation(true);
      return false;
    } else {
      return true;
@@ -114,7 +119,9 @@ const SignUp = () => {
              className="form-login-btn"
            />
          </div>*/}
-         {error ? <p className="sign-up-err">{error}</p> : null}
+          {error ? <p className="sign-up-err">{error}</p> : null}
+          {formValidation ? null : <p className="sign-up-err">please choose another job 
+              <a href="/" className="redirect-to-rota"> here</a></p>}
          <Button
            handleClick={handleSubmit}
            text="Sign Up Now!"

@@ -324,6 +324,11 @@ body {
   margin-top: 3rem;
   margin-left: 2rem;
 }
+
+.redirect-to-rota {
+  cursor: pointer;
+  text-decoration: none !important;
+}
 @media only screen and (max-width: 980px) {
   /* header logo  */
 
