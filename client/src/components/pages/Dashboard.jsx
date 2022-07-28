@@ -9,8 +9,9 @@ import AdminPage from "./AdminPage";
 const Dashboard = () => {
   let { token, setToken } = UseToken();
   const [success, setSuccess] = useState(false);
+  const[email,setEmail]=useState("");
 
-
+console.log(token);
   const handleSignOut = () => {
     setToken("");
     localStorage.clear();
@@ -20,6 +21,10 @@ const Dashboard = () => {
     setSuccess(isSuccess);
   };
 
+  const handleSetEmail=(email)=>{
+    setEmail(email);
+
+  }
   // const handleAddUser = () => {
   //   setSuccess(false);
   // };
@@ -29,13 +34,13 @@ const Dashboard = () => {
         {!token ? (
           <div>
             {/*<GoogleLogin />*/}
-            <AdminLogin setToken={setToken} />
+            <AdminLogin setToken={setToken} setEmail={handleSetEmail}/>
           </div>
         ) : (
           <div>
             <div className="admin-log-out-container">
               <div className="flex">
-                <h4>{token}</h4>
+                <h4>{email}</h4>
                 <img
                   src={`${process.env.PUBLIC_URL}/image/login_profile-circled.svg`}
                   alt="loginProfile"

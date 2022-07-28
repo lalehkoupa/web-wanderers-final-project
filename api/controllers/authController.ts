@@ -36,18 +36,14 @@ authRouter.post("/registerAdmin", async(req, res) =>{
 .post("/login", async(req, res) =>{
 	const {email,password} = req.body;
 	
-
-	//if(!email) res.status(404).send("No id?");
-	//console.log(email);
 	try {
 		const userToLogin = await prisma.user.findUnique({where: {email: email,},});
 
-		// console.log(userToLogin, password);
 		if(!userToLogin)
-		return res.status(404).json({ success: false, msg: "Woah! Have you registered?"})
+		return res.status(404).json({ success: false, msg: "Your email address in incorrect"})
 			//throw new ReferenceError("Woah! Have you registered?");
 		if (userToLogin.password!==password){
-			return res.status(404).json({ success: false, msg: "Hmm... That's not correct password"})
+			return res.status(404).json({ success: false, msg: "Your password in incorrect"})
 		}
 
 		// const isPasswordCorrect=await bcrypt.compare(password, userToLogin.password);
