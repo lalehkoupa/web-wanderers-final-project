@@ -6,9 +6,8 @@ import moment from "moment";
 
 const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
   const [date, setDate] = useState("");
-
   const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
+  const [endTime, setEndTime] = useState(new Date());
   const [form, setForm] = useState({
     jobTitle: "",
     date: "",
@@ -18,6 +17,11 @@ const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
   });
   const [error, setError] = useState(null);
   const [response, setResponse] = useState("");
+
+  console.log(endTime);
+  console.log(startTime);
+
+  console.log(form);
   const validateForm = () => {
     if (
       !form.jobTitle ||
@@ -47,6 +51,14 @@ const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
         setError(null);
         setResponse("Job added!");
         setJobData({ ...jobData, form });
+
+        // setForm({
+        //   jobTitle: null,
+        //   availableSlots: null,
+        // });
+        // setDate(null);
+        // setStartTime(null);
+        // setEndTime(null);
       } catch (err) {
         setError(err);
       }
@@ -91,36 +103,35 @@ const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
         <DatePicker
           id="starttime"
           selected={startTime}
-          onChange={(e) => {
-            setStartTime(e);
-            handleChange("startTime", moment(e).format("HH:mm"));
+          onChange={(date) => {
+            setStartTime(date);
+            handleChange("startTime", moment(date).format("HH:mm"));
           }}
           showTimeSelect
           showTimeSelectOnly
           timeIntervals={15}
           timeCaption="Start time"
-          timeFormat="HH:mm aa"
+          dateFormat="HH:mm aa"
           className="form-control"
         />
-
         <label className="fw-bold" htmlFor="endtime">
           End time
         </label>
         <DatePicker
           id="endtime"
           selected={endTime}
-          onChange={(e) => {
-            setEndTime(e);
-            console.log(e);
-            handleChange("endTime", moment(e).format("HH:mm"));
+          onChange={(date) => {
+            setStartTime(date);
+            handleChange("endTime", moment(date).format("HH:mm"));
           }}
           showTimeSelect
           showTimeSelectOnly
           timeIntervals={15}
-          timeFormat="HH:mm aa"
-          timeCaption="End time"
+          timeCaption="Start time"
+          dateFormat="HH:mm aa"
           className="form-control"
         />
+
         <label className="fw-bold" htmlFor="availableslots">
           Available slots
         </label>
@@ -131,6 +142,7 @@ const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
           value={form.availableSlots}
           onChange={(e) => handleChange("availableSlots", e.target.value)}
         ></input>
+
         {error ? (
           <p className="text-danger text-center fw-bold">{error}</p>
         ) : (
