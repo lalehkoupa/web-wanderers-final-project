@@ -6,9 +6,7 @@ const Login = () => {
   const [user, setUser] = useState({});
   const google = window.google;
   const handleCallbackResponse = (response) => {
-    console.log("Encoded JWT Id Token:" + response.credential);
     var userObject = jwt_decode(response.credential);
-    console.log(userObject);
     setUser(userObject);
     document.getElementById("signInDiv").hidden = true;
     document.getElementById("profileImg").hidden = false;

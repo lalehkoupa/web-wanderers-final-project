@@ -30,8 +30,6 @@ const Rota = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPost = exampleJobs.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log(posts);
-
   
   return (
     <>

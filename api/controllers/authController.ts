@@ -51,8 +51,6 @@ authRouter
       const userToLogin = await prisma.user.findUnique({
         where: { email: email },
       });
-	console.log(userToLogin);
-	
       
       if (!userToLogin)
         return res

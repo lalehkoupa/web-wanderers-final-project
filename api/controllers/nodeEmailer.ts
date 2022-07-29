@@ -24,8 +24,6 @@ const sendEmail = async(req:any, res:any,firstName:any,lastName:any,email:any,jo
 
         const info = await transporter.sendMail(options)
 
-        console.log("mailResponse", info)
-
         return res.status(200).json({ success: true, msg: "Email sent!", body: info})
 
     }
