@@ -25,12 +25,20 @@ const checkWeekExists = async(weekDate: string) =>
 weeksRouter
 .get("/", async(req, res) => {
 	try {
-		const allWeeks = await prisma.week.findMany();
+		const allWeeks = await prisma.week.findMany({
+      where: {
+        weekDate: { gte: new Date().toLocaleDateString([], {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }) },
+      },
+    });
 
 		if(!allWeeks) {
 			res
 			.status(404)
-			.json({ error: true, msg: "Cannot find this any rotas *panic* " });
+			.json({ error: true, msg: "Cannot find any week " });
 		}
 
 		return res.status(200).json(allWeeks);

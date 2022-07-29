@@ -32,28 +32,27 @@ authRouter
           });
         });
       });}else{
-		      return res.status(422).json({ message: "user already exist" });
+		      return res.status(404).json({ msg: "user already exist" });
 
 	  }
 
 
-      return res.status(202).json({ message: `Welcome ${email}!` });
+      return res.status(200).json({ msg: `New Admin has been added!` });
     } catch (err) {
       console.log("error", err);
-      return res.status(422).json({ message: err });
+      return res.status(404).json({ msg: err });
     }
   })
 
   .post("/login", async (req, res) => {
     const { email, password } = req.body;
 
-    //if(!email) res.status(404).send("No id?");
-    //console.log(email);
     try {
       const userToLogin = await prisma.user.findUnique({
         where: { email: email },
       });
-
+	console.log(userToLogin);
+	
       
       if (!userToLogin)
         return res
@@ -66,9 +65,10 @@ authRouter
       if (!match) {
         return res
           .status(404)
-          .json({ success: false, msg: "password is not correct password" });
+          .json({ success: false, msg: "Password is incorrect" });
       }
- if (userToLogin.userType !== 500) {
+	  let type=userToLogin.userType;
+ if (type === 100) {
    return res.status(404).json({ success: false, msg: "Not authorized" });
  }
  
@@ -78,7 +78,7 @@ authRouter
 
       return res
         .status(200)
-        .json({ message: `Welcome back ${userToLogin.email}`, token });
+        .json({ message: `Welcome back ${userToLogin.email}`, token ,type});
     } catch (error) {
       console.log("AUTH ERROR!", error);
       res.status(404).json({ error: true, msg: error });

@@ -7,12 +7,13 @@ import AdminRolesList from "../molecules/AdminRolesList";
 import AdminForm from "../molecules/AdminForm";
 import AdminSignUp from "../molecules/AdminSignUp";
 
-const AdminPage = () => {
+const AdminPage = ({type}) => {
   const [isActive, setIsActive] = useState(1);
   const [userData, setUserData] = useState();
   const [jobData, setJobData] = useState();
   const [totalJobs, setTotaljobs] = useState("");
   const [addJobActive, setAddJobActive] = useState(false);
+
 
   const fetchUserData = async () => {
     const res = await fetch("http://localhost:4000/api/job/signedUp");
@@ -76,12 +77,12 @@ const AdminPage = () => {
             >
               Roles
             </button>
-            <button
+            {type===1000 &&(<button
               onClick={() => setIsActive(3)}
               className=" border border-3 border-dark bg-white text-dark px-5 py-1 "
             >
               Add new admin
-            </button>
+            </button>)}
           </span>
           {isActive === 1 ? (
             <AdminVolunteerList data={userData} totalJobs={totalJobs} />

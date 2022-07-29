@@ -9,11 +9,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
-  let { token, setToken } = UseToken();
-  const [success, setSuccess] = useState(false);
-  const [email, setEmail] = useState("");
+  let { token, email, setToken } = UseToken();
+  const [adminType, setAdminType] = useState("");
 
-  console.log(token);
+  const [success, setSuccess] = useState(false);
+
   const handleSignOut = () => {
     setToken("");
     localStorage.clear();
@@ -23,9 +23,10 @@ const Dashboard = () => {
     setSuccess(isSuccess);
   };
 
-  const handleSetEmail = (email) => {
-    setEmail(email);
+  const handleSetAdminType = (adminType) => {
+    setAdminType(adminType);
   };
+
   // const handleAddUser = () => {
   //   setSuccess(false);
   // };
@@ -35,14 +36,13 @@ const Dashboard = () => {
         {!token ? (
           <div>
             {/*<GoogleLogin />*/}
-            <AdminLogin setToken={setToken} setEmail={handleSetEmail} />
+            <AdminLogin setToken={setToken} setAdminType={handleSetAdminType} />
           </div>
         ) : (
           <div>
             <div className="admin-log-out-container">
               <div className="flex">
                 <h4>{email}</h4>
-
                 <FontAwesomeIcon icon={faCircleUser} className="fa-2x mx-2" />
               </div>
 
@@ -53,7 +53,11 @@ const Dashboard = () => {
               />
             </div>
             <div>
-              {!success ? <AdminPage setSuccess={handleSignUpSuccess} /> : ""}
+              {!success ? (
+                <AdminPage setSuccess={handleSignUpSuccess} type={adminType} />
+              ) : (
+                ""
+              )}
               {/* {!success ? (
                 
                 <AdminSignUp setSuccess={handleSignUpSuccess} />

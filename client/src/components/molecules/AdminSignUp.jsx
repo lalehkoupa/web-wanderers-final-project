@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Button from "../atoms/Button";
 
-const AdminSignUp = ({ setSuccess }) => {
+const AdminSignUp = () => {
   const [formDataReg, setFormDataReg] = useState({
-    emailReg: "",
-    passwordReg: "",
+    email: "",
+    password: "",
     repeatPassword: "",
   });
   const [error, setError] = useState(false);
@@ -17,39 +17,34 @@ const AdminSignUp = ({ setSuccess }) => {
     };
     setFormDataReg(newFormData);
     setError(false);
-    console.log(formDataReg);
   };
 
   const handleSubmit = async (event) => {
-    // console.log("submit");
-    // try {
-    //   const response = await Axios.post("/api/login", formData);
-    // } catch (err) {
-    //   setError(err);
-    // }
-
     event.preventDefault();
     if (
-      !formDataReg.emailReg ||
-      !formDataReg.passwordReg ||
+      !formDataReg.email ||
+      !formDataReg.password ||
       !formDataReg.repeatPassword
     ) {
       setError("It's mandatory to fill up all fields");
       return false;
     } 
-    if (formDataReg.passwordReg !== formDataReg.repeatPassword) {
+    if (formDataReg.password!== formDataReg.repeatPassword) {
       setError("Both password should be same");
       return false;
     } 
       try {
-        // await fetch(" ", {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify(formDataReg),
-        // });
-        //await Axios.post("/api/signUp", formDataReg);
-        emptyFieldsReg();
-        setSuccess(true);
+        const res= await fetch("http://localhost:4000/api/auth/registerAdmin", {
+ 
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify(formDataReg),
+       });
+        const resData = await res.json();
+        
+      setError(resData.msg);
+      emptyFieldsReg();
+        
       } catch (error) {
         console.log("Error", error);
         setError(error);
@@ -75,8 +70,8 @@ const AdminSignUp = ({ setSuccess }) => {
             placeholder="Enter your email"
             type="email"
             autoComplete="off"
-            name="emailReg"
-            value={formDataReg.emailReg}
+            name="email"
+            value={formDataReg.email}
             onChange={handleChange}
           />
 
@@ -84,8 +79,8 @@ const AdminSignUp = ({ setSuccess }) => {
           <input
             placeholder="Choose a password"
             type="password"
-            name="passwordReg"
-            value={formDataReg.passwordReg}
+            name="password"
+            value={formDataReg.password}
             onChange={handleChange}
           />
           <label>Repeat Password</label>
