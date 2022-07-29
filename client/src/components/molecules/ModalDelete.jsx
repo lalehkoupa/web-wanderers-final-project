@@ -29,7 +29,11 @@ const ModalDelete = ({ text, btnText, selectedJob }) => {
               ""
             )}
             <div className="modal-footer">
-              <button onClick={onclickHandle} type="button">
+              <button
+                onClick={onclickHandle}
+                type="button"
+                data-dismiss="modal"
+              >
                 {btnText}
               </button>
               <button type="button" data-dismiss="modal">
