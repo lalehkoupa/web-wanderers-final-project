@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addMonths } from "date-fns";
 import moment from "moment";
 
-const AdminForm = ({ setAddJobActive }) => {
+const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
   const [date, setDate] = useState("");
 
   const [startTime, setStartTime] = useState("");
@@ -46,6 +46,7 @@ const AdminForm = ({ setAddJobActive }) => {
         });
         setError(null);
         setResponse("Job added!");
+        setJobData({ ...jobData, form });
       } catch (err) {
         setError(err);
       }
