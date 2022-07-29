@@ -11,8 +11,9 @@ const Rota = () => {
   const [isChecked, setIsChecked] = useState([]);
   const [posts, setPost] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(5);
   let { day, month, year } = useParams();
+
+	let postsPerPage = 5
 
   let date = `${day}/${month}/${year}`;
   useEffect(() => {
