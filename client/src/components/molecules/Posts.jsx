@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Posts = ({  posts }) => {
-
-
+const Posts = ({ posts }) => {
   return (
     <div className="card">
       {posts.map((rota) => (
@@ -20,16 +18,22 @@ const Posts = ({  posts }) => {
             <ul className="list-group">
               <li className="list-group-item rota_container">
                 {" "}
-                1 of {rota.availableSpots} slots filled{" "}
+                {rota.filledSlots} of {rota.slots} slots filled{" "}
               </li>
               <li className="list-group-item rota_container">
-                <Link
-                  to={`/signUp/${rota.id}/${rota.jobTitle}/${rota.date}/${rota.startTime}-${rota.endTime}`}
-                >
+                {rota.filledSlots >= rota.slots ? (
                   <button type="button" className="btn btn-primary mt-0">
                     Sign Up
                   </button>
-                </Link>
+                ) : (
+                  <Link
+                    to={`/signUp/${rota.id}/${rota.jobTitle}/${rota.date}/${rota.startTime}-${rota.endTime}`}
+                  >
+                    <button type="button" className="btn btn-primary mt-0">
+                      Sign Up
+                    </button>
+                  </Link>
+                )}
               </li>
             </ul>
           </span>
