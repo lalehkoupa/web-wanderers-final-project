@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addMonths } from "date-fns";
 import moment from "moment";
 
-const AdminForm = ({ setAddJobActive }) => {
+const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
   const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState(new Date());
@@ -50,6 +50,8 @@ const AdminForm = ({ setAddJobActive }) => {
         });
         setError(null);
         setResponse("Job added!");
+        setJobData({ ...jobData, form });
+
         // setForm({
         //   jobTitle: null,
         //   availableSlots: null,

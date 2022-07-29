@@ -20,6 +20,8 @@ const AdminPage = ({type}) => {
     const data = await res.json();
     setUserData(data);
   };
+
+
   const fetchJobData = async () => {
     const res = await fetch("http://localhost:4000/api/job");
     const data = await res.json();
@@ -30,7 +32,7 @@ const AdminPage = ({type}) => {
   useEffect(() => {
     fetchUserData();
     fetchJobData();
-  }, []);
+  }, [jobData]);
 
   return (
     <>
@@ -43,7 +45,11 @@ const AdminPage = ({type}) => {
         <FontAwesomeIcon style={{ height: "45px" }} icon={faCircleUser} />
       </div> */}
       {addJobActive ? (
-        <AdminForm setAddJobActive={setAddJobActive} />
+        <AdminForm
+          setAddJobActive={setAddJobActive}
+          setJobData={setJobData}
+          jobData={jobData}
+        />
       ) : (
         <>
           <span className="container d-flex justify-content-center gap-4 mb-5">
@@ -77,12 +83,14 @@ const AdminPage = ({type}) => {
             >
               Roles
             </button>
-            {type===1000 &&(<button
-              onClick={() => setIsActive(3)}
-              className=" border border-3 border-dark bg-white text-dark px-5 py-1 "
-            >
-              Add new admin
-            </button>)}
+            {type === 1000 && (
+              <button
+                onClick={() => setIsActive(3)}
+                className=" border border-3 border-dark bg-white text-dark px-5 py-1 "
+              >
+                Add new admin
+              </button>
+            )}
           </span>
           {isActive === 1 ? (
             <AdminVolunteerList data={userData} totalJobs={totalJobs} />
