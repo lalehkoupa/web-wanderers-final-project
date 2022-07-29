@@ -1,4 +1,3 @@
-import { Week } from "@prisma/client";
 import { Router } from "express";
 import { connect } from "http2";
 import prisma from "../config/prisma";
