@@ -17,6 +17,7 @@ interface Job {
 }
 
 jobsRouter
+
   .get("/", async (req, res) => {
     try {
       const jobs = await prisma.job.findMany();
@@ -34,15 +35,29 @@ jobsRouter
       res.status(404).json({ error: true, msg: error });
     }
   })
+  //get signed up user's names and job //
+  .get("/signedUp", async (req, res) => {
+    try {
+      const signedUpPeople = await prisma.jobsOnUsers.findMany({
+        include: {
+          user: {
+            select: {
+              firstName: true,
+              lastName: true,
+            },
+          },
+          job: {},
+        },
+      });
+      console.log(signedUpPeople);
+      res.status(200).json(signedUpPeople);
+    } catch (err) {
+      res.status(404).json({ error: true, msg: err });
+    }
+  })
   .post("/", async (req, res) => {
     try {
-      const {
-        jobTitle,
-        date,
-        startTime,
-        endTime,
-        availableSlots,
-      } = req.body;
+      const { jobTitle, date, startTime, endTime, availableSlots } = req.body;
       const availableSlot: number = +availableSlots;
       const weekId = await prisma.week.findUnique({
         select: {
@@ -101,7 +116,6 @@ jobsRouter
   .get("/:id", async (req, res) => {
     try {
       const { id } = req.params;
-
       const job = await prisma.job.findUnique({
         where: { id: parseInt(id) },
         include: { week: true },
@@ -150,10 +164,11 @@ jobsRouter
     }
   })
   .delete("/:id", async (req, res) => {
+    console.log("hi");
     try {
       const { id } = req.body;
-      const selected = await prisma.job.deleteMany({
-        where: { id: parseInt(id) },
+      const selected = await prisma.job.delete({
+        where: { id: id },
       });
 
       console.log(selected);

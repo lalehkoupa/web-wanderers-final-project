@@ -2,8 +2,6 @@ import { useState } from "react";
 
 const ModalDelete = ({ text, btnText, selectedJob }) => {
   const [response, setResponse] = useState();
-  console.log(selectedJob.id);
-  console.log(response);
   const onclickHandle = async () => {
     const res = await fetch(
       `http://localhost:4000/api/job/:${selectedJob.id}`,
@@ -12,7 +10,6 @@ const ModalDelete = ({ text, btnText, selectedJob }) => {
       }
     );
     const data = res.json();
-    console.log(data);
     setResponse(data);
   };
   return (

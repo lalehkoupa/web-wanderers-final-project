@@ -16,13 +16,14 @@ const AdminPage = ({type}) => {
 
 
   const fetchUserData = async () => {
-    const res = await fetch("http://localhost:4000/api/user");
+    const res = await fetch("http://localhost:4000/api/job/signedUp");
     const data = await res.json();
     setUserData(data);
   };
   const fetchJobData = async () => {
     const res = await fetch("http://localhost:4000/api/job");
     const data = await res.json();
+
     setJobData(data);
   };
 

@@ -1,9 +1,6 @@
 import _ from "lodash";
 
 const AdminVolunteerList = ({ totalJobs, data }) => {
-  const handleDelete = () => {};
-  const handeUpdate = () => {};
-
   return (
     <div className="container">
       <p className="h4 fw-bold pt-4">Volunteer names and roles</p>
@@ -16,13 +13,13 @@ const AdminVolunteerList = ({ totalJobs, data }) => {
             <th scope="col">Role</th>
           </tr>
         </thead>
-        {_.map(data, (user, index) => (
+        {_.map(data, (item, index) => (
           <tbody key={index}>
             <tr>
-              <td>{`${user.firsName} ${user.lastName}`} </td>
-              <td>{user.date}</td>
-              <td>{`${user.startime}-${user.endtime}`}</td>
-              <td>{user.jobTitle}</td>
+              <td>{`${item.user.firstName} ${item.user.lastName}`} </td>
+              <td>{item.job.date}</td>
+              <td>{`${item.job.startTime}-${item.job.endTime}`}</td>
+              <td>{item.job.jobTitle}</td>
             </tr>
           </tbody>
         ))}
