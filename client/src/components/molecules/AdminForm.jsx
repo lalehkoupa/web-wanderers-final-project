@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addMonths } from "date-fns";
 import moment from "moment";
 
-const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
+const AdminForm = ({ setAddJobActive, jobData, setJobData }) => {
   const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState(new Date());
@@ -121,7 +121,7 @@ const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
           id="endtime"
           selected={endTime}
           onChange={(date) => {
-            setStartTime(date);
+            setEndTime(date);
             handleChange("endTime", moment(date).format("HH:mm"));
           }}
           showTimeSelect
