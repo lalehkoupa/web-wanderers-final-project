@@ -170,7 +170,14 @@ userRouter
           userId: userId,
         },
       });
-
+      if (signUpForJob){
+        const incrementJob = await prisma.job.update({
+          where: {
+            id: jobId,
+          },
+          data: { filledSlots: { increment: 1 } },
+        });}
+     
       if (!signUpForJob)
         res
           .status(404)
