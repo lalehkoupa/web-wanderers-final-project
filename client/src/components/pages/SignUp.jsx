@@ -25,6 +25,8 @@ const SignUp = () => {
  const data=_.merge({},form,jobObj);    
  
  useEffect(()=>{ window.scrollTo(0, 0);},[])
+
+ const API_PATH = process.env.REACT_APP_API_PATH;
  
  const handleSubmit = async (event) => {
    event.preventDefault();
@@ -32,7 +34,7 @@ const SignUp = () => {
  
    if (validateForm()) {
      try {
-        const res= await fetch("http://localhost:4000/api/user/signUpForJob ", {
+        const res= await fetch(API_PATH + "user/signUpForJob ", {
  
          method: "POST",
          headers: { "Content-Type": "application/json" },

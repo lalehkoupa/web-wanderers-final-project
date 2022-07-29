@@ -16,12 +16,14 @@ const AdminLogin = ({ setToken}) => {
     setFormData(newFormData);
   };
 
+	const API_PATH = process.env.REACT_APP_API_PATH;
+
   const handleLoginSubmit = async (event) => {
    
     if (validateForm()) {
         event.preventDefault();
       try {
-        const res= await fetch("http://localhost:4000/api/auth/login", {
+        const res= await fetch(API_PATH + "auth/login", {
  
          method: "POST",
          headers: { "Content-Type": "application/json" },

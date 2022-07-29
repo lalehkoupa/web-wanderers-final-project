@@ -1,9 +1,11 @@
 const ModalDelete = ({ text, btnText, selectedJob }) => {
   const onclickHandle = async () => {
 		
+		const API_PATH = process.env.REACT_APP_API_PATH;
+
 		try
 		{
-			await fetch(`http://localhost:4000/api/job/${selectedJob.id}`, {
+			await fetch(API_PATH + `job/${selectedJob.id}`, {
 				method: "delete",
 			});
 		}

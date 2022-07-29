@@ -30,13 +30,15 @@ const Modal = ({ text, btnText, selectedJob }) => {
     return true;
   };
 
+	const API_PATH = process.env.REACT_APP_API_PATH;
+
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
   const handleSubmit = async () => {
     if (validateForm()) {
       try {
-        await fetch(`http://localhost:4000/jobs/:${selectedJob.id}`, {
+        await fetch(API_PATH + `jobs/:${selectedJob.id}`, {
           method: "put",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),

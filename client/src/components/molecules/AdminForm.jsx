@@ -35,11 +35,14 @@ const AdminForm = ({ setAddJobActive, jobData, setJobData }) => {
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
+
+	const API_PATH = process.env.REACT_APP_API_PATH;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        await fetch("http://localhost:4000/api/job", {
+        await fetch(API_PATH + "job", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),

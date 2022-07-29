@@ -5,12 +5,14 @@ import _ from "lodash";
 const Classes = () => {
   const [data, setData] = useState([]);
 
+	const API_PATH = process.env.REACT_APP_API_PATH;
+
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    const res = await fetch("http://localhost:4000/api/week");
+    const res = await fetch(API_PATH + "week");
     const data = await res.json();
 
     setData(data);

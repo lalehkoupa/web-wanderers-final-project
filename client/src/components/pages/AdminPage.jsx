@@ -11,16 +11,17 @@ const AdminPage = ({type}) => {
   const [totalJobs, setTotaljobs] = useState("");
   const [addJobActive, setAddJobActive] = useState(false);
 
+	const API_PATH = process.env.REACT_APP_API_PATH;
 
   const fetchUserData = async () => {
-    const res = await fetch("http://localhost:4000/api/job/signedUp");
+    const res = await fetch(API_PATH + "job/signedUp");
     const data = await res.json();
     setUserData(data);
   };
 
 
   const fetchJobData = async () => {
-    const res = await fetch("http://localhost:4000/api/job");
+    const res = await fetch(API_PATH + "job");
     const data = await res.json();
 
     setJobData(data);

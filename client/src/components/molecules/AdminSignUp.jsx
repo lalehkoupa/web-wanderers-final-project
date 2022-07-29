@@ -19,6 +19,8 @@ const AdminSignUp = () => {
     setError(false);
   };
 
+	const API_PATH = process.env.REACT_APP_API_PATH;
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (
@@ -34,7 +36,7 @@ const AdminSignUp = () => {
       return false;
     } 
       try {
-        const res= await fetch("http://localhost:4000/api/auth/registerAdmin", {
+        const res= await fetch(API_PATH + "auth/registerAdmin", {
  
          method: "POST",
          headers: { "Content-Type": "application/json" },
