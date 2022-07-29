@@ -7,12 +7,12 @@
     "clean": "rm -rf api/dist",
     "build": "npm -s run clean && npm -s run generate && tsc",
     "generate": "npm -s run generate:prisma",
-    "generate:prisma": "prisma generate"
+    "generate:prisma": "prisma generate --schema=./api/prisma/schema.prisma"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^4.0.0",
+    "@prisma/client": "^4.1.1",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/nodemailer": "^6.4.4",
     "bcrypt": "^5.0.1",
