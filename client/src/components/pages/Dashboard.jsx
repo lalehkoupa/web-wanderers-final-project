@@ -10,6 +10,7 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
   let { token,email, setToken } = UseToken();
+  const[adminType,setAdminType]=useState("");
 
   const [success, setSuccess] = useState(false);
  
@@ -22,6 +23,10 @@ const Dashboard = () => {
     setSuccess(isSuccess);
   };
 
+  const handleSetAdminType=(adminType)=>{
+    setAdminType(adminType);
+  }
+
   // const handleAddUser = () => {
   //   setSuccess(false);
   // };
@@ -31,7 +36,7 @@ const Dashboard = () => {
         {!token ? (
           <div>
             {/*<GoogleLogin />*/}
-            <AdminLogin setToken={setToken} />
+            <AdminLogin setToken={setToken} setAdminType={handleSetAdminType}/>
           </div>
         ) : (
           <div>
@@ -48,7 +53,7 @@ const Dashboard = () => {
               />
             </div>
             <div>
-              {!success ? <AdminPage setSuccess={handleSignUpSuccess} /> : ""}
+              {!success ? <AdminPage setSuccess={handleSignUpSuccess} type={adminType}/> : ""}
               {/* {!success ? (
                 
                 <AdminSignUp setSuccess={handleSignUpSuccess} />

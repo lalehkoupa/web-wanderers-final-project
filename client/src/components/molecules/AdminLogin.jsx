@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../atoms/Button";
-const AdminLogin = ({ setToken}) => {
+const AdminLogin = ({ setToken,setAdminType}) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -35,6 +35,7 @@ const AdminLogin = ({ setToken}) => {
         }else{
          const token = { token: resData.token , email:formData.email};
          setToken(token);
+         setAdminType(resData.type);
        } 
 
      } catch (error) {
