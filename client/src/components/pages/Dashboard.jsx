@@ -42,11 +42,7 @@ const Dashboard = () => {
             <div className="admin-log-out-container">
               <div className="flex">
                 <h4>{email}</h4>
-                {/* <img
-                  src={`${process.env.PUBLIC_URL}/image/login_profile-circled.svg`}
-                  alt="loginProfile"
-                  className="profile-image"
-                /> */}
+
                 <FontAwesomeIcon icon={faCircleUser} className="fa-2x mx-2" />
               </div>
 
