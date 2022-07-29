@@ -12,9 +12,14 @@ const UseToken = () => {
   const getEmail = () => {
     return userToken?.email;
   };
+
+  const getUserType=()=>{
+    return userToken?.userType;
+  }
  
   const [token, setToken] = useState(getToken());
   const [email, setEmail] = useState(getEmail());
+  const[userType,setUserType]=useState(getUserType());
  
 
   const saveToken = (userToken) => {
@@ -23,12 +28,14 @@ const UseToken = () => {
 
     setToken(userToken.token);
     setEmail(userToken.email);
+    setUserType(userToken.userType);
   };
 
   return {
     setToken: saveToken,
     token,
-    email
+    email,
+    userType
   };
 };
 export default UseToken;
