@@ -164,11 +164,10 @@ jobsRouter
     }
   })
   .delete("/:id", async (req, res) => {
-    console.log("hi");
     try {
-      const { id } = req.body;
+      const { id } = req.params;
       const selected = await prisma.job.delete({
-        where: { id: id },
+        where: { id: parseInt(id) },
       });
 
       console.log(selected);
