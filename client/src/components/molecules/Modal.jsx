@@ -149,7 +149,11 @@ const Modal = ({ text, btnText, selectedJob }) => {
               </div>
               {error ? <p className="text-danger">{error}</p> : null}
               <div className="modal-footer">
-                <button onClick={handleSubmit} type="button">
+                <button
+                  onClick={handleSubmit}
+                  type="button"
+                  data-dismiss="modal"
+                >
                   {btnText}
                 </button>
                 <button type="button" data-dismiss="modal">

@@ -4,10 +4,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addMonths } from "date-fns";
 import moment from "moment";
 
-const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
+const AdminForm = ({ setAddJobActive, jobData, setJobData }) => {
   const [date, setDate] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState(new Date());
+  const [startTime, setStartTime] = useState();
+  const [endTime, setEndTime] = useState();
   const [form, setForm] = useState({
     jobTitle: "",
     date: "",
@@ -18,10 +18,6 @@ const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
   const [error, setError] = useState(null);
   const [response, setResponse] = useState("");
 
-  console.log(endTime);
-  console.log(startTime);
-
-  console.log(form);
   const validateForm = () => {
     if (
       !form.jobTitle ||
@@ -48,17 +44,13 @@ const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
         });
+        setJobData({ ...jobData, form });
         setError(null);
         setResponse("Job added!");
-        setJobData({ ...jobData, form });
 
-        // setForm({
-        //   jobTitle: null,
-        //   availableSlots: null,
-        // });
-        // setDate(null);
-        // setStartTime(null);
-        // setEndTime(null);
+        setDate(null);
+        setStartTime(null);
+        setEndTime(null);
       } catch (err) {
         setError(err);
       }
@@ -121,7 +113,7 @@ const AdminForm = ({ setAddJobActive,jobData, setJobData }) => {
           id="endtime"
           selected={endTime}
           onChange={(date) => {
-            setStartTime(date);
+            setEndTime(date);
             handleChange("endTime", moment(date).format("HH:mm"));
           }}
           showTimeSelect
