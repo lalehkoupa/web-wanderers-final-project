@@ -61,33 +61,7 @@ userRouter
       res.status(404).json({ error: true, msg: error });
     }
   })
-  //get signed up user's names and job //
-  .get("/", async (req, res) => {
-    try {
-      const signedUpPeople = await prisma.user.findMany({
-        select: {
-          firstName: true,
-          lastName: true,
-          jobs: {
-            select: {
-              job: {
-                select: {
-                  jobTitle: true,
-                  date: true,
-                  startTime: true,
-                  endTime: true,
-                },
-              },
-            },
-          },
-        },
-      });
 
-      res.status(200).json(signedUpPeople);
-    } catch (err) {
-      res.status(404).json({ error: true, msg: err });
-    }
-  })
   //create new user
   .post("/", async (req, res) => {
     try {
