@@ -5,7 +5,8 @@ import _ from "lodash";
 const Classes = () => {
   const [data, setData] = useState([]);
 
-	const API_PATH = process.env.REACT_APP_API_PATH;
+  const API_PATH = process.env.REACT_APP_API_PATH;
+  console.log(API_PATH);
 
   useEffect(() => {
     getData();
