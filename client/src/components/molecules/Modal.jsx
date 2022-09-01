@@ -30,7 +30,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
     return true;
   };
 
-	const API_PATH = process.env.REACT_APP_API_PATH;
+  const API_PATH = process.env.REACT_APP_API_PATH;
 
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
@@ -64,10 +64,11 @@ const Modal = ({ text, btnText, selectedJob }) => {
                   Job title
                 </label>
                 <input
-                  className="form-control"
                   id="jobinput"
                   type="text"
+                  value={selectedJob ? selectedJob.jobTitle : form.jobTitle}
                   onChange={(e) => handleChange("jobTitle", e.target.value)}
+                  className="form-control"
                 ></input>
 
                 <label className="fw-bold" htmlFor="date">
@@ -77,6 +78,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
                   id="date"
                   type="text"
                   selected={date}
+                  value={selectedJob ? selectedJob.date : form.date}
                   onChange={(e) => {
                     setDate(e);
                     handleChange("date", e.toISOString().substring(0, 10));
@@ -95,6 +97,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
                 <DatePicker
                   id="starttime"
                   selected={startTime}
+                  value={selectedJob ? selectedJob.startTime : form.startTime}
                   onChange={(e) => {
                     setStartTime(e);
                     handleChange(
@@ -119,6 +122,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
                 <DatePicker
                   id="endtime"
                   selected={endTime}
+                  value={selectedJob ? selectedJob.endTime : form.endTime}
                   onChange={(e) => {
                     setEndTime(e);
                     handleChange(
@@ -140,13 +144,13 @@ const Modal = ({ text, btnText, selectedJob }) => {
                   Available slots
                 </label>
                 <input
-                  className="form-control"
-                  type="text"
                   id="availableslots"
-                  value={form.availableSlots}
+                  type="text"
+                  value={selectedJob ? selectedJob.slots : form.availableSlots}
                   onChange={(e) =>
                     handleChange("availableSlots", e.target.value)
                   }
+                  className="form-control"
                 ></input>
               </div>
               {error ? <p className="text-danger">{error}</p> : null}
