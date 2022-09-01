@@ -15,7 +15,6 @@ const Modal = ({ text, btnText, selectedJob }) => {
     endTime: selectedJob.endTime,
     availableSlots: selectedJob.slots,
   });
-  console.log(form);
 
   const validateForm = () => {
     if (
