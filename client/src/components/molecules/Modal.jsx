@@ -9,12 +9,13 @@ const Modal = ({ text, btnText, selectedJob }) => {
   const [endTime, setEndTime] = useState("");
   const [error, setError] = useState(null);
   const [form, setForm] = useState({
-    jobTitle: "",
-    date: "",
-    startTime: "",
-    endTime: "",
-    availableSlots: "",
+    jobTitle: selectedJob.jobTitle,
+    date: selectedJob.date,
+    startTime: selectedJob.startTime,
+    endTime: selectedJob.endTime,
+    availableSlots: selectedJob.slots,
   });
+  console.log(form);
 
   const validateForm = () => {
     if (
@@ -35,6 +36,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
+
   const handleSubmit = async () => {
     if (validateForm()) {
       try {
@@ -66,7 +68,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
                 <input
                   id="jobinput"
                   type="text"
-                  value={selectedJob ? selectedJob.jobTitle : form.jobTitle}
+                  value={form.jobTitle}
                   onChange={(e) => handleChange("jobTitle", e.target.value)}
                   className="form-control"
                 ></input>
@@ -78,7 +80,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
                   id="date"
                   type="text"
                   selected={date}
-                  value={selectedJob ? selectedJob.date : form.date}
+                  value={form.date}
                   onChange={(e) => {
                     setDate(e);
                     handleChange("date", e.toISOString().substring(0, 10));
@@ -97,7 +99,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
                 <DatePicker
                   id="starttime"
                   selected={startTime}
-                  value={selectedJob ? selectedJob.startTime : form.startTime}
+                  value={form.startTime}
                   onChange={(e) => {
                     setStartTime(e);
                     handleChange(
@@ -122,7 +124,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
                 <DatePicker
                   id="endtime"
                   selected={endTime}
-                  value={selectedJob ? selectedJob.endTime : form.endTime}
+                  value={form.endTime}
                   onChange={(e) => {
                     setEndTime(e);
                     handleChange(
@@ -146,7 +148,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
                 <input
                   id="availableslots"
                   type="text"
-                  value={selectedJob ? selectedJob.slots : form.availableSlots}
+                  value={form.availableSlots}
                   onChange={(e) =>
                     handleChange("availableSlots", e.target.value)
                   }

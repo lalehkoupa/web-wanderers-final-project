@@ -58,16 +58,22 @@ const AdminRolesList = ({ totalJobs, data, setAddJobActive }) => {
         ))}
       </table>
       <p className="my-5">Showing {totalJobs} Results</p>
-      <Modal
-        selectedJob={selectedJob}
-        text="Update details"
-        btnText="Update job"
-      />
-      <ModalDelete
-        selectedJob={selectedJob}
-        text="Delete job"
-        btnText="Delete job"
-      />
+      {selectedJob ? (
+        <>
+          <Modal
+            selectedJob={selectedJob}
+            text="Update details"
+            btnText="Update job"
+          />
+          <ModalDelete
+            selectedJob={selectedJob}
+            text="Delete job"
+            btnText="Delete job"
+          />
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
