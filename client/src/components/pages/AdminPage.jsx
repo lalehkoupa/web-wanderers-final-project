@@ -4,21 +4,20 @@ import AdminRolesList from "../molecules/AdminRolesList";
 import AdminForm from "../molecules/AdminForm";
 import AdminSignUp from "../molecules/AdminSignUp";
 
-const AdminPage = ({type}) => {
+const AdminPage = ({ type }) => {
   const [isActive, setIsActive] = useState(1);
   const [userData, setUserData] = useState();
   const [jobData, setJobData] = useState();
   const [totalJobs, setTotaljobs] = useState("");
   const [addJobActive, setAddJobActive] = useState(false);
 
-	const API_PATH = process.env.REACT_APP_API_PATH;
+  const API_PATH = process.env.REACT_APP_API_PATH;
 
   const fetchUserData = async () => {
     const res = await fetch(API_PATH + "job/signedUp");
     const data = await res.json();
     setUserData(data);
   };
-
 
   const fetchJobData = async () => {
     const res = await fetch(API_PATH + "job");
@@ -34,14 +33,6 @@ const AdminPage = ({type}) => {
 
   return (
     <>
-      {/* <div className=" d-flex flex-row align-items-center justify-content-end mb-5 px-5">
-        <span className="d-flex flex-column align-items-end">
-          <p className="m-0 h5">Admin Name</p>
-          <button className="text-danger border-0 bg-white">Log out</button>
-          <></>
-        </span>
-        <FontAwesomeIcon style={{ height: "45px" }} icon={faCircleUser} />
-      </div> */}
       {addJobActive ? (
         <AdminForm
           setAddJobActive={setAddJobActive}
@@ -61,7 +52,8 @@ const AdminPage = ({type}) => {
                   ? "border border-3 border-primary bg-primary text-white px-5 py-1"
                   : isActive === 2
                   ? "border border-3 border-primary bg-white text-primary px-5 py-1 "
-                  : "border border-3 border-primary bg-primary text-white px-5 py-1"
+                  : isActive === 3 &&
+                    "border border-3 border-primary bg-white text-primary px-5 py-1"
               }
             >
               Volunteer list
@@ -76,7 +68,8 @@ const AdminPage = ({type}) => {
                   ? "border border-3 border-primary bg-white text-primary px-5 py-1 "
                   : isActive === 2
                   ? "border border-3 border-primary bg-primary text-white px-5 py-1"
-                  : "border border-3 border-primary bg-white text-primary px-5 py-1 "
+                  : isActive === 3 &&
+                    "border border-3 border-primary bg-white text-primary px-5 py-1"
               }
             >
               Roles
@@ -84,7 +77,15 @@ const AdminPage = ({type}) => {
             {type === 1000 && (
               <button
                 onClick={() => setIsActive(3)}
-                className=" border border-3 border-dark bg-white text-dark px-5 py-1 "
+                className={
+                  isActive === 1
+                    ? "border border-3 border-primary bg-white text-primary px-5 py-1 "
+                    : isActive === 2
+                    ? "border border-3 border-primary bg-white text-primary px-5 py-1"
+                    : isActive === 3 &&
+                      "border border-3 border-primary bg-primary text-white px-5 py-1"
+                }
+                //" border border-3 border-dark bg-white text-dark px-5 py-1 "
               >
                 Add new admin
               </button>
@@ -101,7 +102,6 @@ const AdminPage = ({type}) => {
           ) : (
             <AdminSignUp />
           )}
-          )
         </>
       )}
     </>
