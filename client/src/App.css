@@ -235,6 +235,11 @@ body {
   font-size: large;
   margin-bottom: 0.5em;
 }
+
+.addAdminFocus {
+  background-color: #3852d0;
+}
+
 /* dashboard-google-authentication*/
 .google-login {
   float: right;
