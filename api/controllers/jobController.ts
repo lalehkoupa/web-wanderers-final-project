@@ -48,7 +48,7 @@ jobsRouter
           job: {},
         },
       });
-      console.log(signedUpPeople);
+      //console.log(signedUpPeople);
       res.status(200).json(signedUpPeople);
     } catch (err) {
       res.status(404).json({ error: true, msg: err });
