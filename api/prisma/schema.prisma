@@ -37,7 +37,6 @@ model Job {
 	weekId Int
 	users JobsOnUsers[]
 }
-
 model Week {
 	id Int	@id @default(autoincrement())
 	createdAt DateTime @default(now())
