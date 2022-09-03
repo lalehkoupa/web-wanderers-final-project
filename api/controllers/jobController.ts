@@ -92,7 +92,7 @@ jobsRouter
         id = Week?.id;
       }
 
-      console.log(req.body, "weekId", weekId);
+      //console.log(req.body, "weekId", weekId);
       const job: Job = await prisma.job.create({
         data: {
           jobTitle: jobTitle,
@@ -165,9 +165,23 @@ jobsRouter
   .delete("/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const selected = await prisma.job.delete({
+
+    const JobBeenSignedUp = await prisma.jobsOnUsers.findMany({
+        where: {jobId:parseInt(id)},
+      });
+
+      if(JobBeenSignedUp){
+        await prisma.jobsOnUsers.deleteMany({
+        where: { jobId: parseInt(id)},
+      });
+      }
+
+       const selected = await prisma.job.delete({
         where: { id: parseInt(id) },
       });
+
+
+      
 
       console.log(selected);
       if (!selected) {
