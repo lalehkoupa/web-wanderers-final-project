@@ -113,7 +113,14 @@ userRouter
         userType = 100,
         jobId,
       } = req.body;
-
+      const weekId:any = await prisma.job.findUnique({
+        select: {
+          weekId: true,
+        },
+        where: {
+          id: jobId,
+        },
+      });
       const userExists = await prisma.user.findUnique({
         where: { email: email },
       });
@@ -170,14 +177,21 @@ userRouter
           userId: userId,
         },
       });
-      if (signUpForJob){
+      if (signUpForJob) {
         const incrementJob = await prisma.job.update({
           where: {
             id: jobId,
           },
           data: { filledSlots: { increment: 1 } },
-        });}
-     
+        });
+        const incrementWeek = await prisma.week.update({
+          where: {
+            id: weekId.weekId,
+          },
+          data: { filledSlots: { increment: 1 } },
+        });
+      }
+
       if (!signUpForJob)
         res
           .status(404)

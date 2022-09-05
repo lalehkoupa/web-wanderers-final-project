@@ -36,7 +36,7 @@ const AdminForm = ({ setAddJobActive, jobData, setJobData }) => {
     setForm({ ...form, [key]: value });
   };
 
-	const API_PATH = process.env.REACT_APP_API_PATH;
+  const API_PATH = process.env.REACT_APP_API_PATH;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,6 +54,10 @@ const AdminForm = ({ setAddJobActive, jobData, setJobData }) => {
         setDate(null);
         setStartTime(null);
         setEndTime(null);
+        setForm({
+          jobTitle: "",
+          availableSlots: "",
+        });
       } catch (err) {
         setError(err);
       }
@@ -71,6 +75,7 @@ const AdminForm = ({ setAddJobActive, jobData, setJobData }) => {
           className="form-control"
           id="jobinput"
           type="text"
+          value={form.jobTitle}
           onChange={(e) => handleChange("jobTitle", e.target.value)}
         ></input>
 
