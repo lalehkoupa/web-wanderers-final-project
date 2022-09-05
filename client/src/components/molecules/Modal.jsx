@@ -39,7 +39,7 @@ const Modal = ({ text, btnText, selectedJob }) => {
   const handleSubmit = async () => {
     if (validateForm()) {
       try {
-        await fetch(API_PATH + `jobs/:${selectedJob.id}`, {
+        await fetch(API_PATH + `job/${selectedJob.id}`, {
           method: "put",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
